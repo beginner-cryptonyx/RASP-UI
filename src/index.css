@@ -1,28 +1,19 @@
 @import "tailwindcss";
 
 
-@theme inline {
-  --color-text: var(--text);
-  --color-background: var(--background);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
+@theme {
+  --color-bg-base: initial;
+  --color-bg-surface: initial;
+  --color-card-bg: initial;
+  --color-card-border: initial;
+  --color-card-title: initial;
+  --color-card-text: initial;
+  --color-card-subtext: initial;
+  --color-accent: initial;
+  --color-accent-hover: initial;
+  --color-accent-text: initial;
+  --color-border-default: initial;
+  --color-text-primary: initial;
+  --color-text-secondary: initial;
 }
 
-@layer base {
-  :root {
-    --text: #0c0605;
-    --background: #fcf9f9;
-    --primary: #b3595b;
-    --secondary: #d3d29f;
-    --accent: #b1c27a;
-  }
-
-  .dark {
-    --text: #faf5f4;
-    --background: #070303;
-    --primary: #a44c4d;
-    --secondary: #5e5d2b;
-    --accent: #74853d;
-  }
-}
