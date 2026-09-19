@@ -1,19 +1,36 @@
 @import "tailwindcss";
 
+:root{
+  --color-bg-base: #f0f0f0;
+  --color-bg-surface: #ffffff;
+  --color-card-bg: #ffffff;
+  --color-card-border: #e0e0e0;
+  --color-card-title: #333333;
+  --color-card-text: #666666;
+  --color-card-subtext: #999999;
+  --color-accent: #007bff;
+  --color-accent-hover: #0056b3;
+  --color-accent-text: #ffffff;
+  --color-border-default: #cccccc;
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+}
+
 
 @theme {
-  --color-bg-base: initial;
-  --color-bg-surface: initial;
-  --color-card-bg: initial;
-  --color-card-border: initial;
-  --color-card-title: initial;
-  --color-card-text: initial;
-  --color-card-subtext: initial;
-  --color-accent: initial;
-  --color-accent-hover: initial;
-  --color-accent-text: initial;
-  --color-border-default: initial;
-  --color-text-primary: initial;
-  --color-text-secondary: initial;
+  --color-bg-base: var(--color-bg-base);
+  --color-bg-surface: var(--color-bg-surface);
+  --color-card-bg: var(--color-card-bg);
+  --color-card-border: var(--color-card-border);
+  --color-card-title: var(--color-card-title);
+  --color-card-text: var(--color-card-text);
+  --color-card-subtext: var(--color-card-subtext);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-text: var(--color-accent-text);
+  --color-border-default: var(--color-border-default);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
 }
+
 
