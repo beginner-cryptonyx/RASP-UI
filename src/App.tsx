@@ -2,8 +2,10 @@ import CTA from "./Registy/Marketing/CTA";
 import Hero from "./Registy/Marketing/Hero";
 import Statistic from "./Registy/Content/Statistic";
 import { statistics } from "./DummyData";
+import useTheme from "./Theme/UseTheme";
 
 function App() {
+  useTheme("Crimson")
   return (
     <div>
       <h1>This Could be used as a playground for testing</h1>

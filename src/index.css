@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root{
-  --color-bg-base: #f0f0f0;
-  --color-bg-surface: #ffffff;
-  --color-card-bg: #ffffff;
-  --color-card-border: #e0e0e0;
-  --color-card-title: #333333;
-  --color-card-text: #666666;
-  --color-card-subtext: #999999;
-  --color-accent: #007bff;
-  --color-accent-hover: #0056b3;
-  --color-accent-text: #ffffff;
-  --color-border-default: #cccccc;
-  --color-text-primary: #333333;
-  --color-text-secondary: #666666;
+  --color-background1: '#FFF8F8';
+  --color-background2: '#FFFFFF';
+  --color-background3: '#FBE9E9';
+  --color-background4: '#F5D6D6';
+  --color-accent: '#A50E26';
+  --color-accentHover: '#8C0B20';
+  --color-accentText: '#FFFFFF';
+  --color-borderDefault: '#E8C9C9';
+  --color-textPrimary: '#2A1215';
+  --color-textSecondary: '#6B4A4E';
+  --color-color1: '#D4AF37';
+  --color-color2: '#7A1220';
+  --color-color3: '#C97B84';
 }
 
 
