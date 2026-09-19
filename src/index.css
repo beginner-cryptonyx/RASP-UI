@@ -18,19 +18,19 @@
 
 
 @theme {
-  --color-bg-base: var(--color-bg-base);
-  --color-bg-surface: var(--color-bg-surface);
-  --color-card-bg: var(--color-card-bg);
-  --color-card-border: var(--color-card-border);
-  --color-card-title: var(--color-card-title);
-  --color-card-text: var(--color-card-text);
-  --color-card-subtext: var(--color-card-subtext);
-  --color-accent: var(--color-accent);
-  --color-accent-hover: var(--color-accent-hover);
-  --color-accent-text: var(--color-accent-text);
-  --color-border-default: var(--color-border-default);
-  --color-text-primary: var(--color-text-primary);
-  --color-text-secondary: var(--color-text-secondary);
+  --color-background1: var(--background1);
+  --color-background2: var(--background2);
+  --color-background3: var(--background3);
+  --color-background4: var(--background4);
+  --color-accent: var(--accent);
+  --color-accentHover: var(--accentHover);
+  --color-accentText: var(--accentText);
+  --color-borderDefault: var(--borderDefault);
+  --color-textPrimary: var(--textPrimary);
+  --color-textSecondary: var(--textSecondary);
+  --color-color1: var(--color1);
+  --color-color2: var(--color2);
+  --color-color3: var(--color3);
 }
 
 
