@@ -16,13 +16,6 @@ type Colors = {
 
 export type ThemeName = "Crimson"|"Ocean"|"Earth"|"Amethyst"|"Sunset"
 
-
-
-// type Theme = {
-//   light: ThemeColors;
-//   dark: ThemeColors;
-// };
-
 type Mode = "light"|"dark"
 type Theme = Record<Mode, Colors>
 

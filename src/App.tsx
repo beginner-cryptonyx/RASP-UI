@@ -11,7 +11,7 @@ function App() {
       <h1>This Could be used as a playground for testing</h1>
       <Hero></Hero>
       <CTA></CTA>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 ">
         {statistics.map((stat) => (
           <Statistic {...stat}></Statistic>
         ))}

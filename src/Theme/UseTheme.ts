@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 export default function useTheme(ThemeName: ThemeName){
     const [modeName, setModeName] = useState<"light"|"dark">("light")
-    const [colorName, setColorName] = useState<ThemeName>("Crimson")
+    const [colorName, setColorName] = useState<ThemeName>(ThemeName)
 
     const theme = Themes[ThemeName]
     const colors = theme[modeName]
@@ -15,6 +15,6 @@ export default function useTheme(ThemeName: ThemeName){
             document.documentElement.style.setProperty(`--color-${variable}`, value)
         }
     })
-    
+
     console.log(colors)
 }
