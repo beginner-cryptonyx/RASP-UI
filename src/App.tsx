@@ -16,6 +16,7 @@ function App() {
           <Statistic {...stat}></Statistic>
         ))}
       </div>
+      <button onClick={() => {themeSystem.setColorScheme("Coffee")}}>Koffee</button>
     </div>
   );
 }
