@@ -1,20 +1,35 @@
-import { type ThemeName } from "./theme";
+import { type ThemeName, type Mode } from "./theme";
 import { Themes } from "./theme";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
+export default function useTheme() {
+  const [mode, setMode] = useState<Mode>(() => {
+    const savedMode = localStorage.getItem("PROJECTNAME-MODE");
+    return savedMode
+      ? JSON.parse(savedMode as Mode)
+      : window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+  });
 
-export default function useTheme(ThemeName: ThemeName){
-    const [modeName, setModeName] = useState<"light"|"dark">("light")
-    const [colorName, setColorName] = useState<ThemeName>(ThemeName)
+  const [colorScheme, setColorScheme] = useState<ThemeName>(() => {
+    const savedColorScheme = localStorage.getItem("PROJECTNAME-COLORSCHEME");
+    return savedColorScheme
+      ? JSON.parse(savedColorScheme as ThemeName)
+      : "Crimson";
+  });
 
-    const theme = Themes[ThemeName]
-    const colors = theme[modeName]
+  useEffect(() => {
+    const colors = Themes[colorScheme][mode];
+    const root = document.documentElement;
 
-    useEffect(() => {
-        for (const [variable, value] of Object.entries(colors)) {
-            document.documentElement.style.setProperty(`--color-${variable}`, value)
-        }
-    })
+    for (const [variable, value] of Object.entries(colors)) {
+      root.style.setProperty(`--color-${variable}`, value);
+    }
 
-    console.log(colors)
+    localStorage.setItem("PROJECTNAME-MODE", mode)
+    localStorage.setItem("PROJECTNAME-COLORSCHEME", colorScheme)
+  }, [colorScheme, mode]);
+
+  return {setMode, setColorScheme}
 }

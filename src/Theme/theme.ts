@@ -16,7 +16,7 @@ type Colors = {
 
 export type ThemeName = "Crimson"|"Ocean"|"Earth"|"Amethyst"|"Sunset"
 
-type Mode = "light"|"dark"
+export type Mode = "light"|"dark"
 type Theme = Record<Mode, Colors>
 
 export const Themes: Record<ThemeName, Theme> = {
