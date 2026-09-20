@@ -2,6 +2,12 @@ import { type ThemeName, type Mode } from "./theme";
 import { Themes } from "./theme";
 import { useState, useEffect } from "react";
 
+
+const MODE_KEY = "PROJECTNAME-MODE";
+const SCHEME_KEY = "PROJECTNAME-COLORSCHEME";
+const DEFAULT_SCHEME: ThemeName = "Crimson";
+
+
 function isMode(value: unknown){
   if (value === "light" || value ==="dark"){
     return true
@@ -18,7 +24,7 @@ function isThemeName(value: unknown){
 
 export default function useTheme() {
   const [mode, setMode] = useState<Mode>(() => {
-    const savedMode = localStorage.getItem("PROJECTNAME-MODE");
+    const savedMode = localStorage.getItem(MODE_KEY);
     if (isMode(savedMode)){ return savedMode as Mode}
     return window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
@@ -26,9 +32,9 @@ export default function useTheme() {
   });
 
   const [colorScheme, setColorScheme] = useState<ThemeName>(() => {
-    const savedColorScheme = localStorage.getItem("PROJECTNAME-COLORSCHEME");
+    const savedColorScheme = localStorage.getItem(SCHEME_KEY);
     if (isThemeName(savedColorScheme)){return savedColorScheme as ThemeName}
-    return "Crimson";
+    return DEFAULT_SCHEME;
   });
 
   useEffect(() => {
@@ -39,9 +45,9 @@ export default function useTheme() {
       root.style.setProperty(`--color-${variable}`, value);
     }
 
-    localStorage.setItem("PROJECTNAME-MODE", mode)
-    localStorage.setItem("PROJECTNAME-COLORSCHEME", colorScheme)
+    localStorage.setItem(MODE_KEY, mode)
+    localStorage.setItem(SCHEME_KEY, colorScheme)
   }, [colorScheme, mode]);
 
-  return {setMode, setColorScheme}
+  return {setMode, setColorScheme, mode, colorScheme}
 }
