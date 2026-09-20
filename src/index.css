@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
-:root{
-  --background1: '#FFF8F8';
-  --background2: '#FFFFFF';
-  --background3: '#FBE9E9';
-  --background4: '#F5D6D6';
-  --accent: '#A50E26';
-  --accentHover: '#8C0B20';
-  --accentText: '#FFFFFF';
-  --borderDefault: '#E8C9C9';
-  --textPrimary: '#2A1215';
-  --textSecondary: '#6B4A4E';
-  --color1: '#D4AF37';
-  --color2: '#7A1220';
-  --color3: '#C97B84';
+:root {
+  --background1: "#FFF8F8";
+  --background2: "#FFFFFF";
+  --background3: "#FBE9E9";
+  --background4: "#F5D6D6";
+  --accent: "#A50E26";
+  --accentHover: "#8C0B20";
+  --accentText: "#FFFFFF";
+  --borderDefault: "#E8C9C9";
+  --textPrimary: "#2A1215";
+  --textSecondary: "#6B4A4E";
+  --color1: "#D4AF37";
+  --color2: "#7A1220";
+  --color3: "#C97B84";
 }
-
 
 @theme {
   --color-background1: var(--background1);
@@ -33,4 +32,8 @@
   --color-color3: var(--color3);
 }
 
-
+@layer base {
+  .section {
+    @apply py-20 mx-6;
+  }
+}
