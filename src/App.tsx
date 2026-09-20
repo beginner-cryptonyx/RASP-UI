@@ -1,8 +1,9 @@
 import CTA from "./Registy/Marketing/CTA";
 import Statistic from "./Registy/Content/Statistic";
 import { ImageCard } from "./Registy/Content/Card";
-import { statistics } from "./DummyData";
+import { statistics, destinations } from "./DummyData";
 import useTheme from "./Theme/UseTheme";
+import {  Themes, type ThemeName  } from "./Theme/theme";
 
 function App() {
   const themeSystem = useTheme();
@@ -15,13 +16,17 @@ function App() {
           <Statistic {...stat}></Statistic>
         ))}
       </div>
-      <button
-        onClick={() => {
-          themeSystem.setColorScheme("Ocean");
-        }}
-      >
-        Koffee
-      </button>
+      <div className="grid grid-cols-3">
+        {Object.keys(Themes).map((theme) => (
+          <button
+          onClick={() => {
+            themeSystem.setColorScheme(theme as ThemeName);
+          }}
+        >
+          {theme}
+        </button>
+        ))}
+      </div>
       <button
         onClick={() => {
           themeSystem.toggleMode();
@@ -29,17 +34,21 @@ function App() {
       >
         Toggle Modeee
       </button>
-      <ImageCard
+      {/* <ImageCard
         imageType="contain"
         imageSrc="https://picsum.photos/200/300"
         title="New York"
         subtext="At an affordable price"
         description="The central hub of the US"
         className="w-[200px]"
-      ></ImageCard>
+      ></ImageCard> */}
+      <div className="grid grid-cols-4 mx-10">
+        {destinations.map((destination) => (
+          <ImageCard {...destination}></ImageCard>
+        ))}
+      </div>
     </div>
   );
 }
 
 export default App;
-
