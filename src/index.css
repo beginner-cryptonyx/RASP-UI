@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background1: "#FFF8F8";
-  --background2: "#FFFFFF";
-  --background3: "#FBE9E9";
-  --background4: "#F5D6D6";
-  --accent: "#A50E26";
-  --accentHover: "#8C0B20";
-  --accentText: "#FFFFFF";
-  --borderDefault: "#E8C9C9";
-  --textPrimary: "#2A1215";
-  --textSecondary: "#6B4A4E";
-  --color1: "#D4AF37";
-  --color2: "#7A1220";
-  --color3: "#C97B84";
+  --background1: #FFF8F8;
+  --background2: #FFFFFF;
+  --background3: #FBE9E9;
+  --background4: #F5D6D6;
+  --accent: #A50E26;
+  --accentHover: #8C0B20;
+  --accentText: #FFFFFF;
+  --borderDefault: #E8C9C9;
+  --textPrimary: #2A1215;
+  --textSecondary: #6B4A4E;
+  --color1: #D4AF37;
+  --color2: #7A1220;
+  --color3: #C97B84;
 }
 
 @theme {
@@ -33,6 +33,42 @@
 }
 
 @layer base {
+  body {
+    @apply bg-background1 text-textPrimary antialiased selection:bg-accent selection:text-accentText;
+  }
+
+  /* --- Heading Hierarchy --- */
+  h1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-textPrimary leading-[1.1] mb-6;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl font-bold tracking-tight text-textPrimary leading-snug mb-5;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl font-semibold tracking-normal text-textPrimary leading-snug mb-4;
+  }
+
+  h4 {
+    @apply text-xl sm:text-2xl font-semibold text-textPrimary leading-normal mb-3;
+  }
+
+  /* --- Body Paragraphs (Set larger than h6) --- */
+  p {
+    @apply text-base sm:text-lg font-normal text-textSecondary leading-tight mb-4;
+  }
+
+  /* --- Sub-Headings & Small Labels --- */
+  h5 {
+    @apply text-sm sm:text-base font-semibold tracking-wide text-color2 uppercase mb-2;
+  }
+
+  h6 {
+    @apply text-xs sm:text-sm font-medium tracking-wider uppercase mb-2 text-color3;
+  }
+
+  /* --- Layout Helpers --- */
   .section {
     @apply py-20 mx-6;
   }
