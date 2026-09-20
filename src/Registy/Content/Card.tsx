@@ -1,4 +1,6 @@
 import { cn } from "../../Lib/utils";
+import { type IconName } from "../../Lib/types";
+import Icon from "../Meta/Icon";
 
 export interface BaseCardProps {
   title?: string;
@@ -12,6 +14,11 @@ export interface ImageCardProps extends BaseCardProps {
   imageType: "full" | "contain";
   imageSrc: string;
   imageAlt?: string;
+}
+
+export interface IconCardProps extends BaseCardProps {
+  icon: IconName;
+  iconAlign?: "left" | "center" | "right";
 }
 
 export function CardText({
@@ -65,6 +72,58 @@ export function ImageCard({
           <CardText {...textProps} className="px-4" />
         </div>
       )}
+    </div>
+  );
+}
+
+
+
+export function IconCard({
+  icon,
+  iconAlign = "center",
+  className,
+  ...textProps
+}: IconCardProps) {
+  return (
+    <div
+      className={cn(
+        "rounded-xl shadow-xl overflow-hidden bg-background3 m-4 cursor-pointer hover:scale-105 transition-all duration-200 group hover:bg-background4 p-6",
+        className,
+      )}
+    >
+      {/* Icon glow */}
+
+
+      {/* Icon */}
+      <div
+        className={cn(
+          "relative z-10 mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-color2/10 text-textPrimary transition-all duration-300 group-hover:bg-color1/20",
+          iconAlign === "left" && "mr-auto",
+          iconAlign === "center" && "mx-auto",
+          iconAlign === "right" && "ml-auto",
+        )}
+      >
+              <div
+        className={cn(
+          "pointer-events-none absolute -inset-8 rounded-full bg-accentHover/60 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100",
+          iconAlign === "left" && "left-0",
+          iconAlign === "center" && "left-1/2 -translate-x-1/2",
+          iconAlign === "right" && "right-0 left-auto",
+        )}
+      />
+        <Icon className="text-xl text-color3" name={icon}></Icon>
+      </div>
+
+      {/* Text */}
+      <CardText
+        {...textProps}
+        className={cn(
+          "relative z-10",
+          iconAlign === "left" && "text-left",
+          iconAlign === "center" && "text-center",
+          iconAlign === "right" && "text-right",
+        )}
+      />
     </div>
   );
 }

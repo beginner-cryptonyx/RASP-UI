@@ -1,5 +1,5 @@
 import { type StatisticProps } from "./Lib/types";
-import { type ImageCardProps } from "./Registy/Content/Card";
+import { type ImageCardProps, type IconCardProps } from "./Registy/Content/Card";
 
 export const statistics: StatisticProps[] = [
   {
@@ -115,4 +115,35 @@ export const destinations: ImageCardProps[] = [
   //   imageSrc: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=1600&auto=format&fit=crop",
   //   imageAlt: "Aerial view of Rio de Janeiro coastline and mountains in Brazil"
   // }
+];
+
+export const coffeeServices: IconCardProps[] = [
+  {
+    title: "Artisanal Roasting",
+    subtext: "Craftsmanship",
+    description: "Small-batch single-origin beans roasted daily to highlight unique flavor profiles.",
+    icon: "Bean",
+    iconAlign: "left"
+  },
+  {
+    title: "Custom Blends",
+    subtext: "Flavor Profile",
+    description: "Tailor-made espresso and filter roasts crafted to match your exact taste preferences.",
+    icon: "CupSoda",
+    iconAlign: "left"
+  },
+  {
+    title: "Monthly Bean Club",
+    subtext: "Subscriptions",
+    description: "Freshly roasted specialty coffees delivered straight to your doorstep every two weeks.",
+    icon: "PackageCheck",
+    iconAlign: "left"
+  },
+  {
+    title: "Masterclass Workshops",
+    subtext: "Education",
+    description: "Hands-on espresso extraction and latte art training led by certified baristas.",
+    icon: "Award",
+    iconAlign: "left"
+  }
 ];

@@ -1,7 +1,7 @@
 import CTA from "./Registy/Marketing/CTA";
 import Statistic from "./Registy/Content/Statistic";
-import { ImageCard } from "./Registy/Content/Card";
-import { statistics, destinations } from "./DummyData";
+import { IconCard, ImageCard } from "./Registy/Content/Card";
+import { statistics, destinations, coffeeServices } from "./DummyData";
 import useTheme from "./Theme/UseTheme";
 import {  Themes, type ThemeName  } from "./Theme/theme";
 
@@ -34,19 +34,16 @@ function App() {
       >
         Toggle Modeee
       </button>
-      {/* <ImageCard
-        imageType="contain"
-        imageSrc="https://picsum.photos/200/300"
-        title="New York"
-        subtext="At an affordable price"
-        description="The central hub of the US"
-        className="w-[200px]"
-      ></ImageCard> */}
+
       <div className="grid grid-cols-4 mx-10">
         {destinations.map((destination) => (
           <ImageCard {...destination}></ImageCard>
         ))}
       </div>
+      <div className="grid grid-cols-4 mx-10">
+        {coffeeServices.map((service) => (<IconCard {...service}></IconCard>))}
+      </div>
+
     </div>
   );
 }
