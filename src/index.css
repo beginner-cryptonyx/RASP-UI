@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./Theme/theme.css";
 
 :root {
   --background1: #FFF8F8;
@@ -16,7 +17,7 @@
   --color3: #C97B84;
 }
 
-@theme {
+@theme inline {
   --color-background1: var(--background1);
   --color-background2: var(--background2);
   --color-background3: var(--background3);

@@ -17,7 +17,7 @@ function App() {
         ))}
       </div>
       <div className="grid grid-cols-3">
-        {Object.keys(Themes).map((theme) => (
+        {Themes.map((theme) => (
           <button
           onClick={() => {
             themeSystem.setColorScheme(theme as ThemeName);
@@ -40,8 +40,8 @@ function App() {
           <ImageCard {...destination}></ImageCard>
         ))}
       </div>
-      <div className="grid grid-cols-4 mx-10">
-        {coffeeServices.map((service) => (<IconCard {...service}></IconCard>))}
+      <div className="grid grid-cols-4 mx-10" data-theme="Coffee" data-mode={themeSystem.mode}>
+        {coffeeServices.map((service) => (<IconCard {...service} ></IconCard>))}
       </div>
 
     </div>

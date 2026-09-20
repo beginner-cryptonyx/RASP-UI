@@ -42,13 +42,8 @@ export default function useTheme() {
   }
 
   useEffect(() => {
-    const colors = Themes[colorScheme][mode];
-    const root = document.documentElement;
-
-    for (const [variable, value] of Object.entries(colors)) {
-      root.style.setProperty(`--color-${variable}`, value);
-    }
-
+    document.documentElement.dataset.theme = colorScheme
+    document.documentElement.dataset.mode = mode
     localStorage.setItem(MODE_KEY, mode)
     localStorage.setItem(SCHEME_KEY, colorScheme)
   }, [colorScheme, mode]);
