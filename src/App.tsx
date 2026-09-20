@@ -8,7 +8,7 @@ function App() {
   const themeSystem = useTheme();
   return (
     <div>
-      <h1>This Could be used as a playground for testing</h1>
+      <h1>Welcome to the EVERYTHING WEBSITE</h1>
       <CTA></CTA>
       <div className="grid grid-cols-3 ">
         {statistics.map((stat) => (
@@ -30,11 +30,11 @@ function App() {
         Toggle Modeee
       </button>
       <ImageCard
-        imageType="full"
+        imageType="contain"
         imageSrc="https://picsum.photos/200/300"
-        title="Your Dream Location"
+        title="New York"
         subtext="At an affordable price"
-        description="Find your dream vaca spot right now! On this dummy website, you can do ANYTHING"
+        description="The central hub of the US"
         className="w-[200px]"
       ></ImageCard>
     </div>

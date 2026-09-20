@@ -1,9 +1,9 @@
 import { cn } from "../../Lib/utils";
 
 interface BaseCardProps {
-  title: string;
-  subtext: string;
-  description: string;
+  title?: string;
+  subtext?: string;
+  description?: string;
   className?: string;
 }
 
@@ -21,8 +21,8 @@ function CardText({
 }: BaseCardProps){
   return (
     <div className={className}>
-      <h3>{title}</h3>
-      <h6>{subtext}</h6>
+      <h4>{title}</h4>
+      <h6 className="opacity-70 -mt-4 text-xs">{subtext}</h6>
       <p>{description}</p>
     </div>
   );
@@ -36,7 +36,7 @@ export function ImageCard({
   ...textProps
 }: ImageCardProps) {
   return (
-    <div className={cn("rounded-xl shadow-xl overflow-hidden", className)}>
+    <div className={cn("rounded-xl shadow-xl overflow-hidden bg-background3 m-4", className)}>
       {imageType === "full" ? (
         <div className={cn("relative overflow-hidden")}>
           <img
@@ -49,7 +49,7 @@ export function ImageCard({
         </div>
       ) : (
         <div className={cn("flex flex-col")}>
-          <img src={imageSrc} alt={imageAlt} className="m-2 border" />
+          <img src={imageSrc} alt={imageAlt} className="m-2 border aspect-video object-cover rounded-xl" />
           <CardText {...textProps} className="px-4" />
         </div>
       )}
