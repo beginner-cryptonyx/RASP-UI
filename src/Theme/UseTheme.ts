@@ -37,6 +37,10 @@ export default function useTheme() {
     return DEFAULT_SCHEME;
   });
 
+  const toggleMode = () => {
+    setMode((prevMode) => (prevMode === "light" ? "dark":"light"))
+  }
+
   useEffect(() => {
     const colors = Themes[colorScheme][mode];
     const root = document.documentElement;
@@ -49,5 +53,5 @@ export default function useTheme() {
     localStorage.setItem(SCHEME_KEY, colorScheme)
   }, [colorScheme, mode]);
 
-  return {setMode, setColorScheme, mode, colorScheme}
+  return {setMode, setColorScheme, mode, colorScheme, toggleMode}
 }
