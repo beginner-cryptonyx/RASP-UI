@@ -62,13 +62,6 @@ function App() {
           ></IconCard>
         </div>
       </section>
-      <CTA></CTA>
-      <div className="grid grid-cols-3 mx-20">
-        {statistics.map((stat) => (
-          <Statistic {...stat}></Statistic>
-        ))}
-      </div>
-      <h2 className="text-center underline decoration-accent">Our Services</h2>
       <div className="grid grid-cols-3">
         {Themes.map((theme) => (
           <button
@@ -87,6 +80,9 @@ function App() {
       >
         Toggle Modeee
       </button>
+
+      <h2 className="text-center underline decoration-accent">Our Services</h2>
+
 
 <div className="grid grid-cols-3 mx-auto gap-8 w-[80%] mb-10">
   {Object.entries(ourServices).map(([serviceName, service]) => (

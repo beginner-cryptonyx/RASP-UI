@@ -240,7 +240,7 @@ export function ProductCard({
       {/* 4. Button pinned to the bottom */}
       <Link
         to={button.url}
-        className="mt-auto block w-full border-b-2 border-r-2 border-t border-l bg-accent px-5 py-2 text-center hover:border-b-[6px] hover:border-r-8 transition-all duration-150"
+        className="mt-auto block w-full border-b-2 border-r-2 border-t border-l bg-accent px-5 py-2 text-center hover:border-b-[6px] hover:border-r-8 transition-all duration-150 text-white"
       >
         {button.label}
       </Link>
