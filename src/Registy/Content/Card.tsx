@@ -1,6 +1,7 @@
 import { cn } from "../../Lib/utils";
 import { type IconName } from "../../Lib/types";
 import Icon from "../Meta/Icon";
+import { Link } from "react-router";
 
 export interface BaseCardProps {
   title?: string;
@@ -23,6 +24,21 @@ export interface IconCardProps extends BaseCardProps {
   iconAlign?: "left" | "center" | "right";
 }
 
+export interface ProductCardProps extends Pick<
+  BaseCardProps,
+  "title" | "subtext" | "description" | "className"
+> {
+  // Provide one of these for the top visual
+  icon?: IconName;
+  imageSrc?: string;
+  imageAlt?: string;
+  features: React.ReactNode[];
+  price?: React.ReactNode; // e.g. "$99/mo" or <><b>$99</b>/mo</>
+  priceLabel?: string; // e.g. "Starting at"
+  button: { label: string; url: string };
+  titlePosition: "top" | "center" | "middle left";
+}
+
 export function CardText({
   title,
   subtext,
@@ -32,9 +48,14 @@ export function CardText({
 }: BaseCardProps) {
   return (
     <div className={className}>
-      <h4 className="leading-snug">{title}</h4>
-      <h6 className="opacity-70 -mt-4 text-xs">{subtext}</h6>
-      <p>{description}</p>
+      {title ? <h4 className="leading-snug">{title}</h4> : <></>}
+      {subtext ? (
+        <h6 className="opacity-70 -mt-4 text-xs">{subtext}</h6>
+      ) : (
+        <></>
+      )}
+      {description ? <p>{description}</p> : <></>}
+
       {extraContent}
     </div>
   );
@@ -94,10 +115,14 @@ export function IconCard({
   ...textProps
 }: IconCardProps) {
   const fullAlign = {
-  left: { icon: "mr-auto", glow: "left-0", text: "text-left" },
-  center: { icon: "mx-auto", glow: "left-1/2 -translate-x-1/2", text: "text-center" },
-  right: { icon: "ml-auto", glow: "right-0 left-auto", text: "text-right" },
-}[iconAlign];
+    left: { icon: "mr-auto", glow: "left-0", text: "text-left" },
+    center: {
+      icon: "mx-auto",
+      glow: "left-1/2 -translate-x-1/2",
+      text: "text-center",
+    },
+    right: { icon: "ml-auto", glow: "right-0 left-auto", text: "text-right" },
+  }[iconAlign];
   return (
     <div
       className={cn(
@@ -113,14 +138,14 @@ export function IconCard({
         className={cn(
           "relative z-10 flex shrink-0 items-center justify-center rounded-xl bg-color2/10 text-textPrimary transition-all duration-300 group-hover:bg-color1/20",
           miniCard ? "h-10 w-10" : "mb-5 h-14 w-14 min-w-14",
-          fullAlign.icon
+          !miniCard && fullAlign.icon,
         )}
       >
         {/* Icon glow */}
         <div
           className={cn(
             "pointer-events-none absolute -inset-8 rounded-full bg-accentHover/60 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100",
-            fullAlign.glow
+            !miniCard && fullAlign.glow,
           )}
         />
         <Icon
@@ -135,12 +160,90 @@ export function IconCard({
       ) : (
         <CardText
           {...textProps}
-          className={cn(
-            "relative z-10",
-            fullAlign.text
-          )}
+          className={cn("relative z-10", !miniCard && fullAlign.text)}
         />
       )}
+    </div>
+  );
+}
+
+export function ProductCard({
+  title,
+  subtext,
+  description,
+  icon,
+  imageSrc,
+  imageAlt = "",
+  features,
+  price,
+  priceLabel,
+  button,
+  titlePosition = "top",
+  className,
+}: ProductCardProps) {
+  return (
+    <div
+      className={cn(
+        "flex h-full flex-col  shadow-xl overflow-hidden bg-background3 m-4   transition-all duration-200 border border-background3 hover:border-accent",
+        className,
+      )}
+    >
+      {titlePosition === "top" ? (
+        <h4 className="text-center uppercase mt-2 mb-4">{title}</h4>
+      ) : (
+        ""
+      )}
+      {/* 1. Icon / Image */}
+      {imageSrc ? (
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          className="mb-5 aspect-square w-full  object-cover"
+        />
+      ) : icon ? (
+        <div className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-color2/10 transition-all duration-300 group-hover:bg-color1/20">
+          <Icon className="text-xl text-color3" name={icon} />
+        </div>
+      ) : null}
+
+      {/* Heading */}
+      {titlePosition !== "top" ? (
+        titlePosition === "center" ? (
+          <h4 className="text-center">{title}</h4>
+        ) : (
+          <h4>{title}</h4>
+        )
+      ) : (
+        ""
+      )}
+
+      {/* 2. Features */}
+      <ul className="my-5 flex flex-col gap-2 text-sm px-6">
+        {features.map((feature, i) => (
+          <li key={i} className="flex items-start gap-2">
+            <span className="text-color3">✓</span>
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* 3. Price (optional) */}
+      {price && (
+        <div className="mb-5">
+          {priceLabel && (
+            <span className="block text-xs opacity-70">{priceLabel}</span>
+          )}
+          <span className="text-2xl font-bold">{price}</span>
+        </div>
+      )}
+
+      {/* 4. Button pinned to the bottom */}
+      <Link
+        to={button.url}
+        className="mt-auto block w-full border-b-2 border-r-2 border-t border-l bg-accent px-5 py-2 text-center hover:border-b-[6px] hover:border-r-8 transition-all duration-150"
+      >
+        {button.label}
+      </Link>
     </div>
   );
 }
