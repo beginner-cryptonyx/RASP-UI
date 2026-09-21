@@ -14,6 +14,7 @@ export interface ImageCardProps extends BaseCardProps {
   imageType: "full" | "contain";
   imageSrc: string;
   imageAlt?: string;
+  imageAspectRatio?: "square" | "landscape" | "portrait";
 }
 
 export interface IconCardProps extends BaseCardProps {
@@ -42,6 +43,7 @@ export function ImageCard({
   imageType,
   imageSrc,
   imageAlt = "",
+  imageAspectRatio = "square",
   className,
   ...textProps
 }: ImageCardProps) {
@@ -57,7 +59,7 @@ export function ImageCard({
           <img
             src={imageSrc}
             alt={imageAlt}
-            className="absolute inset-0  h-full w-full  object-cover"
+            className={cn("absolute inset-0  h-full w-full  object-cover")}
           />
           <div className="absolute inset-0 h-full w-full object-cover bg-black/60"></div>
           <CardText {...textProps} className="relative z-10 p-4 text-white" />
@@ -67,7 +69,14 @@ export function ImageCard({
           <img
             src={imageSrc}
             alt={imageAlt}
-            className="m-2 border aspect-square object-cover rounded-xl"
+            className={cn(
+              "m-2 border object-cover rounded-xl",
+              imageAspectRatio === "square"
+                ? "aspect-square"
+                : imageAspectRatio === "landscape"
+                  ? "aspect-video"
+                  : "aspect-[3/4]",
+            )}
           />
           <CardText {...textProps} className="px-4" />
         </div>
@@ -75,8 +84,6 @@ export function ImageCard({
     </div>
   );
 }
-
-
 
 export function IconCard({
   icon,
@@ -93,7 +100,6 @@ export function IconCard({
     >
       {/* Icon glow */}
 
-
       {/* Icon */}
       <div
         className={cn(
@@ -103,14 +109,14 @@ export function IconCard({
           iconAlign === "right" && "ml-auto",
         )}
       >
-              <div
-        className={cn(
-          "pointer-events-none absolute -inset-8 rounded-full bg-accentHover/60 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100",
-          iconAlign === "left" && "left-0",
-          iconAlign === "center" && "left-1/2 -translate-x-1/2",
-          iconAlign === "right" && "right-0 left-auto",
-        )}
-      />
+        <div
+          className={cn(
+            "pointer-events-none absolute -inset-8 rounded-full bg-accentHover/60 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100",
+            iconAlign === "left" && "left-0",
+            iconAlign === "center" && "left-1/2 -translate-x-1/2",
+            iconAlign === "right" && "right-0 left-auto",
+          )}
+        />
         <Icon className="text-xl text-color3" name={icon}></Icon>
       </div>
 

@@ -38,7 +38,7 @@ function App() {
 
       <div className="grid grid-cols-4 mx-10">
         {destinations.map((destination) => (
-          <ImageCard {...destination}></ImageCard>
+          <ImageCard {...destination} imageAspectRatio="landscape"></ImageCard>
         ))}
       </div>
       <div className="grid grid-cols-4 mx-10" data-theme="Coffee" data-mode={themeSystem.mode}>
