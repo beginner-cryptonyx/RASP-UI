@@ -11,6 +11,7 @@ import useTheme from "../Theme/UseTheme";
 import { Themes, type ThemeName } from "../Theme/theme";
 import { Accordion } from "../Registy/Content/Accordion";
 import { Link } from "react-router";
+import Button from "../Registy/Base/Button";
 
 function App() {
   const themeSystem = useTheme();
@@ -62,24 +63,33 @@ function App() {
           ></IconCard>
         </div>
       </section>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 my-9">
         {Themes.map((theme) => (
-          <button
-            onClick={() => {
-              themeSystem.setColorScheme(theme as ThemeName);
-            }}
-          >
-            {theme}
-          </button>
+          <div className="flex items-center justify-center w-[80%] mx-auto">
+            <Button
+              onClick={() => {
+                themeSystem.setColorScheme(theme as ThemeName);
+              }}
+              data-mode={themeSystem.mode}
+              data-theme={theme}
+              size={"full"}
+              className=""
+            >
+              {theme}
+            </Button>
+          </div>
         ))}
-      </div>
-      <button
+      <Button
         onClick={() => {
           themeSystem.toggleMode();
         }}
+        variant={"outline"}
+        size={"full"}
+        className="col-span-3 w-[90%] mx-auto"
       >
         Toggle Modeee
-      </button>
+      </Button>
+      </div>
 
       <h2 className="text-center underline decoration-accent">Our Services</h2>
 
