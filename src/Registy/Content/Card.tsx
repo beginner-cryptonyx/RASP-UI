@@ -1,8 +1,8 @@
 import { cn } from "../../Lib/utils";
 import { type IconName } from "../../Lib/types";
 import Icon from "../Meta/Icon";
-import { Link } from "react-router";
 import LinkButton from "../Base/LinkButton";
+import type React from "react";
 
 export interface BaseCardProps {
   title?: string;
@@ -34,8 +34,11 @@ export interface ProductCardProps extends Pick<
   imageSrc?: string;
   imageAlt?: string;
   features: React.ReactNode[];
-  price?: React.ReactNode; // e.g. "$99/mo" or <><b>$99</b>/mo</>
-  priceLabel?: string; // e.g. "Starting at"
+  priceProperty?: {
+    price: number | React.ReactNode | string;
+    priceLabel?: string;
+    priceSuffix?: string;
+  };
   button: { label: string; url: string };
   titlePosition: "top" | "center" | "middle left";
 }
@@ -98,7 +101,7 @@ export function ImageCard({
                 ? "aspect-square"
                 : imageAspectRatio === "landscape"
                   ? "aspect-video"
-                  : "aspect-[3/4]",
+                  : "aspect-3/4",
             )}
           />
           <CardText {...textProps} className="px-4" />
@@ -170,17 +173,14 @@ export function IconCard({
 
 export function ProductCard({
   title,
-  subtext,
-  description,
   icon,
   imageSrc,
   imageAlt = "",
   features,
-  price,
-  priceLabel,
   button,
   titlePosition = "top",
   className,
+  priceProperty,
 }: ProductCardProps) {
   return (
     <div
@@ -229,12 +229,19 @@ export function ProductCard({
       </ul>
 
       {/* 3. Price (optional) */}
-      {price && (
-        <div className="mb-5">
-          {priceLabel && (
-            <span className="block text-xs opacity-70">{priceLabel}</span>
+      {priceProperty?.price && (
+        <div className="mt-3 mb-2 px-8">
+          {priceProperty.priceLabel && (
+            <span className="block text-xs opacity-70">
+              {priceProperty.priceLabel}
+            </span>
           )}
-          <span className="text-2xl font-bold">{price}</span>
+          <div className="flex items-baseline">
+            <span className="text-xl font-bold text-accentHover">{priceProperty.price}</span>
+            <span className="ml-1 -translate-y-0.5  block text-xs opacity-70">
+                {priceProperty.priceSuffix}
+              </span>
+          </div>
         </div>
       )}
 
@@ -243,7 +250,6 @@ export function ProductCard({
         to={button.url}
         className="m-0 mt-auto text-lg py-5.5"
         variant={"maximalist"}
-
       >
         {button.label}
       </LinkButton>

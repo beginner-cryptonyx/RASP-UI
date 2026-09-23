@@ -1,16 +1,7 @@
-import CTA from "../Registy/Marketing/CTA";
-import Statistic from "../Registy/Content/Statistic";
-import { IconCard, ImageCard, ProductCard } from "../Registy/Content/Card";
-import {
-  statistics,
-  destinations,
-  coffeeServices,
-  ourServices,
-} from "../DummyData";
+import { IconCard, ProductCard } from "../Registy/Content/Card";
+import { ourServices } from "../DummyData";
 import useTheme from "../Theme/UseTheme";
 import { Themes, type ThemeName } from "../Theme/theme";
-import { Accordion } from "../Registy/Content/Accordion";
-import { Link } from "react-router";
 import Button from "../Registy/Base/Button";
 import Grid from "../Registy/layout/Grid";
 import Fade from "../Registy/Meta/Fade";
@@ -34,7 +25,7 @@ function App() {
           </p>
         </div>
         <Grid
-        columns={4}
+          columns={4}
           className="mt-5 gap-0 h-fit"
           data-theme="Ocean"
           data-mode="dark"
@@ -104,14 +95,13 @@ function App() {
               title={serviceName}
               imageSrc={service.imageSrc}
               features={service.features}
-              // price={service.price}
+              priceProperty={service.price}
               button={service.buttonItems}
               titlePosition="top"
             />
           ))}
         </Grid>
       </Fade>
-
     </div>
   );
 }

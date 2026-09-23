@@ -179,6 +179,7 @@ export const ourServices: Record<
     imageSrc: string;
     imageType: "full" | "contain";
     buttonItems: { label: string; url: string };
+    price?: {price:number|React.ReactNode|string, priceLabel?:string, priceSuffix?:string}
   }
 > = {
   agency: {
@@ -206,6 +207,7 @@ export const ourServices: Record<
       "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
     imageType: "full",
     buttonItems: { label: "Explore Memberships", url: "/services/gym" },
+    price: {price:"$ 100", priceLabel:"starting from", priceSuffix:"per year"}
   },
   coffee: {
     features: [
