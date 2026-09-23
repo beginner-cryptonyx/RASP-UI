@@ -20,11 +20,11 @@ function App() {
   return (
     <div>
       <section
-        className="px-20 py-20 bg-linear-to-b from-background3 to-background2"
+        className="flex md:flex-col px-20 py-20 bg-linear-to-b from-background3 to-background2"
         data-theme="Ocean"
         data-mode="dark"
       >
-        <div className=" flex flex-col w-[60%] text-wrap overflow-hidden">
+        <div className="flex flex-col w-[60%] text-wrap overflow-hidden">
           <h1>RASP-UI</h1>
           <p>Rapid - Aesthetic - Scalable - Personalised</p>
           <p>
@@ -33,8 +33,9 @@ function App() {
             times, no stressing about theming - All encompassing UI tool
           </p>
         </div>
-        <div
-          className="grid grid-cols-4 mt-5 gap-0 h-fit"
+        <Grid
+        columns={4}
+          className="mt-5 gap-0 h-fit"
           data-theme="Ocean"
           data-mode="dark"
         >
@@ -63,7 +64,7 @@ function App() {
             miniCard
             icon="Badge"
           ></IconCard>
-        </div>
+        </Grid>
       </section>
       <Grid className="my-9" smallScreenColumns={2}>
         {Themes.map((theme) => (

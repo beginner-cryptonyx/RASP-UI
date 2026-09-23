@@ -57,7 +57,7 @@ interface FadeProps
 
 
 export default function Fade({
-  threshold = 0.2,
+  threshold = 0.1,
   direction = "down",
   speed = "slow",
   distance = 15,
