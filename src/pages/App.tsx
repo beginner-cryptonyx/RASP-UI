@@ -13,6 +13,7 @@ import { Accordion } from "../Registy/Content/Accordion";
 import { Link } from "react-router";
 import Button from "../Registy/Base/Button";
 import Grid from "../Registy/layout/Grid";
+import Fade from "../Registy/Meta/Fade";
 
 function App() {
   const themeSystem = useTheme();
@@ -86,7 +87,7 @@ function App() {
           }}
           variant={"outline"}
           size={"full"}
-          className="col-span-2 w-[90%] mx-auto"
+          className="col-span-2 md:col-span-3 w-[90%] mx-auto"
         >
           Toggle Modeee
         </Button>
@@ -94,19 +95,21 @@ function App() {
 
       <h2 className="text-center underline decoration-accent">Our Services</h2>
 
-      <Grid className="mx-auto gap-8 w-[80%] mb-10">
-        {Object.entries(ourServices).map(([serviceName, service]) => (
-          <ProductCard
-            key={serviceName}
-            title={serviceName}
-            imageSrc={service.imageSrc}
-            features={service.features}
-            // price={service.price}
-            button={service.buttonItems}
-            titlePosition="top"
-          />
-        ))}
-      </Grid>
+      <Fade direction="left" speed={"verySlow"}>
+        <Grid className="mx-auto gap-8 w-[80%] mb-10">
+          {Object.entries(ourServices).map(([serviceName, service]) => (
+            <ProductCard
+              key={serviceName}
+              title={serviceName}
+              imageSrc={service.imageSrc}
+              features={service.features}
+              // price={service.price}
+              button={service.buttonItems}
+              titlePosition="top"
+            />
+          ))}
+        </Grid>
+      </Fade>
 
     </div>
   );
