@@ -2,6 +2,7 @@ import { cn } from "../../Lib/utils";
 import { type IconName } from "../../Lib/types";
 import Icon from "../Meta/Icon";
 import { Link } from "react-router";
+import LinkButton from "../Base/LinkButton";
 
 export interface BaseCardProps {
   title?: string;
@@ -238,12 +239,14 @@ export function ProductCard({
       )}
 
       {/* 4. Button pinned to the bottom */}
-      <Link
+      <LinkButton
         to={button.url}
-        className="mt-auto block w-full border-b-2 border-r-2 border-t border-l bg-accent px-5 py-2 text-center hover:border-b-[6px] hover:border-r-8 transition-all duration-150 text-white"
+        className="m-0 mt-auto text-lg py-5.5"
+        variant={"maximalist"}
+
       >
         {button.label}
-      </Link>
+      </LinkButton>
     </div>
   );
 }
