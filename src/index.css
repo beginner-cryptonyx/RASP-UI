@@ -40,7 +40,7 @@
 
   /* --- Heading Hierarchy --- */
   h1 {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-textPrimary leading-[1.1] mb-6;
+    @apply text-5xl lg:text-6xl font-extrabold tracking-tight text-textPrimary leading-[1.1] mb-6;
   }
 
   h2 {
@@ -73,4 +73,5 @@
   .section {
     @apply py-20 mx-6;
   }
+
 }

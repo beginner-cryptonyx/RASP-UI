@@ -12,6 +12,7 @@ import { Themes, type ThemeName } from "../Theme/theme";
 import { Accordion } from "../Registy/Content/Accordion";
 import { Link } from "react-router";
 import Button from "../Registy/Base/Button";
+import Grid from "../Registy/layout/Grid";
 
 function App() {
   const themeSystem = useTheme();
@@ -63,7 +64,7 @@ function App() {
           ></IconCard>
         </div>
       </section>
-      <div className="grid grid-cols-3 my-9">
+      <Grid className="my-9" smallScreenColumns={2}>
         {Themes.map((theme) => (
           <div className="flex items-center justify-center w-[80%] mx-auto">
             <Button
@@ -79,44 +80,34 @@ function App() {
             </Button>
           </div>
         ))}
-      <Button
-        onClick={() => {
-          themeSystem.toggleMode();
-        }}
-        variant={"outline"}
-        size={"full"}
-        className="col-span-3 w-[90%] mx-auto"
-      >
-        Toggle Modeee
-      </Button>
-      </div>
+        <Button
+          onClick={() => {
+            themeSystem.toggleMode();
+          }}
+          variant={"outline"}
+          size={"full"}
+          className="col-span-2 w-[90%] mx-auto"
+        >
+          Toggle Modeee
+        </Button>
+      </Grid>
 
       <h2 className="text-center underline decoration-accent">Our Services</h2>
 
-
-<div className="grid grid-cols-3 mx-auto gap-8 w-[80%] mb-10">
-  {Object.entries(ourServices).map(([serviceName, service]) => (
-    <ProductCard
-      key={serviceName}
-      title={serviceName}
-      imageSrc={service.imageSrc}
-      features={service.features}
-      // price={service.price}
-      button={service.buttonItems}
-      titlePosition="top"
-    />
-  ))}
-</div>
-
-      {/* <div className="grid grid-cols-4 mx-10">
-        {destinations.map((destination) => (
-          <ImageCard {...destination} imageAspectRatio="landscape"></ImageCard>
+      <Grid className="mx-auto gap-8 w-[80%] mb-10">
+        {Object.entries(ourServices).map(([serviceName, service]) => (
+          <ProductCard
+            key={serviceName}
+            title={serviceName}
+            imageSrc={service.imageSrc}
+            features={service.features}
+            // price={service.price}
+            button={service.buttonItems}
+            titlePosition="top"
+          />
         ))}
-      </div>
-      <div className="grid grid-cols-4 mx-10" data-theme="Coffee" data-mode={themeSystem.mode}>
-        {coffeeServices.map((service) => (<IconCard {...service} iconAlign="center" ></IconCard>))}
-      </div>
-        <h2>why</h2> */}
+      </Grid>
+
     </div>
   );
 }
