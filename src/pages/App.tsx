@@ -5,24 +5,30 @@ import { Themes, type ThemeName } from "../Theme/theme";
 import Button from "../Registy/Base/Button";
 import Grid from "../Registy/layout/Grid";
 import Fade from "../Registy/Meta/Fade";
+import Dropdown from "../Registy/Input/Dropdown";
 
 function App() {
   const themeSystem = useTheme();
   return (
     <div>
       <section
-        className="flex md:flex-col px-20 py-20 bg-linear-to-b from-background3 to-background2"
-        data-theme="Ocean"
-        data-mode="dark"
+        className="flex md:flex-col px-20 py-15 bg-linear-to-b from-background3 to-background2"
+        
       >
-        <div className="flex flex-col w-[60%] text-wrap overflow-hidden">
-          <h1>RASP-UI</h1>
-          <p>Rapid - Aesthetic - Scalable - Personalised</p>
-          <p>
-            UI system that suits all your needs and can build frontend systems{" "}
-            <span className="text-color1">BLAZING</span> fast. No developer wait
-            times, no stressing about theming - All encompassing UI tool
-          </p>
+        <div className="flex">
+          <div className="flex flex-col w-[60%] text-wrap overflow-hidden">
+            <h1>RASP-UI</h1>
+            <p>Rapid - Aesthetic - Scalable - Personalised</p>
+            <p>
+              UI system that suits all your needs and can build frontend systems{" "}
+              <span className="text-color1">BLAZING</span> fast. No developer wait
+              times, no stressing about theming - All encompassing UI tool
+            </p>
+          </div>
+          <div className="flex flex-col mx-auto" data-theme="Coffee" data-mode="dark">
+            <h3 className="text-center">Try it Out!</h3>
+            <Dropdown  options={Themes.map((theme) => (theme))} onChange={(v) => {themeSystem.setColorScheme(v as ThemeName)}} defaultLabel="Select a theme"></Dropdown>
+          </div>
         </div>
         <Grid
           columns={4}
@@ -57,35 +63,9 @@ function App() {
           ></IconCard>
         </Grid>
       </section>
-      <Grid className="my-9" smallScreenColumns={2}>
-        {Themes.map((theme) => (
-          <div className="flex items-center justify-center w-[80%] mx-auto">
-            <Button
-              onClick={() => {
-                themeSystem.setColorScheme(theme as ThemeName);
-              }}
-              data-mode={themeSystem.mode}
-              data-theme={theme}
-              size={"full"}
-              className=""
-            >
-              {theme}
-            </Button>
-          </div>
-        ))}
-        <Button
-          onClick={() => {
-            themeSystem.toggleMode();
-          }}
-          variant={"outline"}
-          size={"full"}
-          className="col-span-2 md:col-span-3 w-[90%] mx-auto"
-        >
-          Toggle Modeee
-        </Button>
-      </Grid>
 
-      <h2 className="text-center underline decoration-accent">Our Services</h2>
+
+      <h2 className="text-center underline decoration-accent mt-10">Our Services</h2>
 
       <Fade direction="left" speed={"verySlow"}>
         <Grid className="mx-auto gap-8 w-[80%] mb-10">
