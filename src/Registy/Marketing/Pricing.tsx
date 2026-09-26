@@ -32,7 +32,7 @@ export interface Plan {
   description?: string;
 }
 
-export interface PricingTableProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+export interface PricingTableProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "complex" | "simple";
   FeatureList: string[];
   plans: Plan[];

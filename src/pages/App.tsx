@@ -6,6 +6,7 @@ import Button from "../Registy/Base/Button";
 import Grid from "../Registy/layout/Grid";
 import Fade from "../Registy/Meta/Fade";
 import Dropdown from "../Registy/Input/Dropdown";
+import Badge from "../Registy/Base/Badge";
 
 function App() {
   const themeSystem = useTheme();
@@ -17,6 +18,11 @@ function App() {
       >
         <div className="flex md:flex-row flex-col">
           <div className="flex flex-col md:w-[60%] text-wrap overflow-hidden md:text-left text-center">
+            <div className="flex gap-2">
+              <Badge text={"Cutting Edge"} displayPiece={"Slice"} shape={"pill"} color="red" border></Badge>
+              <Badge text={"Brand New"} displayPiece={"StarPlus"} shape={"pill"} color="green" border></Badge>
+              <Badge text={"Scaleable"} displayPiece={"DatabaseArrowUp"} shape={"pill"} color="purple" border></Badge>
+            </div>
             <h1 className="">RASP-UI</h1>
             <p>Rapid - Aesthetic - Scalable - Personalised</p>
             <p className="">
