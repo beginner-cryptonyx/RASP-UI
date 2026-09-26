@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { cn } from "../../Lib/utils";
-import { CircleCheck, X, ShoppingCart, Ban, Check } from "lucide-react";
+import { CircleCheck, X, ShoppingCart, Ban, Check, CircleDashed } from "lucide-react";
 import Grid from "../layout/Grid";
 import ResponsiveView from "../layout/ResponsiveView";
 
@@ -91,21 +91,31 @@ export function IndepthPricingDesktop({
   return (
     <div className={cn("mx-10 py-10", className)}>
       <Grid columns={4}>
-        <div className=""></div>
+        <div className="flex items-center">
+          <span className="text-3xl mx-auto mb-5 w-min text-center font-bold text-gray-400">
+            Features & Benefits
+          </span>
+        </div>
         {plans.map((plan) => (
           <PriceCardDesktop {...plan}></PriceCardDesktop>
         ))}
-        <div className="col-span-4 text-md">
-          {FeatureList.map((feature) => (
-            <Grid columns={4} className="py-3 border-b border-gray-600">
-              <span className="px-2">{feature}</span>
+        <div className="col-span-4 text-md rounded-lg overflow-hidden">
+          {FeatureList.map((feature, i) => (
+            <Grid columns={4} className={cn("py-3 border-b border-gray-600",
+              i % 2 === 0 ? "bg-background3": "bg-background2"
+            )}>
+              <span className="px-5">{feature}</span>
               {plans.map((plan) => (
                 <span className="mx-5">
                   {typeof plan.feature[feature] === "boolean" ? (
                     plan.feature[feature] ? (
-                      <Check className="mx- text-green-500" />
+                      <div className="rounded-full bg-green-600/80 w-min flex justify-center items-center">
+                        <Check className="text-white scale-70" />
+                      </div>
                     ) : (
-                      <X className="mx- text-red-600" />
+                      <div className="rounded-full bg-gray-500 w-min flex justify-center items-center">
+                        <X className="text-white scale-70" />
+                      </div>
                     )
                   ) : plan.feature[feature] !== undefined ? (
                     plan.feature[feature]
@@ -127,7 +137,12 @@ export default function PricingTable({
   ...rest
 }: PricingTableProps) {
   if (variant === "complex") {
-    return <ResponsiveView desktop={<IndepthPricingDesktop {...rest}></IndepthPricingDesktop>} mobile={<SimplePricing {...rest}></SimplePricing>}></ResponsiveView>;
+    return (
+      <ResponsiveView
+        desktop={<IndepthPricingDesktop {...rest}></IndepthPricingDesktop>}
+        mobile={<SimplePricing {...rest}></SimplePricing>}
+      ></ResponsiveView>
+    );
   }
   if (variant === "simple") {
     return <SimplePricing {...rest}></SimplePricing>;
