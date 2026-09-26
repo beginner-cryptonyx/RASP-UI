@@ -99,9 +99,9 @@ export function IndepthPricingDesktop({
         {plans.map((plan) => (
           <PriceCardDesktop {...plan}></PriceCardDesktop>
         ))}
-        <div className="col-span-4 text-md rounded-lg overflow-hidden">
+        <div className="col-span-4 text-md rounded-lg overflow-hidden border border-borderDefault">
           {FeatureList.map((feature, i) => (
-            <Grid columns={4} className={cn("py-3 border-b border-gray-600",
+            <Grid columns={4} className={cn("py-3 border-b last:border-0 border-gray-600",
               i % 2 === 0 ? "bg-background3": "bg-background2"
             )}>
               <span className="px-5">{feature}</span>
