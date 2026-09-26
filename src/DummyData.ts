@@ -3,6 +3,7 @@ import {
   type ImageCardProps,
   type IconCardProps,
 } from "./Registy/Content/Card";
+import { type Plan } from "./Registy/Marketing/Pricing";
 
 export const statistics: StatisticProps[] = [
   {
@@ -179,7 +180,11 @@ export const ourServices: Record<
     imageSrc: string;
     imageType: "full" | "contain";
     buttonItems: { label: string; url: string };
-    price?: {price:number|React.ReactNode|string, priceLabel?:string, priceSuffix?:string}
+    price?: {
+      price: number | React.ReactNode | string;
+      priceLabel?: string;
+      priceSuffix?: string;
+    };
   }
 > = {
   agency: {
@@ -207,7 +212,11 @@ export const ourServices: Record<
       "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
     imageType: "full",
     buttonItems: { label: "Explore Memberships", url: "/services/gym" },
-    price: {price:"$ 100", priceLabel:"starting from", priceSuffix:"per year"}
+    price: {
+      price: "$ 100",
+      priceLabel: "starting from",
+      priceSuffix: "per year",
+    },
   },
   coffee: {
     features: [
@@ -223,3 +232,72 @@ export const ourServices: Record<
     buttonItems: { label: "Shop Roasts", url: "/services/coffee" },
   },
 };
+
+// Export 1: Feature List (Defines the rows for the pricing table)
+export const coffeeFeatureList: string[] = [
+  "Deliveries",
+  "Bags per delivery",
+  "Rare & Micro-lot brews",
+  "Custom grind options",
+  "Tasting notes & brew guides",
+  "Store discount",
+  "Virtual cupping sessions",
+] as const;
+
+// Export 2: Plans Data (Keys in `feature` match `coffeeFeatureList` exactly)
+export const coffeePlans: {
+  name: string;
+  feature: Record<typeof coffeeFeatureList[number], string | number | boolean>;
+  price: number | string;
+  priceSuffix?: string;
+  description?: string;
+}[] = [
+  {
+    name: "The Casual Sip",
+    price: 18,
+    priceSuffix: "/month",
+    description:
+      "Great for everyday coffee drinkers wanting freshly roasted staple beans monthly.",
+    feature: {
+      "Deliveries": "1 / Month",
+      "Bags per delivery": 1,
+      "Rare & Micro-lot brews": false,
+      "Custom grind options": true,
+      "Tasting notes & brew guides": false,
+      "Store discount": "10%",
+      "Virtual cupping sessions": false,
+    },
+  },
+  {
+    name: "Roaster’s Choice",
+    price: 32,
+    priceSuffix: "/month",
+    description:
+      "Designed for coffee enthusiasts looking to explore rotating seasonal micro-lots.",
+    feature: {
+      "Deliveries": "1 / Month",
+      "Bags per delivery": 2,
+      "Rare & Micro-lot brews": true,
+      "Custom grind options": true,
+      "Tasting notes & brew guides": true,
+      "Store discount": "15%",
+      "Virtual cupping sessions": false,
+    },
+  },
+  {
+    name: "The Connoisseur",
+    price: 58,
+    priceSuffix: "/month",
+    description:
+      "Our premier plan featuring competition-grade brews delivered twice monthly.",
+    feature: {
+      "Deliveries": "2 / Month",
+      "Bags per delivery": 2,
+      "Rare & Micro-lot brews": true,
+      "Custom grind options": true,
+      "Tasting notes & brew guides": true,
+      "Store discount": "20%",
+      "Virtual cupping sessions": true,
+    },
+  },
+];

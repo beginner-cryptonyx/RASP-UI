@@ -12,14 +12,14 @@ function App() {
   return (
     <div>
       <section
-        className="flex md:flex-col px-20 py-15 bg-linear-to-b from-background3 to-background2"
+        className="flex flex-col px-20 py-15 bg-linear-to-b from-background3 to-background2"
         
       >
-        <div className="flex">
-          <div className="flex flex-col w-[60%] text-wrap overflow-hidden">
-            <h1>RASP-UI</h1>
+        <div className="flex md:flex-row flex-col">
+          <div className="flex flex-col md:w-[60%] text-wrap overflow-hidden md:text-left text-center">
+            <h1 className="">RASP-UI</h1>
             <p>Rapid - Aesthetic - Scalable - Personalised</p>
-            <p>
+            <p className="">
               UI system that suits all your needs and can build frontend systems{" "}
               <span className="text-color1">BLAZING</span> fast. No developer wait
               times, no stressing about theming - All encompassing UI tool
@@ -28,11 +28,13 @@ function App() {
           <div className="flex flex-col mx-auto" data-theme="Coffee" data-mode="dark">
             <h3 className="text-center">Try it Out!</h3>
             <Dropdown  options={Themes.map((theme) => (theme))} onChange={(v) => {themeSystem.setColorScheme(v as ThemeName)}} defaultLabel="Select a theme"></Dropdown>
+            <Button className="mt-5 text-white" onClick={() => {themeSystem.toggleMode()}} data-theme={themeSystem.colorScheme} data-mode={themeSystem.mode}>Toggle Mode</Button>
           </div>
         </div>
         <Grid
           columns={4}
-          className="mt-5 gap-0 h-fit"
+          smallScreenColumns={2}
+          className="mt-5 gap-0 h-fit hidden md:grid"
           data-theme="Ocean"
           data-mode="dark"
         >
