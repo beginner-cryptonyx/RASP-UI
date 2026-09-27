@@ -1,5 +1,6 @@
 import type { IconName } from "../../Lib/types";
 import { FormatDate, type dateFormats } from "../../Lib/utils";
+import ResponsiveView from "../layout/ResponsiveView";
 import type { FadeProps } from "../Meta/Fade";
 import Fade from "../Meta/Fade";
 import Icon from "../Meta/Icon";
@@ -165,9 +166,7 @@ function DirectionedTimelineComponent({
 
         {/* Content */}
         <div
-          className={`mt-1 ${
-            isLeft ? "pr-6 text-right" : "pl-6 text-left"
-          }`}
+          className={`mt-1 ${isLeft ? "pr-6 text-right" : "pl-6 text-left"}`}
         >
           {date && defaultTextPosition === "above title" && (
             <p className="text-color1 text-sm mb-0.5">
@@ -202,10 +201,10 @@ export function DirectionedTimeline({
   defaultFade = true,
   defaultDateFormat = "do MMMM, yyy",
   defaultTextPosition = "above title",
-  direction = "left",
+  direction = "right",
 }: TimelineProps & { direction?: "left" | "right" }) {
   return (
-    <div className={`relative max-w-xl ${direction === "left" ? "ml-auto" : "mr-auto"}`}>
+    <div className={`relative max-w-xl`}>
       <div
         className={`absolute top-0 bottom-0 w-px border-l-2 border-dashed ${
           direction === "left" ? "right-6.5" : "left-6.5"
@@ -229,9 +228,14 @@ export default function Timeline({
   alternating = true,
   ...props
 }: TimelineProps) {
-  if (typeof alternating === "boolean" && alternating === true) {
-    return <AlternatingTimeline {...props} />;
+  if (typeof alternating === "boolean") {
+    return (
+      <ResponsiveView
+        desktop={<AlternatingTimeline {...props} />}
+        mobile={<DirectionedTimeline {...props} direction={"right"} />}
+      ></ResponsiveView>
+    );
   } else {
-    return <DirectionedTimeline {...props}/>
+    return <DirectionedTimeline {...props} direction={alternating} />;
   }
 }
