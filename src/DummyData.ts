@@ -3,6 +3,7 @@ import {
   type ImageCardProps,
   type IconCardProps,
 } from "./Registy/Content/Card";
+import type { TimelineElement } from "./Registy/Content/Timeline";
 import { type Plan } from "./Registy/Marketing/Pricing";
 
 export const statistics: StatisticProps[] = [
@@ -299,5 +300,48 @@ export const coffeePlans: {
       "Store discount": "20%",
       "Virtual cupping sessions": true,
     },
+  },
+];
+
+export const gymProgressionTimeline: TimelineElement[] = [
+  {
+    icon: "ClipboardCheck",
+    title: "Program Onboarding & Assessment",
+    description:
+      "Kick off your New Year special plan with a full-body composition scan, baseline strength testing, and custom macro setup with your personal trainer.",
+    date: { year: 2026, month: 1, day: 5 },
+    fade: true,
+  },
+  {
+    icon: "Flame",
+    title: "Adaptation Phase Complete",
+    description:
+      "Your neuromuscular system has adapted to progressive overload. Expect steady endurance gains, improved sleep quality, and lower resting heart rate.",
+    date: { year: 2026, month: 2, day: 20 },
+    fade: true,
+  },
+  {
+    icon: "TrendingUp",
+    title: "Visible Muscle Definition",
+    description:
+      "Consistent fat loss and lean hypertrophy reveal increased vascularity in arms and shoulders. First mid-program re-assessment and diet adjustment.",
+    date: { year: 2026, month: 4, day: 15 },
+    fade: true,
+  },
+  {
+    icon: "Dumbbell",
+    title: "Peak Strength Milestone",
+    description:
+      "Hit major PRs in compound lifts. Your trainer introduces advanced intensity techniques like cluster sets and eccentric tempo work.",
+    date: { year: 2026, month: 6, day: 10 },
+    fade: true,
+  },
+  {
+    icon: "Trophy",
+    title: "Full Body Transformation Peak",
+    description:
+      "Final body scan confirms peak muscular density and target body-fat percentage. Transition from structured transformation into long-term maintenance.",
+    date: { year: 2026, month: 9, day: 25 },
+    fade: true,
   },
 ];
