@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { cn } from "../../Lib/utils";
 import { CircleCheck, X, ShoppingCart, Ban, Check, CircleDashed } from "lucide-react";
-import Grid from "../layout/Grid";
-import ResponsiveView from "../layout/ResponsiveView";
+import Grid from "../Layout/Grid";
+import ResponsiveView from "../Layout/ResponsiveView";
 
 // export default function PricingTable({
 

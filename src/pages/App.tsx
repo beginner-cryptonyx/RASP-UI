@@ -3,7 +3,7 @@ import { ourServices } from "../DummyData";
 import useTheme from "../Theme/UseTheme";
 import { Themes, type ThemeName } from "../Theme/theme";
 import Button from "../Registy/Base/Button";
-import Grid from "../Registy/layout/Grid";
+import Grid from "../Registy/Layout/Grid";
 import Fade from "../Registy/Meta/Fade";
 import Dropdown from "../Registy/Input/Dropdown";
 import Badge from "../Registy/Base/Badge";

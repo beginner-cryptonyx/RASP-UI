@@ -1,6 +1,8 @@
+// ToDo: defaultFade isn't respected per-item in AlternatingTimeline
+
 import type { IconName } from "../../Lib/types";
 import { FormatDate, type dateFormats } from "../../Lib/utils";
-import ResponsiveView from "../layout/ResponsiveView";
+import ResponsiveView from "../Layout/ResponsiveView";
 import type { FadeProps } from "../Meta/Fade";
 import Fade from "../Meta/Fade";
 import Icon from "../Meta/Icon";

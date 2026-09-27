@@ -4,7 +4,6 @@ import {
   type IconCardProps,
 } from "./Registy/Content/Card";
 import type { TimelineElement } from "./Registy/Content/Timeline";
-import { type Plan } from "./Registy/Marketing/Pricing";
 
 export const statistics: StatisticProps[] = [
   {
