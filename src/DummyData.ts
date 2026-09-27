@@ -305,7 +305,7 @@ export const coffeePlans: {
 
 export const gymProgressionTimeline: TimelineElement[] = [
   {
-    icon: "ClipboardCheck",
+    icon: "UserCheck",
     title: "Program Onboarding & Assessment",
     description:
       "Kick off your New Year special plan with a full-body composition scan, baseline strength testing, and custom macro setup with your personal trainer.",
@@ -330,18 +330,34 @@ export const gymProgressionTimeline: TimelineElement[] = [
   },
   {
     icon: "Dumbbell",
-    title: "Peak Strength Milestone",
+    title: "Mid-Year Strength Milestone",
     description:
       "Hit major PRs in compound lifts. Your trainer introduces advanced intensity techniques like cluster sets and eccentric tempo work.",
     date: { year: 2026, month: 6, day: 10 },
     fade: true,
   },
   {
+    icon: "Activity",
+    title: "Conditioning & Deload Refinement",
+    description:
+      "A targeted recovery block paired with high-intensity interval conditioning reduces systemic fatigue while pushing cardiovascular threshold.",
+    date: { year: 2026, month: 7, day: 25 },
+    fade: true,
+  },
+  {
     icon: "Trophy",
     title: "Full Body Transformation Peak",
     description:
-      "Final body scan confirms peak muscular density and target body-fat percentage. Transition from structured transformation into long-term maintenance.",
-    date: { year: 2026, month: 9, day: 25 },
+      "Body scan confirms peak muscular density and target body-fat percentage. Celebrate reaching your primary physical and strength targets.",
+    date: { year: 2026, month: 9, day: 15 },
+    fade: true,
+  },
+  {
+    icon: "Award",
+    title: "Autonomous Maintenance & Lifestyle Mastery",
+    description:
+      "Transition from intensive 1-on-1 coaching into a self-directed long-term training schedule with monthly check-ins and sustained habits.",
+    date: { year: 2026, month: 11, day: 20 },
     fade: true,
   },
 ];

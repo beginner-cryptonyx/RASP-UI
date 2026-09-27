@@ -1,74 +1,237 @@
-import { cva } from "class-variance-authority";
 import type { IconName } from "../../Lib/types";
+import { FormatDate, type dateFormats } from "../../Lib/utils";
 import type { FadeProps } from "../Meta/Fade";
+import Fade from "../Meta/Fade";
 import Icon from "../Meta/Icon";
 
 export interface TimelineElement {
   icon: IconName;
   title: string;
-  description?: string;
-  date?: {year:number, month:number, day:number}|string
-  fade?: boolean|FadeProps
+  description?: string | React.ReactNode;
+  date?:
+    | { day: number; month: number; year: number; dateFormat?: dateFormats }
+    | string;
+  fade?: boolean | FadeProps;
 }
 
-interface TimelineProps{
-    elements: TimelineElement[];
-    splitDate?: boolean;
-    alternating?: true
-    dateFormat?: "DD/MM/YY"|"ddth of MMMM, YYYY"|"YYYY-MM-DD"
+export interface TimelineProps {
+  elements: TimelineElement[];
+  defaultFade?: boolean | FadeProps;
+  defaultDateFormat?: dateFormats;
+  alternating?: boolean | "left" | "right";
+  defaultTextPosition?: "above title" | "below title";
 }
 
-export function AlternatingTimeline({elements, splitDate=true}: TimelineProps) {
+function AlternatingTimelineComponent({
+  icon,
+  title,
+  description,
+  date,
+  fade,
+  side,
+  dateFormat,
+  defaultTextPosition,
+}: TimelineElement & {
+  side: "left" | "right";
+  dateFormat: dateFormats;
+  defaultTextPosition?: "above title" | "below title";
+}) {
+  const isLeft = side === "left";
   return (
-    <div className={`px-6 max-w-4xl mx-auto transition-all duration-600`}>
-
-      <div className="relative">
-        {/* Center vertical line */}
-        <div className={`absolute left-1/2 -translate-x-1/2 -top-12 bottom-8 w-px border-l-2 border-dashed `}/>
-
-        {elements.map((element, i) => {
-            const isLeft = splitDate ? i % 2 === 0 : true;
-            const visible = true
-            // if (typeof element.date === "object"){
-            //     const date = ""
-            // }
-
-          return (
-            <div key={element.title} className={`relative transition-all duration-600 flex items-center mb-16 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-
-              <div className={`w-1/2 pr-12 ${isLeft ? "text-right" : ""}`}>
-                {isLeft && (
-                  <div className="mt-1">
-                    <h5>{typeof element.date == 'string' && element.date}</h5>
-                    <h3 className={`text-xl font-semibold  mb-2`}>{element.title}</h3>
-                    <p className="text-text/60 text-sm leading-relaxed">{element.description}</p>
-                  </div>
-                )}
-              </div>
-
-              <div className="absolute left-1/2 -translate-x-1/2 w-13 h-13 rounded-full bg-background4 border border-accent/30 flex items-center justify-center z-10 shadow-sm">
-                <Icon className="w-7 h-7 text-accent" name={element.icon}/>
-              </div>
-
-              <div className="w-1/2 pl-12">
-                {!isLeft && (
-                  <>
-                    <h3 className={`text-xl font-semibold mb-2`}>{element.title}</h3>
-                    <p className="text-text/60 text-sm leading-relaxed">{element.description}</p>
-                  </>
-                )}
-              </div>
-
+    <Fade {...(typeof fade === "object" ? fade : {})}>
+      <div className="relative transition-all duration-600 flex items-center mb-16">
+        {/* Left side */}
+        <div className={`w-1/2 pr-12 ${isLeft ? "text-right" : ""}`}>
+          {isLeft && (
+            <div className="mt-1">
+              {date && defaultTextPosition === "above title" && (
+                <p className="text-color1 text-sm mb-0.5">
+                  {typeof date === "string"
+                    ? date
+                    : FormatDate(date.day, date.month, date.year, dateFormat)}
+                </p>
+              )}
+              <h3 className="text-xl font-semibold text-textPrimary mb-0">
+                {title}
+              </h3>
+              {date && defaultTextPosition === "below title" && (
+                <p className="text-color1 text-xs mb-2">
+                  {typeof date === "string"
+                    ? date
+                    : FormatDate(date.day, date.month, date.year, dateFormat)}
+                </p>
+              )}
+              {description && (
+                <p className="text-textPrimary/60 text-sm leading-relaxed mt-2">
+                  {description}
+                </p>
+              )}
             </div>
-          );
-        })}
+          )}
+        </div>
+
+        {/* Center icon */}
+        <div className="absolute left-1/2 -translate-x-1/2 w-13 h-13 rounded-full bg-background2 border border-accent/30 flex items-center justify-center z-10 shadow-sm">
+          <Icon className="w-7 h-7 text-accent" name={icon} />
+        </div>
+
+        {/* Right side */}
+        <div className="w-1/2 pl-12">
+          {!isLeft && (
+            <div className="mt-1">
+              {date && defaultTextPosition === "above title" && (
+                <p className="text-color1 text-sm mb-0.5">
+                  {typeof date === "string"
+                    ? date
+                    : FormatDate(date.day, date.month, date.year, dateFormat)}
+                </p>
+              )}
+              <h3 className="text-xl font-semibold text-textPrimary mb-0">
+                {title}
+              </h3>
+              {date && defaultTextPosition === "below title" && (
+                <p className="text-color1 text-xs">
+                  {typeof date === "string"
+                    ? date
+                    : FormatDate(date.day, date.month, date.year, dateFormat)}
+                </p>
+              )}
+              {description && (
+                <p className="text-textPrimary/60 text-sm leading-relaxed mt-2">
+                  {description}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
       </div>
+    </Fade>
+  );
+}
+export function AlternatingTimeline({
+  elements,
+  defaultFade = true,
+  defaultDateFormat = "do MMMM, yyy",
+  defaultTextPosition = "above title",
+}: TimelineProps) {
+  return (
+    <div className="relative max-w-4xl mx-auto">
+      <div
+        className={`absolute left-1/2 -translate-x-1/2 -top-12 -bottom-8 w-px border-l-2 border-dashed`}
+      />
+      {elements.map((item, i) => {
+        const direction: "left" | "right" = i % 2 === 0 ? "right" : "left";
+
+        return (
+          <AlternatingTimelineComponent
+            {...item}
+            side={direction}
+            dateFormat={defaultDateFormat}
+            defaultTextPosition={defaultTextPosition}
+            fade={defaultFade}
+          />
+        );
+      })}
     </div>
   );
 }
 
-export default function Timeline({elements, splitDate=true, alternating=true}:TimelineProps){
-    if (alternating){
-        return <AlternatingTimeline elements={elements} splitDate={splitDate}/>
-    }
+function DirectionedTimelineComponent({
+  icon,
+  title,
+  description,
+  date,
+  fade,
+  side,
+  dateFormat,
+  defaultTextPosition,
+}: TimelineElement & {
+  side: "left" | "right";
+  dateFormat: dateFormats;
+  defaultTextPosition?: "above title" | "below title";
+}) {
+  const isLeft = side === "left";
+  return (
+    <Fade {...(typeof fade === "object" ? fade : {})}>
+      <div
+        className={`relative transition-all duration-600 flex items-center mb-10 ${
+          isLeft ? "flex-row-reverse" : "flex-row"
+        }`}
+      >
+        {/* Icon */}
+        <div className="w-13 h-13 shrink-0 rounded-full bg-background2 border border-accent/30 flex items-center justify-center z-10 shadow-sm">
+          <Icon className="w-7 h-7 text-accent" name={icon} />
+        </div>
+
+        {/* Content */}
+        <div
+          className={`mt-1 ${
+            isLeft ? "pr-6 text-right" : "pl-6 text-left"
+          }`}
+        >
+          {date && defaultTextPosition === "above title" && (
+            <p className="text-color1 text-sm mb-0.5">
+              {typeof date === "string"
+                ? date
+                : FormatDate(date.day, date.month, date.year, dateFormat)}
+            </p>
+          )}
+          <h3 className="text-xl font-semibold text-textPrimary mb-0">
+            {title}
+          </h3>
+          {date && defaultTextPosition === "below title" && (
+            <p className="text-color1 text-xs mb-2">
+              {typeof date === "string"
+                ? date
+                : FormatDate(date.day, date.month, date.year, dateFormat)}
+            </p>
+          )}
+          {description && (
+            <p className="text-textPrimary/60 text-sm leading-relaxed mt-2">
+              {description}
+            </p>
+          )}
+        </div>
+      </div>
+    </Fade>
+  );
+}
+
+export function DirectionedTimeline({
+  elements,
+  defaultFade = true,
+  defaultDateFormat = "do MMMM, yyy",
+  defaultTextPosition = "above title",
+  direction = "left",
+}: TimelineProps & { direction?: "left" | "right" }) {
+  return (
+    <div className={`relative max-w-xl ${direction === "left" ? "ml-auto" : "mr-auto"}`}>
+      <div
+        className={`absolute top-0 bottom-0 w-px border-l-2 border-dashed ${
+          direction === "left" ? "right-6.5" : "left-6.5"
+        }`}
+      />
+      {elements.map((item, i) => (
+        <DirectionedTimelineComponent
+          key={i}
+          {...item}
+          side={direction}
+          dateFormat={defaultDateFormat}
+          defaultTextPosition={defaultTextPosition}
+          fade={item.fade ?? defaultFade}
+        />
+      ))}
+    </div>
+  );
+}
+
+export default function Timeline({
+  alternating = true,
+  ...props
+}: TimelineProps) {
+  if (typeof alternating === "boolean" && alternating === true) {
+    return <AlternatingTimeline {...props} />;
+  } else {
+    return <DirectionedTimeline {...props}/>
+  }
 }

@@ -47,7 +47,7 @@ const directionOffset: Record<string, (px: number) => string> = {
   right: (px) => `translateX(-${px}px)`,
 };
 
-interface FadeProps
+export interface FadeProps
   extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof FadeVariants> {
   children: React.ReactNode;
   direction?: "up" | "down" | "left" | "right";
