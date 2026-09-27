@@ -33,7 +33,7 @@ function App() {
           </div>
           <div className="flex flex-col mx-auto" >
             <h3 className="text-center">Try it Out!</h3>
-            <Dropdown  options={Themes.map((theme) => (theme))} onChange={(v) => {themeSystem.setColorScheme(v as ThemeName)}} defaultLabel="Select a theme"></Dropdown>
+            <Dropdown  options={Themes.map((theme) => (theme))} onChange={(v) => {themeSystem.setColorScheme(v as ThemeName)}} defaultLabel={themeSystem.colorScheme}></Dropdown>
             <Button className="mt-5 text-white" onClick={() => {themeSystem.toggleMode()}} data-theme={themeSystem.colorScheme} data-mode={themeSystem.mode}>Toggle Mode</Button>
           </div>
         </div>
