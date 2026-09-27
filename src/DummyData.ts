@@ -360,3 +360,62 @@ export const gymProgressionTimeline: TimelineElement[] = [
     fade: true,
   },
 ];
+
+export const coffeeProcessTimeline: TimelineElement[] = [
+  {
+    icon: "Sprout",
+    title: "High-Altitude Seed Planting",
+    description:
+      "Arabiya seeds are planted in nutrient-dense volcanic soil at 1,800+ meters elevation, encouraging slow cherry maturation for higher natural sugar density.",
+    date: "Day 0: Plantation Sowing",
+    fade: true,
+  },
+  {
+    icon: "Sun",
+    title: "Selective Hand-Harvesting",
+    description:
+      "Pickers selectively hand-harvest only peak red cherries with perfect Brix sugar levels, discarding under-ripe green beans on the spot.",
+    date: "3 Years Later: Harvest Day",
+    fade: true,
+  },
+  {
+    icon: "Droplets",
+    title: "Anaerobic Fermentation",
+    description:
+      "Cherries are sealed in oxygen-free stainless steel tanks for 72 hours, unlocking complex fruity esters and vibrant acidity.",
+    date: "2 Days Post-Harvest",
+    fade: true,
+  },
+  {
+    icon: "Wind",
+    title: "Raised Bed Sun Drying",
+    description:
+      "Beans are spread across raised African beds and turned hourly for 14 days until moisture stabilizes at an optimal 11%.",
+    date: "2 Weeks Post-Fermentation",
+    fade: true,
+  },
+  {
+    icon: "Flame",
+    title: "Precision Micro-Batch Roasting",
+    description:
+      "Roaster profiles follow precise thermal curves to highlight delicate floral notes without imparting smoky or scorched undertones.",
+    date: "1 Month Before Extraction",
+    fade: true,
+  },
+  {
+    icon: "Gauge",
+    title: "Sub-Zero Cryogenic Grinding",
+    description:
+      "Roasted beans are ground under liquid nitrogen cooling to retain fragile aromatic compounds that traditional burr heat destroys.",
+    date: "3 Days Before Extraction",
+    fade: true,
+  },
+  {
+    icon: "Coffee",
+    title: "Cold Pressure Concentration",
+    description:
+      "Gentle cold filtration extracts rich solubles at 4°C over 18 hours, yielding a silky, shelf-stable liquid coffee essence.",
+    date: "Day of Packaging",
+    fade: true,
+  },
+];
