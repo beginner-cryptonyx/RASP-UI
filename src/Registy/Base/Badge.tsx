@@ -53,11 +53,11 @@ export default function Badge({
   return (
     <div className={cn(BadgeVariants({ color, shape, border }))}>
       {isIconName(displayPiece) ? (
-        <Icon name={displayPiece} className="scale-60 p-0 m-0"></Icon>
+        <Icon name={displayPiece} className="scale-60  -m-px"></Icon>
       ) : (
         displayPiece
       )}
-      {text}
+      {<span className="text-nowrap">{text}</span>}
     </div>
   );
 }

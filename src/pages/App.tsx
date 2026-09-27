@@ -31,7 +31,7 @@ function App() {
               times, no stressing about theming - All encompassing UI tool
             </p>
           </div>
-          <div className="flex flex-col mx-auto" data-theme="Coffee" data-mode="dark">
+          <div className="flex flex-col mx-auto" >
             <h3 className="text-center">Try it Out!</h3>
             <Dropdown  options={Themes.map((theme) => (theme))} onChange={(v) => {themeSystem.setColorScheme(v as ThemeName)}} defaultLabel="Select a theme"></Dropdown>
             <Button className="mt-5 text-white" onClick={() => {themeSystem.toggleMode()}} data-theme={themeSystem.colorScheme} data-mode={themeSystem.mode}>Toggle Mode</Button>

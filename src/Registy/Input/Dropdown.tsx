@@ -45,11 +45,11 @@ export default function Dropdown({
         onClick={() => setIsOpen((prev) => !prev)}
         {...divProps}
         className={cn(
-          "w-full flex items-center justify-between px-4 py-2.5 bg-background1 border border-borderDefault rounded-lg shadow-sm text-sm text-gray-100 hover:bg-background2 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accentHover transition cursor-pointer",
+          "w-full flex items-center justify-between px-4 py-2.5 bg-background1 border border-borderDefault rounded-lg shadow-sm text-sm hover:bg-background2 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accentHover transition cursor-pointer",
           className,
         )}
       >
-        <span>{selected}</span>
+        <span className="text-textPrimary">{selected}</span>
         <ChevronDown
           className={`w-4 h-4 text-gray-500 transition-transform ${
             isOpen ? "rotate-180" : ""
