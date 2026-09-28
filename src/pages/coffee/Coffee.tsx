@@ -58,7 +58,9 @@ export default function Coffee() {
 
       <div className="py-20">
         {/* <h3 className="text-center ">Our Products</h3> */}
-        <TextDivider><h3 className="">Our Products</h3></TextDivider>
+        <TextDivider>
+          <h3 className="">Our Products</h3>
+        </TextDivider>
         <ResponsiveView
           desktop={
             <Grid
@@ -144,7 +146,12 @@ export default function Coffee() {
           }
         ></ResponsiveView>
       </div>
-
+      <div className="py-20 bg-background1">
+        <TextDivider>
+          <h3>BEST SELLERS</h3>
+        </TextDivider>
+        
+      </div>
       <div className="bg-background2 py-10">
         <Eyebrow className="text-center">Why us?</Eyebrow>
         <h2 className="font-bold text-center m-0 p-0 mb-15 ">
