@@ -7,6 +7,7 @@ import Grid from "../Registy/Layout/Grid";
 import Fade from "../Registy/Meta/Fade";
 import Dropdown from "../Registy/Input/Dropdown";
 import Badge from "../Registy/Base/Badge";
+import LinkButton from "../Registy/Base/LinkButton";
 
 function App() {
   const themeSystem = useTheme();
@@ -84,7 +85,9 @@ function App() {
               imageSrc={service.imageSrc}
               features={service.features}
               priceProperty={service.price}
-              button={service.buttonItems}
+              button={<LinkButton to={service.buttonItems.url} className="m-0 mt-auto text-lg py-5.5" variant={"maximalist"}>
+                {service.buttonItems.label}
+              </LinkButton>}
               titlePosition="top"
             />
           ))}

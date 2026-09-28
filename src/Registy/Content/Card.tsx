@@ -39,7 +39,7 @@ export interface ProductCardProps extends Pick<
     priceLabel?: string;
     priceSuffix?: string;
   };
-  button: { label: string; url: string };
+  button: React.ReactNode;
   titlePosition: "top" | "center" | "middle left";
 }
 
@@ -246,13 +246,7 @@ export function ProductCard({
       )}
 
       {/* 4. Button pinned to the bottom */}
-      <LinkButton
-        to={button.url}
-        className="m-0 mt-auto text-lg py-5.5"
-        variant={"maximalist"}
-      >
-        {button.label}
-      </LinkButton>
+      {button}
     </div>
   );
 }
