@@ -6,9 +6,9 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-accent hover:bg-accent/90 cursor-pointer rounded-md hover:scale-[102%] active:scale-[98%] hover:-translate-y-0.5 hover:-translate-x-0.5 active:translate-0" ,
-        outline: "border-2 border-accent bg-background1 hover:bg-accent cursor-pointer rounded-sm",
-        ghost: "hover:bg-accent hover:text-background1",
+        default: "bg-accent hover:bg-accent/90 cursor-pointer rounded-md hover:scale-[102%] active:scale-[98%] hover:-translate-y-0.5 hover:-translate-x-0.5 active:translate-0 text-center flex items-center justify-center " ,
+        outline: "border-2 border-accent bg-background1 hover:bg-accent cursor-pointer rounded-sm flex items-center justify-center",
+        ghost: "hover:bg-accent hover:text-background1 flex items-center justify-center",
         maximalist: "flex items-center justify-center border-b-2 border-r-2 border-t border-l bg-accent text-center hover:border-b-[6px] hover:border-r-8 transition-all duration-150 text-white"
       },
       size: {
