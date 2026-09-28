@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import App from "./pages/App.tsx";
-import Coffee from "./pages/Coffee.tsx";
+import Coffee from "./pages/coffee/Coffee.tsx";
 import Gym from "./pages/Gym.tsx";
 
 createRoot(document.getElementById("root")!).render(
