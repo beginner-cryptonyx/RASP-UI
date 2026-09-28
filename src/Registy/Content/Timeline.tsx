@@ -1,7 +1,7 @@
 // ToDo: defaultFade isn't respected per-item in AlternatingTimeline
 
 import type { IconName } from "../../Lib/types";
-import { FormatDate, type dateFormats } from "../../Lib/utils";
+import { cn, FormatDate, type dateFormats } from "../../Lib/utils";
 import ResponsiveView from "../Layout/ResponsiveView";
 import type { FadeProps } from "../Meta/Fade";
 import Fade from "../Meta/Fade";
@@ -23,6 +23,7 @@ export interface TimelineProps {
   defaultDateFormat?: dateFormats;
   alternating?: boolean | "left" | "right";
   defaultTextPosition?: "above title" | "below title";
+  className?: string
 }
 
 function AlternatingTimelineComponent({
@@ -42,7 +43,7 @@ function AlternatingTimelineComponent({
   const isLeft = side === "left";
   return (
     <Fade {...(typeof fade === "object" ? fade : {})}>
-      <div className="relative transition-all duration-600 flex items-center mb-16">
+      <div className="relative transition-all duration-600 flex items-center mb-16 ">
         {/* Left side */}
         <div className={`w-1/2 pr-12 ${isLeft ? "text-right" : ""}`}>
           {isLeft && (
@@ -116,9 +117,10 @@ export function AlternatingTimeline({
   defaultFade = true,
   defaultDateFormat = "do MMMM, yyy",
   defaultTextPosition = "above title",
+  className
 }: TimelineProps) {
   return (
-    <div className="relative max-w-4xl mx-auto">
+    <div className={cn("relative max-w-4xl mx-auto", className)}>
       <div
         className={`absolute left-1/2 -translate-x-1/2 -top-12 -bottom-8 w-px border-l-2 border-dashed`}
       />
@@ -204,9 +206,10 @@ export function DirectionedTimeline({
   defaultDateFormat = "do MMMM, yyy",
   defaultTextPosition = "above title",
   direction = "right",
+  className
 }: TimelineProps & { direction?: "left" | "right" }) {
   return (
-    <div className={`relative max-w-xl`}>
+    <div className={cn(`relative max-w-xl`, className)}>
       <div
         className={`absolute top-0 bottom-0 w-px border-l-2 border-dashed ${
           direction === "left" ? "right-6.5" : "left-6.5"
