@@ -15,11 +15,11 @@ export function PriceCardDesktop({
   return (
     <div className="border border-borderDefault rounded-lg p-4 bg-background1 flex flex-col gap-2">
       <h3 className="text-base font-semibold m-0">{name}</h3>
-      <p className="text-xl font-bold">
+      <p className="text-xl font-bold text-accentHover">
         <span className="text-4xl">${price}</span>
         {priceSuffix}
       </p>
-      {description && <p className="text-sm text-gray-400">{description}</p>}
+      {description && <p className="text-sm text-textSecondary/70">{description}</p>}
     </div>
   );
 }
@@ -92,7 +92,7 @@ export function IndepthPricingDesktop({
     <div className={cn("mx-10 py-10", className)}>
       <Grid columns={4}>
         <div className="flex items-center">
-          <span className="text-3xl mx-auto mb-5 w-min text-center font-bold text-gray-400">
+          <span className="text-3xl mx-auto mb-5 w-min text-center font-bold text-textSecondary">
             Features & Benefits
           </span>
         </div>
