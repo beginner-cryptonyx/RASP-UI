@@ -11,7 +11,8 @@ interface RenderImageProps {
 
 interface RenderTitleProps {
   title: string;
-  description: string;
+  price?: { price: number; pricePosition: "beside title" | "below title" };
+  description?: string;
   stars?: {
     StarsProps: StarsProps;
     starPosition: "below title" | "above title";
@@ -21,14 +22,16 @@ interface RenderTitleProps {
 }
 
 export interface ProductPageProps {
-  render: RenderImageProps;
-  price: number;
-  stars?: StarsProps;
+  image: RenderImageProps;
+  title: RenderTitleProps;
+  textPosition: "right"|"left"
+  textWidth: number //between 0-100
 }
 
 function RenderTitle({
   title,
   description,
+  price,
   stars,
   aboveTitleElement,
   breadcrumbs,
@@ -40,18 +43,37 @@ function RenderTitle({
       {stars && stars.starPosition === "above title" && (
         <Stars {...stars.StarsProps}></Stars>
       )}
-      <h3>{title}</h3>
+      {price ? (
+        price.pricePosition === "beside title" ? (
+          <div className="flex justify-end">
+            {title}
+            {price.price}
+          </div>
+        ) : (
+          <h3>{title}</h3>
+        )
+      ) : (
+        <h3>{title}</h3>
+      )}
+      {price && price.pricePosition === "below title" && (
+        <h2 className="text-accent">{price.price}</h2>
+      )}
       {stars && stars.starPosition === "below title" && (
         <Stars {...stars.StarsProps}></Stars>
       )}
-      <p>{description}</p>
+      {description && <p>{description}</p>}
     </div>
   );
 }
-function RenderImage() {}
 
-function RenderVariants(){}
 
-function RenderExtraContent(){}
+function RenderImage() {
+    function CarouselImages(){}
+    
+}
+
+function RenderVariants() {}
+
+function RenderExtraContent() {}
 
 export default function ProductPage() {}
