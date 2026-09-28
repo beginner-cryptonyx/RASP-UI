@@ -36,11 +36,13 @@ export default function Coffee() {
 
 
       </Grid>
-        <Eyebrow className="text-center">Why us?</Eyebrow>
-        <h2 className="font-bold text-center m-0 p-0 mb-15 ">
-          Our extraction process
-        </h2>
-        <Timeline elements={coffeeProcessTimeline}></Timeline>
+        <div className="bg-background2 py-10">
+          <Eyebrow className="text-center">Why us?</Eyebrow>
+          <h2 className="font-bold text-center m-0 p-0 mb-15 ">
+            Our extraction process
+          </h2>
+          <Timeline elements={coffeeProcessTimeline}></Timeline>
+        </div>
 
       <SvgBackground className="p-10" svg="/coffee/coffee-bean.svg" maskSize={100}>
         <Eyebrow className="text-center">Still Confused?</Eyebrow>

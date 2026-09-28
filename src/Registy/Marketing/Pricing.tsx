@@ -13,7 +13,7 @@ export function PriceCardDesktop({
   description,
 }: Plan) {
   return (
-    <div className="border border-borderDefault rounded-lg p-4  flex flex-col gap-2">
+    <div className="border border-borderDefault rounded-lg p-4 bg-background1 flex flex-col gap-2">
       <h3 className="text-base font-semibold m-0">{name}</h3>
       <p className="text-xl font-bold">
         <span className="text-4xl">${price}</span>
@@ -48,7 +48,7 @@ export function SimplePricing({
       {plans.map((plan) => (
         <div
           key={plan.name}
-          className="border border-borderDefault rounded-lg p-4  flex flex-col gap-2"
+          className="border border-borderDefault rounded-lg p-4 bg-background1 flex flex-col gap-2"
         >
           <h3 className="text-base font-semibold m-0">{plan.name}</h3>
           <p className="text-xl font-bold">
