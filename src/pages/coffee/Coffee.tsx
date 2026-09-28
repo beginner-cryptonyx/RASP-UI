@@ -17,8 +17,8 @@ import { Navigation, Parallax } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/parallax";
-import { Carousel } from "../../Registy/Layout/Carousel";
 import ResponsiveView from "../../Registy/Layout/ResponsiveView";
+import TextDivider from "../../Registy/Base/TextDivider";
 
 export default function Coffee() {
   const { setColorScheme } = useTheme();
@@ -56,12 +56,14 @@ export default function Coffee() {
         </Swiper>
       </div>
 
-      <div>
+      <div className="py-20">
+        {/* <h3 className="text-center ">Our Products</h3> */}
+        <TextDivider><h3 className="">Our Products</h3></TextDivider>
         <ResponsiveView
           desktop={
             <Grid
               columns={6}
-              className="sm:mx-50 my-20 gap-10 *:hover:scale-105 *:transition-all *:duration-300 *:cursor-pointer *:shadow-md"
+              className="sm:mx-50 my-10 gap-10 *:hover:scale-105 *:transition-all *:duration-300 *:cursor-pointer *:shadow-md"
             >
               <img src="/coffee/prod3.jpg" alt="" className="col-span-2" />
               <img src="/coffee/prod4.jpg" alt="" className="col-span-2" />
