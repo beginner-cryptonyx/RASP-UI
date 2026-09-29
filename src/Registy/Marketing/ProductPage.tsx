@@ -11,6 +11,8 @@ import { Navigation, Pagination } from "swiper/modules";
 import Icon from "../Meta/Icon";
 import { useRef, useState } from "react";
 import ResponsiveView from "../Layout/ResponsiveView";
+import { SelectColors, type SelectColorsProps } from "./SelectColors";
+import type { VariantProps } from "class-variance-authority";
 
 interface RenderImageProps {
   images: string[];
@@ -27,7 +29,8 @@ interface RenderTitleProps {
   aboveTitleElement?: React.ReactNode; // for stuff like badges or extra lables (ill put this below breadcrumbs though)
 }
 
-export interface ProductPageProps extends RenderImageProps, RenderTitleProps {
+export interface ProductPageProps
+  extends RenderImageProps, RenderTitleProps, RenderVariantsProps {
   breadcrumbs?: BreadcrumbsProps["items"];
   textPosition: "right" | "left";
   textWidth: 3 | 4 | 5 | 6 | 7;
@@ -43,7 +46,7 @@ function RenderTitle({
   aboveTitleElement,
 }: RenderTitleProps) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pl-5 py-4">
       {aboveTitleElement && aboveTitleElement}
       {StarsProps && starPosition === "above title" && (
         <Stars {...StarsProps}></Stars>
@@ -64,10 +67,10 @@ function RenderTitle({
         <Stars {...StarsProps}></Stars>
       )}
       {price && pricePosition === "below title" && (
-        <h2 className="text-accent">{price}</h2>
+        <h2 className="text-accent mb-0">{price}</h2>
       )}
       {StarsProps && starPosition === "below price" && (
-        <Stars {...StarsProps}></Stars>
+        <Stars {...StarsProps} className="pb-6"></Stars>
       )}
       {description && <p>{description}</p>}
     </div>
@@ -118,7 +121,44 @@ function RenderImage({ images, variant }: RenderImageProps) {
   );
 }
 
-function RenderVariants() {}
+interface RenderVariantsProps {
+  Variants?: Record<
+    string,
+    { type: "color buttons" | "none"; props: SelectColorsProps }
+  >;
+}
+
+interface InternalRenderVariantProps extends RenderVariantsProps {
+  selected: Record<string, string>;
+  onSelect: (variantName: string, value: string) => void;
+}
+function RenderVariants({
+  Variants,
+  selected,
+  onSelect,
+}: InternalRenderVariantProps) {
+  if (!Variants) return;
+  const items = Object.keys(Variants);
+
+  return (
+    <div className="flex flex-col">
+      {items.map((variantName) => {
+        const props = Variants[variantName].props;
+        if (Variants[variantName].type === "color buttons")
+          return (
+            <div className="flex flex-col">
+              <h6 className="text-accent">{variantName}</h6>
+              <SelectColors
+                {...props}
+                value={selected[variantName]}
+                onChange={(value) => onSelect(variantName, value)}
+              />
+            </div>
+          );
+      })}
+    </div>
+  );
+}
 
 function RenderExtraContent() {}
 
@@ -134,15 +174,23 @@ function ProductPageDesktop({
   description,
   starPosition,
   textPosition,
+  onSelect,
+  selected,
+  Variants,
   textWidth = 6,
-}: ProductPageProps) {
+}: ProductPageProps & {
+  selected: Record<string, string>;
+  onSelect: (variantName: string, value: string) => void;
+}) {
   return (
-    <div className="grid grid-cols-10 gap-10 bg-background3 w-full max-w-[90vw] p-10 my-15 mx-auto rounded-2xl">
+    <div className="grid grid-cols-10 gap-10 bg-background2 w-full max-w-[90vw] p-10 my-15 mx-auto rounded-2xl">
       <div
-        className="flex flex-col shrink-0 bg-green-300/10"
+        className="flex flex-col shrink-0 "
         style={{ gridColumn: `span ${textWidth} /  span ${textWidth}` }}
       >
-        {breadcrumbs && <Breadcrumbs items={breadcrumbs}></Breadcrumbs>}
+        {breadcrumbs && (
+          <Breadcrumbs items={breadcrumbs} className="pl-5 pt-5"></Breadcrumbs>
+        )}
         <RenderTitle
           price={price}
           pricePosition={pricePosition}
@@ -152,8 +200,20 @@ function ProductPageDesktop({
           description={description}
           starPosition={starPosition}
         ></RenderTitle>
+        <div className="pl-5">
+          <RenderVariants
+            Variants={Variants}
+            onSelect={onSelect}
+            selected={selected}
+          ></RenderVariants>
+        </div>
       </div>
-      <div className="min-w-0 " style={{ gridColumn: `span ${10- textWidth} /  span ${10- textWidth}` }}>
+      <div
+        className="min-w-0 "
+        style={{
+          gridColumn: `span ${10 - textWidth} /  span ${10 - textWidth}`,
+        }}
+      >
         <RenderImage images={images} variant={variant}></RenderImage>
       </div>
     </div>
@@ -171,12 +231,15 @@ function ProductPageMobile({
   breadcrumbs,
   description,
   starPosition,
-  textPosition,
-  textWidth=6,
 }: ProductPageProps) {
   return (
-    <div className="flex flex-col bg-background3 w-fit  my-15 mx-auto rounded-2xl max-w-[90vw]">
-      {breadcrumbs && <Breadcrumbs items={breadcrumbs}></Breadcrumbs>}
+    <div className="flex flex-col bg-background2 w-fit my-5 mx-auto  max-w-[100vw]">
+      {breadcrumbs && (
+        <Breadcrumbs
+          items={breadcrumbs}
+          className="pl-5 pt-3 pb-2"
+        ></Breadcrumbs>
+      )}
       <div className="flex-1">
         <RenderImage images={images} variant={variant}></RenderImage>
       </div>
@@ -187,17 +250,28 @@ function ProductPageMobile({
         StarsProps={StarsProps}
         aboveTitleElement={aboveTitleElement}
         description={description}
-        
         starPosition={starPosition}
       ></RenderTitle>
     </div>
   );
 }
 
-export default function ProductPage({ ...props }: ProductPageProps) {
+export default function ProductPage({  selected, ...props }: ProductPageProps & {selected:Record<string, string>}) {
+  const [selectedVariants, setSelectedVariants] = useState<
+    Record<string, string>
+  >(selected);
+
   return (
     <ResponsiveView
-      desktop={<ProductPageDesktop {...props} />}
+      desktop={
+        <ProductPageDesktop
+          {...props}
+          selected={selectedVariants}
+          onSelect={(name, value) =>
+            setSelectedVariants((prev) => ({ ...prev, [name]: value }))
+          }
+        />
+      }
       mobile={<ProductPageMobile {...props} />}
     ></ResponsiveView>
   );
