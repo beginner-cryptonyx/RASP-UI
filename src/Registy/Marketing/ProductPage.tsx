@@ -13,6 +13,7 @@ import { useRef, useState } from "react";
 import ResponsiveView from "../Layout/ResponsiveView";
 import { SelectColors, type SelectColorsProps } from "./SelectColors";
 import type { VariantProps } from "class-variance-authority";
+import { SelectTextVariants, type SelectTextVariantsProps } from "./SelectTextVariants";
 
 interface RenderImageProps {
   images: string[];
@@ -124,7 +125,18 @@ function RenderImage({ images, variant }: RenderImageProps) {
 interface RenderVariantsProps {
   Variants?: Record<
     string,
-    { type: "color buttons" | "none"; props: SelectColorsProps }
+    | {
+        type: "color buttons";
+        props: SelectColorsProps;
+      }
+    | {
+        type: "text buttons";
+        props: SelectTextVariantsProps;
+      }
+    | {
+        type: "none";
+        props?: never;
+      }
   >;
 }
 
@@ -137,24 +149,44 @@ function RenderVariants({
   selected,
   onSelect,
 }: InternalRenderVariantProps) {
-  if (!Variants) return;
+  if (!Variants) return null;
+
   const items = Object.keys(Variants);
 
   return (
     <div className="flex flex-col">
       {items.map((variantName) => {
-        const props = Variants[variantName].props;
-        if (Variants[variantName].type === "color buttons")
+        const variant = Variants[variantName];
+
+        if (variant.type === "color buttons") {
           return (
-            <div className="flex flex-col">
+            <div key={variantName} className="flex flex-col">
               <h6 className="text-accent">{variantName}</h6>
+
               <SelectColors
-                {...props}
+                {...variant.props}
                 value={selected[variantName]}
                 onChange={(value) => onSelect(variantName, value)}
               />
             </div>
           );
+        }
+
+        if (variant.type === "text buttons") {
+          return (
+            <div key={variantName} className="flex flex-col">
+              <h6 className="text-accent">{variantName}</h6>
+
+              <SelectTextVariants
+                {...variant.props}
+                value={selected[variantName]}
+                onChange={(value) => onSelect(variantName, value)}
+              />
+            </div>
+          );
+        }
+
+        return null;
       })}
     </div>
   );
@@ -256,10 +288,12 @@ function ProductPageMobile({
   );
 }
 
-export default function ProductPage({  selected, ...props }: ProductPageProps & {selected:Record<string, string>}) {
-  const [selectedVariants, setSelectedVariants] = useState<
-    Record<string, string>
-  >(selected);
+export default function ProductPage({
+  defaultSelected,
+  ...props
+}: ProductPageProps & { defaultSelected: Record<string, string> }) {
+  const [selectedVariants, setSelectedVariants] =
+    useState<Record<string, string>>(defaultSelected);
 
   return (
     <ResponsiveView

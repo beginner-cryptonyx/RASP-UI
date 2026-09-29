@@ -39,9 +39,7 @@ export default function Coffee() {
       logo={
         <img src={"/coffee/logo transperent.png"} className="w-25 invert"></img>
       }
-      rightSlot={
-        <SwitchThemeButton/>
-      }
+      rightSlot={<SwitchThemeButton />}
     >
       <ProductPage
         aboveTitleElement={
@@ -92,8 +90,9 @@ export default function Coffee() {
               Variant: "circle",
             },
           },
+          weight: { type: "text buttons", props: { labels: ["50g", "100g", "200g"] } },
         }}
-        selected={{"package colors": "white"}}
+        defaultSelected={{ "package colors": "white", "weight":"100g" }}
       ></ProductPage>
       <div className="w-[98.5vw] p-0 mx-auto mt-1">
         <Swiper
