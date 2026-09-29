@@ -1,6 +1,6 @@
 export interface StarsProps {
     stars: number
-    numberOfReviews?: number
+    numberOfReviews?: number|string
     displayExactStarCount?: boolean
 }
 
