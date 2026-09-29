@@ -30,7 +30,7 @@ interface RenderTitleProps {
 export interface ProductPageProps extends RenderImageProps, RenderTitleProps {
   breadcrumbs?: BreadcrumbsProps["items"];
   textPosition: "right" | "left";
-  textWidth: number; //between 0-100
+  textWidth: 3 | 4 | 5 | 6 | 7;
 }
 
 function RenderTitle({
@@ -78,7 +78,7 @@ function CarouselImages({ images }: { images: string[] }) {
   const [swiper, setSwiper] = useState<any>(null);
 
   return (
-    <div className="relative max-w-[30vw]">
+    <div className="relative">
       <button
         onClick={() => swiper?.slidePrev()}
         className="absolute left-2 top-1/2 z-10 -translate-y-1/2 text-accent"
@@ -94,7 +94,7 @@ function CarouselImages({ images }: { images: string[] }) {
 
       <Swiper
         onSwiper={setSwiper}
-        spaceBetween={5}
+        spaceBetween={0}
         slidesPerView={1}
         pagination={{ clickable: true }}
         modules={[Pagination]}
@@ -102,7 +102,7 @@ function CarouselImages({ images }: { images: string[] }) {
       >
         {images.map((image, i) => (
           <SwiperSlide key={image + i}>
-            <img src={image} alt="" />
+            <img src={image} alt="" className="block w-full h-auto" />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -122,7 +122,7 @@ function RenderVariants() {}
 
 function RenderExtraContent() {}
 
-export function ProductPageDesktop({
+function ProductPageDesktop({
   images,
   price,
   pricePosition,
@@ -134,11 +134,14 @@ export function ProductPageDesktop({
   description,
   starPosition,
   textPosition,
-  textWidth,
+  textWidth = 6,
 }: ProductPageProps) {
   return (
-    <div className="flex bg-background3 w-fit p-10 my-15 mx-auto rounded-2xl">
-      <div className="flex flex-col mr-10">
+    <div className="grid grid-cols-10 gap-10 bg-background3 w-full max-w-[90vw] p-10 my-15 mx-auto rounded-2xl">
+      <div
+        className="flex flex-col shrink-0 bg-green-300/10"
+        style={{ gridColumn: `span ${textWidth} /  span ${textWidth}` }}
+      >
         {breadcrumbs && <Breadcrumbs items={breadcrumbs}></Breadcrumbs>}
         <RenderTitle
           price={price}
@@ -150,7 +153,43 @@ export function ProductPageDesktop({
           starPosition={starPosition}
         ></RenderTitle>
       </div>
-      <RenderImage images={images} variant={variant}></RenderImage>
+      <div className="min-w-0 " style={{ gridColumn: `span ${10- textWidth} /  span ${10- textWidth}` }}>
+        <RenderImage images={images} variant={variant}></RenderImage>
+      </div>
+    </div>
+  );
+}
+
+function ProductPageMobile({
+  images,
+  price,
+  pricePosition,
+  title,
+  variant,
+  StarsProps,
+  aboveTitleElement,
+  breadcrumbs,
+  description,
+  starPosition,
+  textPosition,
+  textWidth=6,
+}: ProductPageProps) {
+  return (
+    <div className="flex flex-col bg-background3 w-fit  my-15 mx-auto rounded-2xl max-w-[90vw]">
+      {breadcrumbs && <Breadcrumbs items={breadcrumbs}></Breadcrumbs>}
+      <div className="flex-1">
+        <RenderImage images={images} variant={variant}></RenderImage>
+      </div>
+      <RenderTitle
+        price={price}
+        pricePosition={pricePosition}
+        title={title}
+        StarsProps={StarsProps}
+        aboveTitleElement={aboveTitleElement}
+        description={description}
+        
+        starPosition={starPosition}
+      ></RenderTitle>
     </div>
   );
 }
@@ -159,7 +198,7 @@ export default function ProductPage({ ...props }: ProductPageProps) {
   return (
     <ResponsiveView
       desktop={<ProductPageDesktop {...props} />}
-      mobile={""}
+      mobile={<ProductPageMobile {...props} />}
     ></ResponsiveView>
   );
 }
