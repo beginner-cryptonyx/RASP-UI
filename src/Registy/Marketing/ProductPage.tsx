@@ -23,11 +23,11 @@ interface RenderTitleProps {
   description?: string;
   StarsProps?: StarsProps;
   starPosition?: "below title" | "above title";
-  breadcrumbs?: BreadcrumbsProps["items"];
   aboveTitleElement?: React.ReactNode; // for stuff like badges or extra lables (ill put this below breadcrumbs though)
 }
 
 export interface ProductPageProps extends RenderImageProps, RenderTitleProps {
+  breadcrumbs?: BreadcrumbsProps["items"];
   textPosition: "right" | "left";
   textWidth: number; //between 0-100
 }
@@ -40,11 +40,9 @@ function RenderTitle({
   starPosition = "below title",
   pricePosition = "below title",
   aboveTitleElement,
-  breadcrumbs,
 }: RenderTitleProps) {
   return (
     <div className="flex flex-col">
-      {breadcrumbs && <Breadcrumbs items={breadcrumbs}></Breadcrumbs>}
       {aboveTitleElement && aboveTitleElement}
       {StarsProps && starPosition === "above title" && (
         <Stars {...StarsProps}></Stars>
@@ -76,18 +74,18 @@ function CarouselImages({ images }: { images: string[] }) {
   const [swiper, setSwiper] = useState<any>(null);
 
   return (
-    <div className="relative w-[30vw]">
+    <div className="relative max-w-[30vw]">
       <button
         onClick={() => swiper?.slidePrev()}
         className="absolute left-2 top-1/2 z-10 -translate-y-1/2 text-accent"
       >
-        <Icon name="ChevronLeft" className="w-10 h-10 cursor-pointer"/>
+        <Icon name="ChevronLeft" className="w-10 h-10 cursor-pointer" />
       </button>
       <button
         onClick={() => swiper?.slideNext()}
         className="absolute right-2 top-1/2 z-10 -translate-y-1/2 text-accent"
       >
-        <Icon name="ChevronRight" className="w-10 h-10 cursor-pointer"/>
+        <Icon name="ChevronRight" className="w-10 h-10 cursor-pointer" />
       </button>
 
       <Swiper
@@ -136,16 +134,18 @@ export default function ProductPage({
 }: ProductPageProps) {
   return (
     <div className="flex bg-background3 w-fit p-10 my-15 mx-auto rounded-2xl">
-      <RenderTitle
-        price={price}
-        pricePosition={pricePosition}
-        title={title}
-        StarsProps={StarsProps}
-        aboveTitleElement={aboveTitleElement}
-        breadcrumbs={breadcrumbs}
-        description={description}
-        starPosition={starPosition}
-      ></RenderTitle>
+      <div className="flex flex-col">
+        {breadcrumbs && <Breadcrumbs items={breadcrumbs}></Breadcrumbs>}
+        <RenderTitle
+          price={price}
+          pricePosition={pricePosition}
+          title={title}
+          StarsProps={StarsProps}
+          aboveTitleElement={aboveTitleElement}
+          description={description}
+          starPosition={starPosition}
+        ></RenderTitle>
+      </div>
       <RenderImage images={images} variant={variant}></RenderImage>
     </div>
   );
