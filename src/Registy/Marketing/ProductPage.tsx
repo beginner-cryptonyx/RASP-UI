@@ -11,43 +11,42 @@ interface RenderImageProps {
 
 interface RenderTitleProps {
   title: string;
-  price?: { price: number; pricePosition: "beside title" | "below title" };
+  price: number|string;
+  pricePosition: "beside title" | "below title";
   description?: string;
-  stars?: {
-    StarsProps: StarsProps;
-    starPosition: "below title" | "above title";
-  };
-  breadcrumbs?: BreadcrumbsProps;
+  StarsProps?: StarsProps;
+  starPosition?: "below title" | "above title";
+  breadcrumbs?: BreadcrumbsProps["items"];
   aboveTitleElement?: React.ReactNode; // for stuff like badges or extra lables (ill put this below breadcrumbs though)
 }
 
-export interface ProductPageProps {
-  image: RenderImageProps;
-  title: RenderTitleProps;
-  textPosition: "right"|"left"
-  textWidth: number //between 0-100
+export interface ProductPageProps extends RenderImageProps, RenderTitleProps {
+  textPosition: "right" | "left";
+  textWidth: number; //between 0-100
 }
 
 function RenderTitle({
   title,
   description,
   price,
-  stars,
+  StarsProps,
+  starPosition = "below title",
+  pricePosition = "below title",
   aboveTitleElement,
   breadcrumbs,
 }: RenderTitleProps) {
   return (
     <div className="flex flex-col">
-      {breadcrumbs && <Breadcrumbs {...breadcrumbs}></Breadcrumbs>}
+      {breadcrumbs && <Breadcrumbs items={breadcrumbs}></Breadcrumbs>}
       {aboveTitleElement && aboveTitleElement}
-      {stars && stars.starPosition === "above title" && (
-        <Stars {...stars.StarsProps}></Stars>
+      {StarsProps && starPosition === "above title" && (
+        <Stars {...StarsProps}></Stars>
       )}
       {price ? (
-        price.pricePosition === "beside title" ? (
+        pricePosition === "beside title" ? (
           <div className="flex justify-end">
             {title}
-            {price.price}
+            {price}
           </div>
         ) : (
           <h3>{title}</h3>
@@ -55,25 +54,53 @@ function RenderTitle({
       ) : (
         <h3>{title}</h3>
       )}
-      {price && price.pricePosition === "below title" && (
-        <h2 className="text-accent">{price.price}</h2>
+      {price && pricePosition === "below title" && (
+        <h2 className="text-accent">{price}</h2>
       )}
-      {stars && stars.starPosition === "below title" && (
-        <Stars {...stars.StarsProps}></Stars>
+      {StarsProps && starPosition === "below title" && (
+        <Stars {...StarsProps}></Stars>
       )}
       {description && <p>{description}</p>}
     </div>
   );
 }
 
-
-function RenderImage() {
-    function CarouselImages(){}
-    
+function RenderImage({ images, variant }: RenderImageProps) {
+  function CarouselImages() {}
+  return <div className="hidden">{variant}</div>;
 }
 
 function RenderVariants() {}
 
 function RenderExtraContent() {}
 
-export default function ProductPage() {}
+export default function ProductPage({
+  images,
+  price,
+  pricePosition,
+  title,
+  variant,
+  StarsProps,
+  aboveTitleElement,
+  breadcrumbs,
+  description,
+  starPosition,
+  textPosition,
+  textWidth,
+}: ProductPageProps) {
+  return (
+    <div className="flex">
+      <RenderTitle
+        price={price}
+        pricePosition={pricePosition}
+        title={title}
+        StarsProps={StarsProps}
+        aboveTitleElement={aboveTitleElement}
+        breadcrumbs={breadcrumbs}
+        description={description}
+        starPosition={starPosition}
+      ></RenderTitle>
+      <RenderImage images={images} variant={variant}></RenderImage>
+    </div>
+  );
+}
