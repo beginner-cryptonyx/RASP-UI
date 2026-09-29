@@ -75,7 +75,7 @@ export default function Coffee() {
         textPosition="left"
         textWidth={5}
         description={
-          "Elit aliqua labore ullamco minim veniam elit veniam cillum anim duis duis. Amet Lorem aliqua eu magna id aliqua laboris incididunt nostrud. Laboris excepteur elit excepteur sit amet pariatur ut dolore labore. Laboris ad proident dolore do. Ex eu aliqua in ad voluptate sit pariatur veniam laboris amet aute eiusmod. Commodo nulla eiusmod commodo nulla occaecat."
+          "Why is this in a weird place? well, I'm testing this feature. Here is some more dummy text to fill the space. Elit aliqua labore ullamco minim veniam elit veniam cillum anim duis duis. Amet Lorem aliqua eu magna id aliqua laboris incididunt nostrud. Laboris excepteur elit excepteur sit amet pariatur ut dolore labore. Laboris ad proident dolore do. Ex eu aliqua in ad voluptate sit pariatur veniam laboris amet aute eiusmod. Commodo nulla eiusmod commodo nulla occaecat."
         }
         Variants={{
           "package colors": {

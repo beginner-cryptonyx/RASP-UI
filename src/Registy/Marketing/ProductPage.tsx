@@ -13,7 +13,10 @@ import { useRef, useState } from "react";
 import ResponsiveView from "../Layout/ResponsiveView";
 import { SelectColors, type SelectColorsProps } from "./SelectColors";
 import type { VariantProps } from "class-variance-authority";
-import { SelectTextVariants, type SelectTextVariantsProps } from "./SelectTextVariants";
+import {
+  SelectTextVariants,
+  type SelectTextVariantsProps,
+} from "./SelectTextVariants";
 
 interface RenderImageProps {
   images: string[];
@@ -160,8 +163,8 @@ function RenderVariants({
 
         if (variant.type === "color buttons") {
           return (
-            <div key={variantName} className="flex flex-col">
-              <h6 className="text-accent">{variantName}</h6>
+            <div key={variantName} className="flex flex-col mb-2.5 gap-1">
+              <h6 className="text-accent mb-0">{variantName}</h6>
 
               <SelectColors
                 {...variant.props}
@@ -174,8 +177,8 @@ function RenderVariants({
 
         if (variant.type === "text buttons") {
           return (
-            <div key={variantName} className="flex flex-col">
-              <h6 className="text-accent">{variantName}</h6>
+            <div key={variantName} className="flex flex-col mb-2.5 gap-1">
+              <h6 className="text-accent mb-0">{variantName}</h6>
 
               <SelectTextVariants
                 {...variant.props}
@@ -263,18 +266,23 @@ function ProductPageMobile({
   breadcrumbs,
   description,
   starPosition,
-}: ProductPageProps) {
+  onSelect,
+  selected,
+  Variants,
+}: ProductPageProps & {
+  selected: Record<string, string>;
+  onSelect: (variantName: string, value: string) => void;
+}) {
   return (
-    <div className="flex flex-col bg-background2 w-fit my-5 mx-auto  max-w-[100vw]">
+    <div className="flex flex-col bg-background2 w-full my-5 mx-auto max-w-[100vw]">
       {breadcrumbs && (
-        <Breadcrumbs
-          items={breadcrumbs}
-          className="pl-5 pt-3 pb-2"
-        ></Breadcrumbs>
+        <Breadcrumbs items={breadcrumbs} className="pl-5 pt-3 pb-2" />
       )}
-      <div className="flex-1">
-        <RenderImage images={images} variant={variant}></RenderImage>
+
+      <div className="w-full">
+        <RenderImage images={images} variant={variant} />
       </div>
+
       <RenderTitle
         price={price}
         pricePosition={pricePosition}
@@ -283,7 +291,15 @@ function ProductPageMobile({
         aboveTitleElement={aboveTitleElement}
         description={description}
         starPosition={starPosition}
-      ></RenderTitle>
+      />
+
+      <div className="px-5 pb-5">
+        <RenderVariants
+          Variants={Variants}
+          onSelect={onSelect}
+          selected={selected}
+        />
+      </div>
     </div>
   );
 }
@@ -306,7 +322,15 @@ export default function ProductPage({
           }
         />
       }
-      mobile={<ProductPageMobile {...props} />}
+      mobile={
+        <ProductPageMobile
+          {...props}
+          selected={selectedVariants}
+          onSelect={(name, value) =>
+            setSelectedVariants((prev) => ({ ...prev, [name]: value }))
+          }
+        />
+      }
     ></ResponsiveView>
   );
 }
