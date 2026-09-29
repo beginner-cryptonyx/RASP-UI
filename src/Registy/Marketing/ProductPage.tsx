@@ -22,7 +22,7 @@ interface RenderTitleProps {
   pricePosition: "beside title" | "below title";
   description?: string;
   StarsProps?: StarsProps;
-  starPosition?: "below title" | "above title";
+  starPosition?: "below title" | "above title" | "below price";
   aboveTitleElement?: React.ReactNode; // for stuff like badges or extra lables (ill put this below breadcrumbs though)
 }
 
@@ -50,19 +50,22 @@ function RenderTitle({
       {price ? (
         pricePosition === "beside title" ? (
           <div className="flex justify-end">
-            {title}
-            {price}
+            <h3 className="mb-0">{title}</h3>
+            <h2 className="text-accent mb-0">{price}</h2>
           </div>
         ) : (
-          <h3>{title}</h3>
+          <h3 className="mb-0">{title}</h3>
         )
       ) : (
-        <h3>{title}</h3>
+        <h3 className="mb-0">{title}</h3>
+      )}
+      {StarsProps && starPosition === "below title" && (
+        <Stars {...StarsProps}></Stars>
       )}
       {price && pricePosition === "below title" && (
         <h2 className="text-accent">{price}</h2>
       )}
-      {StarsProps && starPosition === "below title" && (
+      {StarsProps && starPosition === "below price" && (
         <Stars {...StarsProps}></Stars>
       )}
       {description && <p>{description}</p>}
@@ -134,7 +137,7 @@ export default function ProductPage({
 }: ProductPageProps) {
   return (
     <div className="flex bg-background3 w-fit p-10 my-15 mx-auto rounded-2xl">
-      <div className="flex flex-col">
+      <div className="flex flex-col mr-10">
         {breadcrumbs && <Breadcrumbs items={breadcrumbs}></Breadcrumbs>}
         <RenderTitle
           price={price}
