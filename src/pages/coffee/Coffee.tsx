@@ -23,9 +23,11 @@ import Stars from "../../Registy/Marketing/Stars";
 import Breadcrumbs from "../../Registy/Navigation/Breadcrumbs";
 import ProductPage from "../../Registy/Marketing/ProductPage";
 import Badge from "../../Registy/Base/Badge";
+import Icon from "../../Registy/Meta/Icon";
+import SwitchThemeButton from "../../Registy/Base/SwitchThemeButton";
 
 export default function Coffee() {
-  const { setColorScheme } = useTheme();
+  const { setColorScheme, mode, setMode } = useTheme();
 
   useEffect(() => {
     setColorScheme("Coffee");
@@ -36,6 +38,9 @@ export default function Coffee() {
       services={[{ href: "/", label: "home" }]}
       logo={
         <img src={"/coffee/logo transperent.png"} className="w-25 invert"></img>
+      }
+      rightSlot={
+        <SwitchThemeButton/>
       }
     >
       <ProductPage
