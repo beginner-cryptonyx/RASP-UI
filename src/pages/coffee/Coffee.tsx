@@ -19,6 +19,10 @@ import "swiper/css/navigation";
 import "swiper/css/parallax";
 import ResponsiveView from "../../Registy/Layout/ResponsiveView";
 import TextDivider from "../../Registy/Base/TextDivider";
+import Stars from "../../Registy/Marketing/Stars";
+import Breadcrumbs from "../../Registy/Navigation/Breadcrumbs";
+import ProductPage from "../../Registy/Marketing/ProductPage";
+import Badge from "../../Registy/Base/Badge";
 
 export default function Coffee() {
   const { setColorScheme } = useTheme();
@@ -34,6 +38,58 @@ export default function Coffee() {
         <img src={"/coffee/logo transperent.png"} className="w-25 invert"></img>
       }
     >
+      <ProductPage
+        aboveTitleElement={
+          <Badge
+            text={"cold brew"}
+            displayPiece={"Snowflake"}
+            border
+            shape={"pill"}
+            color={"blue"}
+          />
+        }
+        title="Arabic Coffee"
+        StarsProps={{
+          stars: 4.6,
+          displayExactStarCount: true,
+          numberOfReviews: "90k",
+        }}
+        starPosition="below price"
+        images={[
+          "/coffee/bestsellerbeans1.jpg",
+          "/coffee/bestsellerbeans2.jpg",
+          "/coffee/bestsellerbeans3.jpg",
+        ]}
+        price={"$10"}
+        pricePosition="below title"
+        variant="carousel"
+        breadcrumbs={[
+          { label: "home", href: "/" },
+          { label: "coffee", href: "/services/coffee" },
+          { label: "cold brews" },
+          { label: "dark arab coffee", href: "/services/coffee/buy" },
+        ]}
+        textPosition="left"
+        textWidth={5}
+        description={
+          "Elit aliqua labore ullamco minim veniam elit veniam cillum anim duis duis. Amet Lorem aliqua eu magna id aliqua laboris incididunt nostrud. Laboris excepteur elit excepteur sit amet pariatur ut dolore labore. Laboris ad proident dolore do. Ex eu aliqua in ad voluptate sit pariatur veniam laboris amet aute eiusmod. Commodo nulla eiusmod commodo nulla occaecat."
+        }
+        Variants={{
+          "package colors": {
+            type: "color buttons",
+            props: {
+              ColorButtons: [
+                { color: "red", colorCode: "#FF2222" },
+                { color: "blue", colorCode: "#2222FF" },
+                { color: "black", colorCode: "#000000" },
+                { color: "white", colorCode: "#FFFFFF" },
+              ],
+              Variant: "circle",
+            },
+          },
+        }}
+        selected={{"package colors": "white"}}
+      ></ProductPage>
       <div className="w-[98.5vw] p-0 mx-auto mt-1">
         <Swiper
           slidesPerView={1}
@@ -150,7 +206,6 @@ export default function Coffee() {
         <TextDivider>
           <h3>BEST SELLERS</h3>
         </TextDivider>
-        
       </div>
       <div className="bg-background2 py-10">
         <Eyebrow className="text-center">Why us?</Eyebrow>
@@ -159,13 +214,13 @@ export default function Coffee() {
         </h2>
         <Timeline elements={coffeeProcessTimeline}></Timeline>
       </div>
-
       <SvgBackground
         className="p-10"
         svg="/coffee/coffee-bean.svg"
         maskSize={75}
       >
         <Eyebrow className="text-center">Still Confused?</Eyebrow>
+        {/* <Stars stars={3.9} numberOfReviews={500} displayExactStarCount></Stars> */}
         <h2 className="font-bold text-center ">View our plans</h2>
         <PricingTable
           plans={coffeePlans}
