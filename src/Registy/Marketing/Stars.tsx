@@ -1,7 +1,10 @@
+import { cn } from "../../Lib/utils"
+
 export interface StarsProps {
     stars: number
     numberOfReviews?: number|string
     displayExactStarCount?: boolean
+    className?: string
 }
 
 const MAX_STARS = 5
@@ -37,6 +40,7 @@ export default function Stars({
     stars,
     numberOfReviews,
     displayExactStarCount = false,
+    className
 }: StarsProps) {
     const rating = Math.max(0, Math.min(MAX_STARS, stars))
 
@@ -48,7 +52,7 @@ export default function Stars({
         <div
             role="img"
             aria-label={label}
-            className="inline-flex items-center gap-1.5"
+            className={cn("inline-flex items-center gap-1.5", className)}
         >
             <div className="inline-flex gap-0.5">
                 {Array.from({ length: MAX_STARS }, (_, i) => (
