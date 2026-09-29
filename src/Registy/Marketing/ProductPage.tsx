@@ -135,7 +135,7 @@ export default function ProductPage({
   textWidth,
 }: ProductPageProps) {
   return (
-    <div className="flex">
+    <div className="flex bg-background3 w-fit p-10 my-15 mx-auto rounded-2xl">
       <RenderTitle
         price={price}
         pricePosition={pricePosition}
