@@ -10,6 +10,7 @@ import "swiper/css/scrollbar";
 import { Navigation, Pagination } from "swiper/modules";
 import Icon from "../Meta/Icon";
 import { useRef, useState } from "react";
+import ResponsiveView from "../Layout/ResponsiveView";
 
 interface RenderImageProps {
   images: string[];
@@ -121,7 +122,7 @@ function RenderVariants() {}
 
 function RenderExtraContent() {}
 
-export default function ProductPage({
+export function ProductPageDesktop({
   images,
   price,
   pricePosition,
@@ -151,5 +152,14 @@ export default function ProductPage({
       </div>
       <RenderImage images={images} variant={variant}></RenderImage>
     </div>
+  );
+}
+
+export default function ProductPage({ ...props }: ProductPageProps) {
+  return (
+    <ResponsiveView
+      desktop={<ProductPageDesktop {...props} />}
+      mobile={""}
+    ></ResponsiveView>
   );
 }
