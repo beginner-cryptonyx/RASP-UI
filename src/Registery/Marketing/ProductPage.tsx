@@ -36,6 +36,8 @@ export interface ProductPageProps
   extends RenderImageProps, RenderTitleProps, RenderVariantsProps {
   breadcrumbs?: BreadcrumbsProps["items"];
   textPosition: "right" | "left";
+  extraContent?: React.ReactNode
+  extraContentPosition?: "below text"|"below image"|"below all content";
   textWidth: 3 | 4 | 5 | 6 | 7;
 }
 
@@ -213,13 +215,15 @@ function ProductPageDesktop({
   onSelect,
   selected,
   Variants,
+  extraContent,
+  extraContentPosition="below text",
   textWidth = 6,
 }: ProductPageProps & {
   selected: Record<string, string>;
   onSelect: (variantName: string, value: string) => void;
 }) {
   return (
-    <div className="grid grid-cols-10 gap-10 bg-background2 w-full max-w-[90vw] p-10 my-15 mx-auto rounded-2xl shadow-2xl border-borderDefault/50 border">
+    <div className="grid grid-cols-10 gap-10 bg-background2 w-full max-w-[90vw] px-10 py-6 my-15 mx-auto rounded-2xl shadow-2xl border-borderDefault/50 border">
       <div
         className="flex flex-col shrink-0 "
         style={{ gridColumn: `span ${textWidth} /  span ${textWidth}` }}
@@ -243,6 +247,7 @@ function ProductPageDesktop({
             selected={selected}
           ></RenderVariants>
         </div>
+        {extraContentPosition === "below text" && <div className="pl-5 pt-5">{extraContent}</div> }
       </div>
       <div
         className="min-w-0 "
@@ -251,7 +256,10 @@ function ProductPageDesktop({
         }}
       >
         <RenderImage images={images} variant={variant}></RenderImage>
+        {extraContentPosition === "below image" && <div className="pl-5 pt-5">{extraContent}</div> }
       </div>
+        {extraContentPosition === "below all content" && <div className="pl-5 pt-5">{extraContent}</div> }
+
     </div>
   );
 }
@@ -270,6 +278,7 @@ function ProductPageMobile({
   onSelect,
   selected,
   Variants,
+  extraContent
 }: ProductPageProps & {
   selected: Record<string, string>;
   onSelect: (variantName: string, value: string) => void;
@@ -301,6 +310,7 @@ function ProductPageMobile({
           selected={selected}
         />
       </div>
+      {extraContent && <div className="pl-5">{extraContent}</div>}
     </div>
   );
 }
