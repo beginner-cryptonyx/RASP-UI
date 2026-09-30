@@ -4,9 +4,9 @@ import ProductPage from "../../Registery/Marketing/ProductPage";
 import useTheme from "../../Theme/UseTheme";
 
 export default function CoffeeProduct(){
-    let params = useParams()
+    const  params = useParams()
     const productid = params.productID
-    const {} = useTheme()
+    useTheme()
 
     const product = coffeeProducts[productid!]
     return <div className="flex min-h-screen w-full items-center justify-center">

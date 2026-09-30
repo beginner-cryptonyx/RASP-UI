@@ -17,7 +17,7 @@ const FadeVariants = cva("transition-all opacity-0", {
   },
 });
 
-export function useFadeIn(threshold: number = 0.1) {
+function useFadeIn(threshold: number = 0.1) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -34,7 +34,7 @@ export function useFadeIn(threshold: number = 0.1) {
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [threshold]);
 
   return { ref, visible };
 }

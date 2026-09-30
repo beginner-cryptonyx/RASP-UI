@@ -3,7 +3,7 @@ import type { BreadcrumbsProps } from "../Navigation/Breadcrumbs";
 import type { StarsProps } from "../../Lib/types";
 import Stars from "./Stars";
 import Breadcrumbs from "../Navigation/Breadcrumbs";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, type SwiperClass } from "swiper/react";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import Icon from "../Meta/Icon";
@@ -81,7 +81,7 @@ function RenderTitle({
 }
 
 function CarouselImages({ images }: { images: string[] }) {
-  const [swiper, setSwiper] = useState<any>(null);
+  const [swiper, setSwiper] = useState<SwiperClass>();
 
   return (
     <div className="relative">

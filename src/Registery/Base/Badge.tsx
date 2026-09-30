@@ -3,7 +3,7 @@ import { isIconName, type IconName } from "../../Lib/types";
 import { cn } from "../../Lib/utils";
 import Icon from "../Meta/Icon";
 
-export const BadgeVariants = cva(
+const BadgeVariants = cva(
   "py-0 my-0 h-fit px-2 w-fit text-xs flex items-center justify-center shadow-sm",
   {
     variants: {
@@ -51,7 +51,7 @@ export default function Badge({
   ...rest
 }: BadgeProps) {
   return (
-    <div className={cn(BadgeVariants({ color, shape, border }))} {...rest}>
+    <div className={cn(BadgeVariants({ color, shape, border }), className)} {...rest}>
       {isIconName(displayPiece) ? (
         <Icon name={displayPiece} className="scale-60  -m-px"></Icon>
       ) : (

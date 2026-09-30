@@ -1,11 +1,12 @@
 import type { StarsProps } from "../../Lib/types"
 import { cn } from "../../Lib/utils"
+import { useId } from "react";
 
 const MAX_STARS = 5
 
 function Star({ fill }: { fill: number }) {
     // fill: 0 (empty) → 1 (full); partial values render a partially filled star
-    const id = `star-${Math.random().toString(36).slice(2, 9)}`
+    const id =  useId();
     const percent = Math.max(0, Math.min(1, fill)) * 100
 
     return (

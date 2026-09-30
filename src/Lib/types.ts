@@ -6,9 +6,10 @@ export type Attributes = Record<string, string|boolean|number>
 export type Tags = string[]
 
 
-export function isIconName(value: any): value is IconName {
-  return value in Icons;
+export function isIconName(value: unknown): value is IconName {
+  return typeof value === "string" && value in Icons;
 }
+
 export interface StatisticProps {
   value: string;
   suffix: string;

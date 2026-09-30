@@ -52,7 +52,7 @@ export function getPrice(
 }
 
 export function FilterArguments(Arguments:Record<string, {Attributes: Attributes}>, Filters:Record<string, unknown[]>):string[]{
-  let returnString:string[] = []
+  const returnString:string[] = []
   for (const [argument, obj] of Object.entries(Arguments)){
     let valid = true
     for (const [filterName, allowedValues] of Object.entries(Filters)){

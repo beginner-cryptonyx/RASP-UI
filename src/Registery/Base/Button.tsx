@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../Lib/utils";
 
-export const buttonVariants = cva(
+const buttonVariants = cva(
   "transition-all duration-300 disabled:pointer-events-none m-1",
   {
     variants: {
