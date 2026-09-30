@@ -7,12 +7,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Navigation, Pagination } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import Icon from "../Meta/Icon";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import ResponsiveView from "../Layout/ResponsiveView";
 import { SelectColors, type SelectColorsProps } from "./SelectColors";
-import type { VariantProps } from "class-variance-authority";
 import {
   SelectTextVariants,
   type SelectTextVariantsProps,
@@ -20,7 +19,7 @@ import {
 
 interface RenderImageProps {
   images: string[];
-  variant: "carousel" | "choice" | "both";
+  variant: "carousel only" | "image selection";
 }
 
 interface RenderTitleProps {
@@ -118,9 +117,11 @@ function CarouselImages({ images }: { images: string[] }) {
 }
 
 function RenderImage({ images, variant }: RenderImageProps) {
+  const includeImageSelector = variant === "image selection";
   return (
-    <div className="">
+    <div className="shrink-0 flex flex-col">
       <CarouselImages images={images} />
+      {includeImageSelector && <div>{/* Add image selection here */}</div>}
     </div>
   );
 }
@@ -195,7 +196,7 @@ function RenderVariants({
   );
 }
 
-function RenderExtraContent() {}
+// function RenderExtraContent() {}
 
 function ProductPageDesktop({
   images,
@@ -208,7 +209,7 @@ function ProductPageDesktop({
   breadcrumbs,
   description,
   starPosition,
-  textPosition,
+  // textPosition,
   onSelect,
   selected,
   Variants,

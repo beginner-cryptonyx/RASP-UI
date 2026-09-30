@@ -1,7 +1,6 @@
 import { cn } from "../../Lib/utils";
 import { type IconName } from "../../Lib/types";
 import Icon from "../Meta/Icon";
-import LinkButton from "../Base/LinkButton";
 import type React from "react";
 
 export interface BaseCardProps {

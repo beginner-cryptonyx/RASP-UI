@@ -1,6 +1,5 @@
-import React, { useState } from "react";
 import { cn } from "../../Lib/utils";
-import { CircleCheck, X, ShoppingCart, Ban, Check, CircleDashed } from "lucide-react";
+import { X, Check } from "lucide-react";
 import Grid from "../Layout/Grid";
 import ResponsiveView from "../Layout/ResponsiveView";
 
@@ -44,7 +43,7 @@ export function SimplePricing({
   className,
 }: PricingTableProps) {
   return (
-    <Grid className="mx-10 py-10">
+    <Grid className={cn("mx-10 py-10", className)}>
       {plans.map((plan) => (
         <div
           key={plan.name}

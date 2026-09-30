@@ -51,7 +51,7 @@ export default function Badge({
   ...rest
 }: BadgeProps) {
   return (
-    <div className={cn(BadgeVariants({ color, shape, border }))}>
+    <div className={cn(BadgeVariants({ color, shape, border }))} {...rest}>
       {isIconName(displayPiece) ? (
         <Icon name={displayPiece} className="scale-60  -m-px"></Icon>
       ) : (

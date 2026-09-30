@@ -19,15 +19,12 @@ import "swiper/css/navigation";
 import "swiper/css/parallax";
 import ResponsiveView from "../../Registy/Layout/ResponsiveView";
 import TextDivider from "../../Registy/Base/TextDivider";
-import Stars from "../../Registy/Marketing/Stars";
-import Breadcrumbs from "../../Registy/Navigation/Breadcrumbs";
 import ProductPage from "../../Registy/Marketing/ProductPage";
 import Badge from "../../Registy/Base/Badge";
-import Icon from "../../Registy/Meta/Icon";
 import SwitchThemeButton from "../../Registy/Base/SwitchThemeButton";
 
 export default function Coffee() {
-  const { setColorScheme, mode, setMode } = useTheme();
+  const { setColorScheme } = useTheme();
 
   useEffect(() => {
     setColorScheme("Coffee");
@@ -65,7 +62,7 @@ export default function Coffee() {
         ]}
         price={"$10"}
         pricePosition="below title"
-        variant="carousel"
+        variant="carousel only"
         breadcrumbs={[
           { label: "home", href: "/" },
           { label: "coffee", href: "/services/coffee" },

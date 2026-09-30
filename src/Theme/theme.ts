@@ -1,18 +1,19 @@
-type Colors = {
-  background1: string;
-  background2: string;
-  background3: string;
-  background4: string;
-  accent: string;
-  accentHover: string;
-  accentText: string;
-  borderDefault: string;
-  textPrimary: string;
-  textSecondary: string;
-  color1: string;
-  color2: string;
-  color3: string;
-};
+// I kept it here just as a 
+// type Colors = {
+//   background1: string;
+//   background2: string;
+//   background3: string;
+//   background4: string;
+//   accent: string;
+//   accentHover: string;
+//   accentText: string;
+//   borderDefault: string;
+//   textPrimary: string;
+//   textSecondary: string;
+//   color1: string;
+//   color2: string;
+//   color3: string;
+// };
 
 export type ThemeName =
   | "Crimson"
