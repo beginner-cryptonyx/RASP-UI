@@ -1,6 +1,6 @@
 import type { BaseCardProps } from "./Cards";
 
-export function CardText({
+export default function CardText({
   title,
   subtext,
   description,

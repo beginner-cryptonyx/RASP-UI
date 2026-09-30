@@ -2,7 +2,7 @@ import { cn } from "../../../Lib/utils";
 import Icon from "../../Meta/Icon";
 import type { ProductCardProps } from "./Cards";
 
-export function ProductCard({
+export default function ProductCard({
   title,
   icon,
   imageSrc,

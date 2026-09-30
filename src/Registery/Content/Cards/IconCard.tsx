@@ -1,9 +1,9 @@
 import { cn } from "../../../Lib/utils";
 import Icon from "../../Meta/Icon";
 import type { IconCardProps } from "./Cards";
-import { CardText } from "./CardText";
+import  CardText  from "./CardText";
 
-export function IconCard({
+export default  function IconCard({
   icon,
   iconAlign = "center",
   miniCard = false,

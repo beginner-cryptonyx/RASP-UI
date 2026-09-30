@@ -1,4 +1,3 @@
-import { IconCard, ProductCard } from "../Registery/Content/Card";
 import { ourServices } from "../DummyData";
 import useTheme from "../Theme/UseTheme";
 import { Themes, type ThemeName } from "../Theme/theme";
@@ -8,6 +7,8 @@ import Fade from "../Registery/Meta/Fade";
 import Dropdown from "../Registery/Input/Dropdown";
 import Badge from "../Registery/Base/Badge";
 import LinkButton from "../Registery/Base/LinkButton";
+import  IconCard  from "../Registery/Content/Cards/IconCard";
+import  ProductCard  from "../Registery/Content/Cards/ProductCard";
 
 function App() {
   const themeSystem = useTheme();

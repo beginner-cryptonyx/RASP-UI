@@ -1,8 +1,8 @@
 import { cn } from "../../../Lib/utils";
 import type { ImageCardProps } from "./Cards";
-import { CardText } from "./CardText";
+import  CardText  from "./CardText";
 
-export function ImageCard({
+export default function ImageCard({
   imageType,
   imageSrc,
   imageAlt = "",
