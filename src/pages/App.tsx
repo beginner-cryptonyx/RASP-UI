@@ -85,10 +85,11 @@ function App() {
               imageSrc={service.imageSrc}
               features={service.features}
               priceProperty={service.price}
-              button={<LinkButton to={service.buttonItems.url} className="m-0 mt-auto text-lg py-5.5" variant={"maximalist"}>
+              button={<LinkButton to={service.buttonItems.url} className={`m-0 mt-auto text-lg py-5.5`} variant={"maximalist"}>
                 {service.buttonItems.label}
               </LinkButton>}
               titlePosition="top"
+              className={` ${serviceName !== "coffee" ? "grayscale opacity-90 pointer-events-none":""}`}
             />
           ))}
         </Grid>
