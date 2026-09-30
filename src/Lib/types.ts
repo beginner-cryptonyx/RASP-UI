@@ -18,3 +18,9 @@ export interface PricingRule {
   match: Record<string, string>; // partial match on the selection
   price: number;
 }
+export interface StarsProps {
+    stars: number
+    numberOfReviews?: number | string
+    displayExactStarCount?: boolean
+    className?: string
+}

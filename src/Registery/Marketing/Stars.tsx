@@ -1,11 +1,5 @@
+import type { StarsProps } from "../../Lib/types"
 import { cn } from "../../Lib/utils"
-
-export interface StarsProps {
-    stars: number
-    numberOfReviews?: number|string
-    displayExactStarCount?: boolean
-    className?: string
-}
 
 const MAX_STARS = 5
 

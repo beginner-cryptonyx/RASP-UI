@@ -1,6 +1,6 @@
 import type React from "react";
 import type { BreadcrumbsProps } from "../Navigation/Breadcrumbs";
-import type { StarsProps } from "./Stars";
+import type { StarsProps } from "../../Lib/types";
 import Stars from "./Stars";
 import Breadcrumbs from "../Navigation/Breadcrumbs";
 import { Swiper, SwiperSlide } from "swiper/react";
