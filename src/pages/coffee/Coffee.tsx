@@ -8,7 +8,6 @@ import {
 import Eyebrow from "../../Registery/Base/Eyebrow";
 import Timeline from "../../Registery/Content/Timeline";
 import PricingTable from "../../Registery/Marketing/Pricing";
-import { NavLayout } from "../../Registery/Navigation/NavLayout";
 import useTheme from "../../Theme/UseTheme";
 import Grid from "../../Registery/Layout/Grid";
 import { SvgBackground } from "../../Registery/Layout/SvgBackground";
@@ -20,9 +19,6 @@ import "swiper/css/navigation";
 import "swiper/css/parallax";
 import ResponsiveView from "../../Registery/Layout/ResponsiveView";
 import TextDivider from "../../Registery/Base/TextDivider";
-import ProductPage from "../../Registery/Marketing/ProductPage";
-import Badge from "../../Registery/Base/Badge";
-import SwitchThemeButton from "../../Registery/Base/SwitchThemeButton";
 import { Link } from "react-router";
 
 export default function Coffee() {
