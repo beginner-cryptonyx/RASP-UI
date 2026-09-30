@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { format } from 'date-fns';
+import type { Attributes, Tags } from "./types";
 
 export type dateFormats =
   | "MMM Do, yyyy"
@@ -50,3 +51,40 @@ export function getPrice(
   return best?.price;
 }
 
+export function FilterArguments(Arguments:Record<string, {Attributes: Attributes}>, Filters:Record<string, unknown[]>):string[]{
+  let returnString:string[] = []
+  for (const [argument, obj] of Object.entries(Arguments)){
+    let valid = true
+    for (const [filterName, allowedValues] of Object.entries(Filters)){
+      const value = obj.Attributes[filterName]
+
+      if (value === undefined) continue
+
+      if (value === undefined  || !allowedValues.includes(value)){
+        valid = false
+        break
+      }
+    }
+    if (valid){
+      returnString.push(argument)
+    }
+  }
+  return returnString
+}
+
+export function FilterTags(Arguments:Record<string, {Tags: Tags}>, AllowedTags:Tags):string[]{
+  const result:Tags = []
+  for (const [argument, obj] of Object.entries(Arguments)){
+    let valid = true
+    for (const tag of AllowedTags){
+      if (!obj.Tags.includes(tag)){
+        valid = false
+        break
+      }
+    }
+    if (valid){
+      result.push(argument)
+    }
+  }
+  return result
+}

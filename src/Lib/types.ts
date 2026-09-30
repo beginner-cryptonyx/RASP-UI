@@ -1,6 +1,9 @@
 import * as Icons from "lucide-react";
 
 export type IconName = keyof typeof Icons;
+export type Attributes = Record<string, string|boolean|number>
+export type Tags = string[]
+
 
 export function isIconName(value: any): value is IconName {
   return value in Icons;
