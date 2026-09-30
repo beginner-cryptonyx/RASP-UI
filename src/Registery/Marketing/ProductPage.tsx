@@ -4,9 +4,7 @@ import type { StarsProps } from "./Stars";
 import Stars from "./Stars";
 import Breadcrumbs from "../Navigation/Breadcrumbs";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 import { Pagination } from "swiper/modules";
 import Icon from "../Meta/Icon";
 import { useState } from "react";
@@ -89,15 +87,17 @@ function CarouselImages({ images }: { images: string[] }) {
     <div className="relative">
       <button
         onClick={() => swiper?.slidePrev()}
-        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 text-accent"
+        className="absolute left-2 top-1/2 z-10 -translate-y-1/2 text-accent cursor-pointer"
+        aria-label="Previous Image"
       >
-        <Icon name="ChevronLeft" className="w-10 h-10 cursor-pointer" />
+        <Icon name="ChevronLeft" className="w-10 h-10" />
       </button>
       <button
         onClick={() => swiper?.slideNext()}
-        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 text-accent"
+        className="absolute right-2 top-1/2 z-10 -translate-y-1/2 text-accent cursor-pointer"
+        aria-label="Next Image"
       >
-        <Icon name="ChevronRight" className="w-10 h-10 cursor-pointer" />
+        <Icon name="ChevronRight" className="w-10 h-10" />
       </button>
 
       <Swiper
@@ -132,11 +132,11 @@ interface RenderVariantsProps {
   Variants?: Record<
     string,
     | {
-        type: "color buttons";
+        type: "color";
         props: SelectColorsProps;
       }
     | {
-        type: "text buttons";
+        type: "text";
         props: SelectTextVariantsProps;
       }
     | {
@@ -164,7 +164,7 @@ function RenderVariants({
       {items.map((variantName) => {
         const variant = Variants[variantName];
 
-        if (variant.type === "color buttons") {
+        if (variant.type === "color") {
           return (
             <div key={variantName} className="flex flex-col mb-2.5 gap-1">
               <h6 className="text-accent mb-0">{variantName}</h6>
@@ -178,7 +178,7 @@ function RenderVariants({
           );
         }
 
-        if (variant.type === "text buttons") {
+        if (variant.type === "text") {
           return (
             <div key={variantName} className="flex flex-col mb-2.5 gap-1">
               <h6 className="text-accent mb-0">{variantName}</h6>
@@ -247,7 +247,7 @@ function ProductPageDesktop({
             selected={selected}
           ></RenderVariants>
         </div>
-        {extraContentPosition === "below text" && <div className="pl-5 pt-5">{extraContent}</div> }
+        {extraContent && extraContentPosition === "below text" && <div className="pl-5 pt-5">{extraContent}</div> }
       </div>
       <div
         className="min-w-0 "
@@ -256,9 +256,9 @@ function ProductPageDesktop({
         }}
       >
         <RenderImage images={images} variant={variant}></RenderImage>
-        {extraContentPosition === "below image" && <div className="pl-5 pt-5">{extraContent}</div> }
+        {extraContent && extraContentPosition === "below image" && <div className="pl-5 pt-5">{extraContent}</div> }
       </div>
-        {extraContentPosition === "below all content" && <div className="pl-5 pt-5">{extraContent}</div> }
+        {extraContent && extraContentPosition === "below all content" && <div className="pl-5 pt-5 col-span-10">{extraContent}</div> }
 
     </div>
   );

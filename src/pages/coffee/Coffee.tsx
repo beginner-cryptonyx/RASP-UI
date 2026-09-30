@@ -76,7 +76,7 @@ export default function Coffee() {
         }
         Variants={{
           "package colors": {
-            type: "color buttons",
+            type: "color",
             props: {
               ColorButtons: [
                 { color: "red", colorCode: "#FF2222" },
@@ -87,8 +87,10 @@ export default function Coffee() {
               Variant: "circle",
             },
           },
-          weight: { type: "text buttons", props: { labels: ["50g", "100g", "200g"] } },
+          weight: { type: "text", props: { labels: ["50g", "100g", "200g"] } },
+          
         }}
+        extraContent={<h2>hi</h2>}
         defaultSelected={{ "package colors": "white", "weight":"100g" }}
       ></ProductPage>
       <div className="w-[98.5vw] p-0 mx-auto mt-1">
