@@ -23,6 +23,7 @@ import TextDivider from "../../Registery/Base/TextDivider";
 import ProductPage from "../../Registery/Marketing/ProductPage";
 import Badge from "../../Registery/Base/Badge";
 import SwitchThemeButton from "../../Registery/Base/SwitchThemeButton";
+import { Link } from "react-router";
 
 export default function Coffee() {
   const { setColorScheme } = useTheme();
@@ -31,75 +32,23 @@ export default function Coffee() {
     setColorScheme("Coffee");
   }, [setColorScheme]);
 
+  const galleryItems = [
+    { slug: "sharkbrew-original-instant", imgIndex: 0, span: "col-span-2" },
+    { slug: "deepwater-brazil", imgIndex: 1, span: "col-span-2" },
+    { slug: "morning-fin", imgIndex: 1, span: "col-span-2" },
+    {
+      slug: "sharkbrew-burr-grinder",
+      imgIndex: 2,
+      span: "col-span-3 aspect-video",
+    },
+    { slug: "current-pour-over", imgIndex: 1, span: "col-span-3 aspect-video" },
+    { slug: "sharkbrew-classic-mug", imgIndex: 2, span: "col-span-2" },
+    { slug: "sharkbrew-travel-tumbler", imgIndex: 0, span: "col-span-2" },
+    { slug: "coffee-shark-tote", imgIndex: 0, span: "col-span-2" },
+  ];
+
   return (
-    <NavLayout
-      services={[{ href: "/", label: "home" }]}
-      logo={
-        <img src={"/coffee/logo transperent.png"} className="w-25 invert"></img>
-      }
-      rightSlot={<SwitchThemeButton />}
-    >
-      {/* <ProductPage
-        aboveTitleElement={
-          <Badge
-            text={"cold brew"}
-            displayPiece={"Snowflake"}
-            border
-            shape={"pill"}
-            color={"blue"}
-          />
-        }
-        title="Arabic Coffee"
-        StarsProps={{
-          stars: 4.6,
-          displayExactStarCount: true,
-          numberOfReviews: "90k",
-        }}
-        starPosition="below price"
-        images={[
-          "/coffee/bestsellerbeans1.jpg",
-          "/coffee/bestsellerbeans2.jpg",
-          "/coffee/bestsellerbeans3.jpg",
-        ]}
-        price={"$10"}
-        pricePosition="below title"
-        variant="carousel only"
-        breadcrumbs={[
-          { label: "home", href: "/" },
-          { label: "coffee", href: "/services/coffee" },
-          { label: "cold brews" },
-          { label: "dark arab coffee", href: "/services/coffee/buy" },
-        ]}
-        textPosition="left"
-        textWidth={5}
-        description={
-          "Why is this in a weird place? well, I'm testing this feature. Here is some more dummy text to fill the space. Elit aliqua labore ullamco minim veniam elit veniam cillum anim duis duis. Amet Lorem aliqua eu magna id aliqua laboris incididunt nostrud. Laboris excepteur elit excepteur sit amet pariatur ut dolore labore. Laboris ad proident dolore do. Ex eu aliqua in ad voluptate sit pariatur veniam laboris amet aute eiusmod. Commodo nulla eiusmod commodo nulla occaecat."
-        }
-        Variants={{
-          "package colors": {
-            type: "color",
-            props: {
-              ColorButtons: [
-                { color: "red", colorCode: "#FF2222" },
-                { color: "blue", colorCode: "#2222FF" },
-                { color: "black", colorCode: "#000000" },
-                { color: "white", colorCode: "#FFFFFF" },
-              ],
-              Variant: "circle",
-            },
-          },
-          weight: { type: "text", props: { labels: ["50g", "100g", "200g"] } },
-          
-        }}
-        extraContent={<h2>hi</h2>}
-        defaultSelected={{ "package colors": "white", "weight":"100g" }}
-      ></ProductPage> */}
-      {coffeeProducts["sharkbrew-original-instant"] && (
-        <ProductPage
-          key={coffeeProducts["sharkbrew-original-instant"].title}
-          {...coffeeProducts["sharkbrew-original-instant"]}
-        />
-      )}
+    <>
       <div className="w-[98.5vw] p-0 mx-auto mt-1">
         <Swiper
           slidesPerView={1}
@@ -133,18 +82,23 @@ export default function Coffee() {
               columns={6}
               className="sm:mx-50 my-10 gap-10 *:hover:scale-105 *:transition-all *:duration-300 *:cursor-pointer *:shadow-md"
             >
-              <img src="/coffee/prod3.jpg" alt="" className="col-span-2" />
-              <img src="/coffee/prod4.jpg" alt="" className="col-span-2" />
-              <img src="/coffee/prod5.jpg" alt="" className="col-span-2" />
-              <img src="/coffee/prod1.webp" alt="" className="col-span-3" />
-              <img
-                src="/coffee/prod2.jpg"
-                alt=""
-                className="col-span-3 w-full"
-              />
-              <img src="/coffee/prod6.jpg" alt="" className="col-span-2" />
-              <img src="/coffee/prod7.jpg" alt="" className="col-span-2" />
-              <img src="/coffee/prod9.jpg" alt="" className="col-span-2" />
+              {galleryItems.map((item, index) => {
+                const product = coffeeProducts[item.slug];
+
+                return (
+                  <Link
+                    key={index}
+                    to={`/services/coffee/${item.slug}`} // Or href={`/products/${item.slug}`} for Next.js
+                    className={`${item.span} block group overflow-hidden rounded-lg`}
+                  >
+                    <img
+                      src={product.images[item.imgIndex]}
+                      alt={product.title || ""}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </Link>
+                );
+              })}
             </Grid>
           }
           mobile={
@@ -238,6 +192,6 @@ export default function Coffee() {
           variant="complex"
         ></PricingTable>
       </SvgBackground>
-    </NavLayout>
+    </>
   );
 }
