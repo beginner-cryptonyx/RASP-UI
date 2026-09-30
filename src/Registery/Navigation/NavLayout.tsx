@@ -1,5 +1,6 @@
 // types.ts
 import { type ReactNode } from 'react';
+import { Outlet } from 'react-router';
 
 export interface NavLayoutProps {
   logo: ReactNode;
@@ -15,7 +16,7 @@ export interface NavService {
 }
 
 // NavLayout.tsx
-export function NavLayout({ logo, services, navigation, sideNav, rightSlot, children }: NavLayoutProps & { children: ReactNode }) {
+export function NavLayout({ logo, services, navigation, sideNav, rightSlot }: NavLayoutProps ) {
   return (
     <div className="min-h-screen flex flex-col">
       <header className="flex items-center justify-between px-6 py-3 sticky top-0 z-50 bg-background4">
@@ -36,9 +37,11 @@ export function NavLayout({ logo, services, navigation, sideNav, rightSlot, chil
         {rightSlot && <div className="shrink-0">{rightSlot}</div>}
       </header>
 
-      <div className="flex flex-1">
+      <div className="flex flex-1 items-center justify-center">
         {sideNav && <aside className="w-64 border-r border-gray-200 shrink-0">{sideNav}</aside>}
-        <main className="flex-1">{children}</main>
+              <main>
+        <Outlet />
+      </main>
       </div>
     </div>
   );
