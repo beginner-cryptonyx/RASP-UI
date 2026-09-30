@@ -1,4 +1,5 @@
 import * as Icons from "lucide-react";
+import type { ReactNode } from "react";
 
 export type IconName = keyof typeof Icons;
 export type Attributes = Record<string, string|boolean|number>
@@ -23,4 +24,11 @@ export interface StarsProps {
     numberOfReviews?: number | string
     displayExactStarCount?: boolean
     className?: string
+}export interface AccordionProps {
+  title: string;
+  icon?: ReactNode;
+  children: ReactNode;
+  defaultOpen?: boolean;
+  className?: string;
 }
+

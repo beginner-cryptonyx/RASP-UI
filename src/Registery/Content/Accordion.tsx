@@ -1,13 +1,6 @@
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import { cn } from "../../Lib/utils";
-
-interface AccordionProps {
-  title: string;
-  icon?: ReactNode;
-  children: ReactNode;
-  defaultOpen?: boolean;
-  className?: string;
-}
+import type { AccordionProps } from "../../Lib/types";
 
 export function Accordion({
   title,
