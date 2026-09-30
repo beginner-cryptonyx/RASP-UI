@@ -3,6 +3,7 @@ import {
   coffeePlans,
   coffeeFeatureList,
   coffeeProcessTimeline,
+  coffeeProducts,
 } from "../../DummyData";
 import Eyebrow from "../../Registery/Base/Eyebrow";
 import Timeline from "../../Registery/Content/Timeline";
@@ -38,7 +39,7 @@ export default function Coffee() {
       }
       rightSlot={<SwitchThemeButton />}
     >
-      <ProductPage
+      {/* <ProductPage
         aboveTitleElement={
           <Badge
             text={"cold brew"}
@@ -92,7 +93,13 @@ export default function Coffee() {
         }}
         extraContent={<h2>hi</h2>}
         defaultSelected={{ "package colors": "white", "weight":"100g" }}
-      ></ProductPage>
+      ></ProductPage> */}
+      {coffeeProducts["sharkbrew-original-instant"] && (
+        <ProductPage
+          key={coffeeProducts["sharkbrew-original-instant"].title}
+          {...coffeeProducts["sharkbrew-original-instant"]}
+        />
+      )}
       <div className="w-[98.5vw] p-0 mx-auto mt-1">
         <Swiper
           slidesPerView={1}

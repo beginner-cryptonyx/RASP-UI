@@ -4,6 +4,7 @@ import {
   type IconCardProps,
 } from "./Registery/Content/Card";
 import type { TimelineElement } from "./Registery/Content/Timeline";
+import type { ProductPageProps } from "./Registery/Marketing/ProductPage";
 
 export const statistics: StatisticProps[] = [
   {
@@ -247,7 +248,10 @@ export const coffeeFeatureList: string[] = [
 // Export 2: Plans Data (Keys in `feature` match `coffeeFeatureList` exactly)
 export const coffeePlans: {
   name: string;
-  feature: Record<typeof coffeeFeatureList[number], string | number | boolean>;
+  feature: Record<
+    (typeof coffeeFeatureList)[number],
+    string | number | boolean
+  >;
   price: number | string;
   priceSuffix?: string;
   description?: string;
@@ -259,7 +263,7 @@ export const coffeePlans: {
     description:
       "Great for everyday coffee drinkers wanting freshly roasted staple beans monthly.",
     feature: {
-      "Deliveries": "1 / Month",
+      Deliveries: "1 / Month",
       "Bags per delivery": 1,
       "Rare & Micro-lot brews": false,
       "Custom grind options": true,
@@ -275,7 +279,7 @@ export const coffeePlans: {
     description:
       "Designed for coffee enthusiasts looking to explore rotating seasonal micro-lots.",
     feature: {
-      "Deliveries": "1 / Month",
+      Deliveries: "1 / Month",
       "Bags per delivery": 2,
       "Rare & Micro-lot brews": true,
       "Custom grind options": true,
@@ -291,7 +295,7 @@ export const coffeePlans: {
     description:
       "Our premier plan featuring competition-grade brews delivered twice monthly.",
     feature: {
-      "Deliveries": "2 / Month",
+      Deliveries: "2 / Month",
       "Bags per delivery": 2,
       "Rare & Micro-lot brews": true,
       "Custom grind options": true,
@@ -419,3 +423,323 @@ export const coffeeProcessTimeline: TimelineElement[] = [
     fade: true,
   },
 ];
+
+export const coffeeProducts: Record<
+  string,
+  ProductPageProps & { defaultSelected: Record<string, string> }
+> = {
+  "sharkbrew-original-instant": {
+    title: "SharkBrew Original Instant",
+    StarsProps: {
+      stars: 4.7,
+      displayExactStarCount: true,
+      numberOfReviews: "428",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/instant/original instant/1.png",
+      "/coffee/products/instant/original instant/2.png",
+      "/coffee/products/instant/original instant/3.png",
+    ],
+    price: "₹499",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "instant coffee" },
+      { label: "sharkbrew original" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "SharkBrew's everyday instant coffee: a smooth medium roast with milk chocolate, caramel, and lightly toasted nut notes. Designed to dissolve quickly while retaining the character of freshly brewed coffee.",
+    Variants: {
+      weight: { type: "text", props: { labels: ["50g", "100g", "200g"] } },
+    },
+    defaultSelected: { weight: "100g" },
+  },
+  "deep-dive-dark-roast": {
+    title: "Deep Dive Dark Roast",
+    StarsProps: {
+      stars: 4.8,
+      displayExactStarCount: true,
+      numberOfReviews: "316",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/instant/dark roast/1.png",
+      "/coffee/products/instant/dark roast/2.png",
+      "/coffee/products/instant/dark roast/3.png",
+    ],
+    price: "₹549",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "instant coffee" },
+      { label: "deep dive dark roast" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "A bold dark-roasted instant coffee with intense roasted cocoa, toasted almond, and dark caramel notes. Built for drinkers who prefer a stronger, heavier cup.",
+    Variants: {
+      weight: { type: "text", props: { labels: ["50g", "100g", "200g"] } },
+    },
+    defaultSelected: { weight: "100g" },
+  },
+  "morning-fin": {
+    title: "Morning Fin",
+    StarsProps: {
+      stars: 4.6,
+      displayExactStarCount: true,
+      numberOfReviews: "271",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/instant/morning fin/1.png",
+      "/coffee/products/instant/morning fin/2.png",
+      "/coffee/products/instant/morning fin/3.png",
+    ],
+    price: "₹499",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "instant coffee" },
+      { label: "morning fin" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "A lighter instant roast with bright citrus, honey, and soft floral notes. Crisp and approachable, designed specifically for a lighter morning cup.",
+    Variants: {
+      weight: { type: "text", props: { labels: ["50g", "100g", "200g"] } },
+    },
+    defaultSelected: { weight: "100g" },
+  },
+  "great-white-blend": {
+    title: "Great White Blend",
+    StarsProps: {
+      stars: 4.9,
+      displayExactStarCount: true,
+      numberOfReviews: "683",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/beans/great white/1.png",
+      "/coffee/products/beans/great white/2.png",
+      "/coffee/products/beans/great white/3.png",
+    ],
+    price: "₹549",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "coffee beans" },
+      { label: "great white blend" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "SharkBrew's signature house blend. Medium-roasted beans combining milk chocolate, caramel, and toasted nuts with a balanced body that works well across espresso, filter, and French press.",
+    Variants: {
+      weight: { type: "text", props: { labels: ["250g", "500g", "1kg"] } },
+      grind: {
+        type: "text",
+        props: { labels: ["Whole Bean", "Espresso", "Filter", "French Press"] },
+      },
+    },
+    defaultSelected: { weight: "250g", grind: "Whole Bean" },
+  },
+  "coral-coast-colombia": {
+    title: "Coral Coast Colombia",
+    StarsProps: {
+      stars: 4.8,
+      displayExactStarCount: true,
+      numberOfReviews: "342",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/beans/coral coast columbia/1.png",
+      "/coffee/products/beans/coral coast columbia/2.png",
+      "/coffee/products/beans/coral coast columbia/3.png",
+    ],
+    price: "₹649",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "single origin" },
+      { label: "coral coast colombia" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "A Colombian single-origin coffee with red fruit acidity, caramel sweetness, and a subtle citrus finish. A lighter, brighter bean intended for filter brewing.",
+    Variants: {
+      weight: { type: "text", props: { labels: ["250g", "500g", "1kg"] } },
+      grind: {
+        type: "text",
+        props: { labels: ["Whole Bean", "Filter", "French Press"] },
+      },
+    },
+    defaultSelected: { weight: "250g", grind: "Whole Bean" },
+  },
+  "deepwater-brazil": {
+    title: "Deepwater Brazil",
+    StarsProps: {
+      stars: 4.7,
+      displayExactStarCount: true,
+      numberOfReviews: "298",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/beans/deepwater brazil/1.png",
+      "/coffee/products/beans/deepwater brazil/2.png",
+      "/coffee/products/beans/deepwater brazil/3.png",
+    ],
+    price: "₹599",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "single origin" },
+      { label: "deepwater brazil" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "A full-bodied Brazilian coffee featuring milk chocolate, hazelnut, and brown sugar notes. Low in acidity and naturally sweet, making it particularly versatile for espresso and milk drinks.",
+    Variants: {
+      weight: { type: "text", props: { labels: ["250g", "500g", "1kg"] } },
+      grind: {
+        type: "text",
+        props: { labels: ["Whole Bean", "Espresso", "Filter"] },
+      },
+    },
+    defaultSelected: { weight: "250g", grind: "Whole Bean" },
+  },
+  "sharkbrew-burr-grinder": {
+    title: "SharkBrew Burr Grinder",
+    StarsProps: {
+      stars: 4.6,
+      displayExactStarCount: true,
+      numberOfReviews: "184",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/gear/burr grinder/1.png",
+      "/coffee/products/gear/burr grinder/2.png",
+      "/coffee/products/gear/burr grinder/3.png",
+    ],
+    price: "₹3,499",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "brewing equipment" },
+      { label: "grinders" },
+      { label: "sharkbrew burr grinder" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "A compact burr grinder with adjustable grind settings for espresso, pour-over, French press, and cold brew. Designed for consistent grinding without taking up excessive counter space.",
+    Variants: {
+      color: {
+        type: "color",
+        props: {
+          ColorButtons: [
+            { color: "black", colorCode: "#000000" },
+            { color: "white", colorCode: "#FFFFFF" },
+            { color: "sand", colorCode: "#C2B280" },
+          ],
+          Variant: "circle",
+        },
+      },
+    },
+    defaultSelected: { color: "black" },
+  },
+  "dive-press": {
+    title: "Dive Press",
+    StarsProps: {
+      stars: 4.8,
+      displayExactStarCount: true,
+      numberOfReviews: "239",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/gear/dive press/1.png",
+      "/coffee/products/gear/dive press/2.png",
+      "/coffee/products/gear/dive press/3.png",
+    ],
+    price: "₹1,299",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "brewing equipment" },
+      { label: "french press" },
+      { label: "dive press" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "A 350ml French press combining heat-resistant glass with a stainless-steel filter and minimalist frame. Designed for simple full-bodied coffee brewing.",
+    Variants: {
+      size: { type: "text", props: { labels: ["350ml", "600ml", "1L"] } },
+    },
+    defaultSelected: { size: "350ml" },
+  },
+  "current-pour-over": {
+    title: "Current Pour-Over",
+    StarsProps: {
+      stars: 4.7,
+      displayExactStarCount: true,
+      numberOfReviews: "156",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/gear/current pourover/1.png",
+      "/coffee/products/gear/current pourover/2.png",
+      "/coffee/products/gear/current pourover/3.png",
+    ],
+    price: "₹899",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "brewing equipment" },
+      { label: "pour over" },
+      { label: "current pour-over" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "A minimalist ceramic pour-over brewer engineered for controlled water flow and even extraction. Fits standard coffee filters and sits directly over most mugs and servers.",
+    Variants: {
+      color: {
+        type: "color",
+        props: {
+          ColorButtons: [
+            { color: "white", colorCode: "#FFFFFF" },
+            { color: "black", colorCode: "#000000" },
+            { color: "sand", colorCode: "#C2B280" },
+          ],
+          Variant: "circle",
+        },
+      },
+    },
+    defaultSelected: { color: "white" },
+  },
+};

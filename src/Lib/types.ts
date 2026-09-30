@@ -10,3 +10,8 @@ export interface StatisticProps {
   suffix: string;
   label: string;
 }
+
+export interface PricingRule {
+  match: Record<string, string>; // partial match on the selection
+  price: number;
+}

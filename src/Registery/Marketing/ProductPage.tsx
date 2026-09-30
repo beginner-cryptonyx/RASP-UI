@@ -223,7 +223,7 @@ function ProductPageDesktop({
   onSelect: (variantName: string, value: string) => void;
 }) {
   return (
-    <div className="grid grid-cols-10 gap-10 bg-background2 w-full max-w-[90vw] px-10 py-6 my-15 mx-auto rounded-2xl shadow-2xl border-borderDefault/50 border">
+    <div className="grid grid-cols-10 gap-10 bg-background2 w-full max-w-[90vw] px-10 py-6 rounded-2xl shadow-2xl border-borderDefault/50 border">
       <div
         className="flex flex-col shrink-0 "
         style={{ gridColumn: `span ${textWidth} /  span ${textWidth}` }}
@@ -313,7 +313,7 @@ function ProductPageMobile({
       {extraContent && <div className="pl-5">{extraContent}</div>}
     </div>
   );
-}
+} 
 
 export default function ProductPage({
   defaultSelected,
