@@ -742,4 +742,130 @@ export const coffeeProducts: Record<
     },
     defaultSelected: { color: "white" },
   },
+  "sharkbrew-classic-mug": {
+    title: "SharkBrew Classic Mug",
+    StarsProps: {
+      stars: 4.9,
+      displayExactStarCount: true,
+      numberOfReviews: "376",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/merch/classic mug/1.png",
+      "/coffee/products/merch/classic mug/2.png",
+      "/coffee/products/merch/classic mug/3.png",
+    ],
+    price: "₹699",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "merchandise" },
+      { label: "mugs" },
+      { label: "classic mug" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "A simple ceramic coffee mug featuring the SharkBrew wordmark and the brand's friendly line-art shark. Designed as the everyday SharkBrew mug.",
+    Variants: {
+      color: {
+        type: "color",
+        props: {
+          ColorButtons: [
+            { color: "black", colorCode: "#000000" },
+            { color: "white", colorCode: "#FFFFFF" },
+            { color: "cream", colorCode: "#FFFDD0" },
+          ],
+          Variant: "circle",
+        },
+      },
+    },
+    defaultSelected: { color: "black" },
+  },
+  "sharkbrew-travel-tumbler": {
+    title: "SharkBrew Travel Tumbler",
+    StarsProps: {
+      stars: 4.6,
+      displayExactStarCount: true,
+      numberOfReviews: "191",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/merch/tumbler/1.png",
+      "/coffee/products/merch/tumbler/2.png",
+      "/coffee/products/merch/tumbler/3.png",
+    ],
+    price: "₹999",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "merchandise" },
+      { label: "drinkware" },
+      { label: "travel tumbler" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "An insulated stainless-steel tumbler designed to keep coffee hot while travelling. Features a secure lid, slim cup-holder-friendly shape, and understated SharkBrew branding.",
+    Variants: {
+      color: {
+        type: "color",
+        props: {
+          ColorButtons: [
+            { color: "black", colorCode: "#000000" },
+            { color: "white", colorCode: "#FFFFFF" },
+          ],
+          Variant: "circle",
+        },
+      },
+      size: { type: "text", props: { labels: ["350ml", "500ml"] } },
+    },
+    defaultSelected: { color: "black", size: "350ml" },
+  },
+  "coffee-shark-tote": {
+    title: "Coffee Shark Tote",
+    StarsProps: {
+      stars: 4.8,
+      displayExactStarCount: true,
+      numberOfReviews: "164",
+    },
+    starPosition: "below price",
+    images: [
+      "/coffee/products/merch/coffee shark tote/1.png",
+      "/coffee/products/merch/coffee shark tote/2.png",
+      "/coffee/products/merch/coffee shark tote/3.png",
+    ],
+    price: "₹799",
+    pricePosition: "below title",
+    variant: "carousel only",
+    breadcrumbs: [
+      { label: "home", href: "/" },
+      { label: "coffee", href: "/services/coffee" },
+      { label: "merchandise" },
+      { label: "bags" },
+      { label: "coffee shark tote" },
+    ],
+    textPosition: "left",
+    textWidth: 5,
+    description:
+      "A durable reusable canvas tote featuring a playful illustrated shark carrying a coffee cup. Large enough for coffee equipment, groceries, books, or everyday items.",
+    Variants: {
+      color: {
+        type: "color",
+        props: {
+          ColorButtons: [
+            { color: "natural canvas", colorCode: "#EED9B7" },
+            { color: "black", colorCode: "#000000" },
+            { color: "cream", colorCode: "#FFFDD0" },
+          ],
+          Variant: "circle",
+        },
+      },
+    },
+    defaultSelected: { color: "natural canvas" },
+  },
 };
