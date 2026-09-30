@@ -1,8 +1,6 @@
 import { type StatisticProps } from "./Lib/types";
-import {
-  type ImageCardProps,
-  type IconCardProps,
-} from "./Registery/Content/Card";
+import type { IconCardProps, ImageCardProps } from "./Registery/Content/Cards/Cards";
+
 import type { TimelineElement } from "./Registery/Content/Timeline";
 import type { ProductPageProps } from "./Registery/Marketing/ProductPage";
 
