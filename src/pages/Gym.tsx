@@ -1,5 +1,5 @@
 import { gymProgressionTimeline } from "../DummyData";
-import Timeline from "../Registy/Content/Timeline";
+import Timeline from "../Registery/Content/Timeline";
 import useTheme from "../Theme/UseTheme";
 
 export default function Gym() {

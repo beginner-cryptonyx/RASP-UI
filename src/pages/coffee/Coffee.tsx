@@ -4,24 +4,24 @@ import {
   coffeeFeatureList,
   coffeeProcessTimeline,
 } from "../../DummyData";
-import Eyebrow from "../../Registy/Base/Eyebrow";
-import Timeline from "../../Registy/Content/Timeline";
-import PricingTable from "../../Registy/Marketing/Pricing";
-import { NavLayout } from "../../Registy/Navigation/NavLayout";
+import Eyebrow from "../../Registery/Base/Eyebrow";
+import Timeline from "../../Registery/Content/Timeline";
+import PricingTable from "../../Registery/Marketing/Pricing";
+import { NavLayout } from "../../Registery/Navigation/NavLayout";
 import useTheme from "../../Theme/UseTheme";
-import Grid from "../../Registy/Layout/Grid";
-import { SvgBackground } from "../../Registy/Layout/SvgBackground";
+import Grid from "../../Registery/Layout/Grid";
+import { SvgBackground } from "../../Registery/Layout/SvgBackground";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Parallax } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/parallax";
-import ResponsiveView from "../../Registy/Layout/ResponsiveView";
-import TextDivider from "../../Registy/Base/TextDivider";
-import ProductPage from "../../Registy/Marketing/ProductPage";
-import Badge from "../../Registy/Base/Badge";
-import SwitchThemeButton from "../../Registy/Base/SwitchThemeButton";
+import ResponsiveView from "../../Registery/Layout/ResponsiveView";
+import TextDivider from "../../Registery/Base/TextDivider";
+import ProductPage from "../../Registery/Marketing/ProductPage";
+import Badge from "../../Registery/Base/Badge";
+import SwitchThemeButton from "../../Registery/Base/SwitchThemeButton";
 
 export default function Coffee() {
   const { setColorScheme } = useTheme();

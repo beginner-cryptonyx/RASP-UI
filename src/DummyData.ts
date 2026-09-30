@@ -2,8 +2,8 @@ import { type StatisticProps } from "./Lib/types";
 import {
   type ImageCardProps,
   type IconCardProps,
-} from "./Registy/Content/Card";
-import type { TimelineElement } from "./Registy/Content/Timeline";
+} from "./Registery/Content/Card";
+import type { TimelineElement } from "./Registery/Content/Timeline";
 
 export const statistics: StatisticProps[] = [
   {

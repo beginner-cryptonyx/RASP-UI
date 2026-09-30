@@ -1,13 +1,13 @@
-import { IconCard, ProductCard } from "../Registy/Content/Card";
+import { IconCard, ProductCard } from "../Registery/Content/Card";
 import { ourServices } from "../DummyData";
 import useTheme from "../Theme/UseTheme";
 import { Themes, type ThemeName } from "../Theme/theme";
-import Button from "../Registy/Base/Button";
-import Grid from "../Registy/Layout/Grid";
-import Fade from "../Registy/Meta/Fade";
-import Dropdown from "../Registy/Input/Dropdown";
-import Badge from "../Registy/Base/Badge";
-import LinkButton from "../Registy/Base/LinkButton";
+import Button from "../Registery/Base/Button";
+import Grid from "../Registery/Layout/Grid";
+import Fade from "../Registery/Meta/Fade";
+import Dropdown from "../Registery/Input/Dropdown";
+import Badge from "../Registery/Base/Badge";
+import LinkButton from "../Registery/Base/LinkButton";
 
 function App() {
   const themeSystem = useTheme();
