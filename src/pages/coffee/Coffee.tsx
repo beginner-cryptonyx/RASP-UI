@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   coffeePlans,
   coffeeFeatureList,
@@ -11,7 +11,7 @@ import PricingTable from "../../Registery/Marketing/Pricing";
 import useTheme from "../../Theme/UseTheme";
 import Grid from "../../Registery/Layout/Grid";
 import { SvgBackground } from "../../Registery/Layout/SvgBackground";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, type SwiperClass } from "swiper/react";
 import { Navigation, Parallax } from "swiper/modules";
 
 import "swiper/css";
@@ -20,9 +20,11 @@ import "swiper/css/parallax";
 import ResponsiveView from "../../Registery/Layout/ResponsiveView";
 import TextDivider from "../../Registery/Base/TextDivider";
 import { Link } from "react-router";
+import Icon from "../../Registery/Meta/Icon";
 
 export default function Coffee() {
   const { setColorScheme } = useTheme();
+  const [swiper, setSwiper] = useState<SwiperClass>();
 
   useEffect(() => {
     setColorScheme("Coffee");
@@ -45,27 +47,70 @@ export default function Coffee() {
 
   return (
     <>
-      <div className="w-[98.5vw] p-0 mx-auto mt-1">
+      <div className="relative w-[98.5vw] p-0 mx-auto mt-1">
+        <button
+          onClick={() => swiper?.slidePrev()}
+          className="absolute left-2 top-1/2 z-10 -translate-y-1/2 text-accent cursor-pointer"
+          aria-label="Previous Image"
+        >
+          <Icon name="ChevronLeft" className="w-10 h-10" />
+        </button>
+        <button
+          onClick={() => swiper?.slideNext()}
+          className="absolute right-2 top-1/2 z-10 -translate-y-1/2 text-accent cursor-pointer"
+          aria-label="Next Image"
+        >
+          <Icon name="ChevronRight" className="w-10 h-10" />
+        </button>
         <Swiper
           slidesPerView={1}
           speed={1000}
           navigation
           loop
           parallax
-          modules={[Navigation, Parallax]}
+          onSwiper={setSwiper}
+          spaceBetween={0}
+          grabCursor
+          effect="slide"
         >
+          <div
+            slot="container-start"
+            className="absolute left-0 top-0 w-[130%] h-full bg-cover bg-center"
+            style={{
+              backgroundImage:
+                "url(https://swiperjs.com/demos/images/abstract-1.jpg)",
+            }}
+            data-swiper-parallax="-23%"
+          ></div>
           {[1, 2, 3, 4, 5].map((n) => (
-            <SwiperSlide key={n}>
-              <img
-                data-swiper-parallax={`${-n * 50}px`}
-                src={`/coffee/heroimage${n}.${n === 1 ? "webp" : "jpg"}`}
-                alt="Coffee"
-                className="block aspect-16/7 object-cover w-screen pointer-events-none"
-              />
+            <SwiperSlide key={n} className="box-border">
+              <div className="flex relative overflow-hidden h-125!">
+                <img
+                  src={`/coffee/heroimage${n}.${n === 1 ? "webp" : "jpg"}`}
+                  alt="Coffee"
+                  className="absolute top-0 left-0 right-0 flex items-center justify-center aspect-16/7 object-cover w-screen pointer-events-none m-auto bottom-0"
+                />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
+
+      {/* <Carousel>
+        {[1, 2, 3, 4, 5].map((n) => (
+          <div
+            data-swiper-parallax={parallexAmount}
+            data-swiper-opacity={0.5}
+            className="flex relative overflow-hidden h-125!"
+          >
+            <img
+              src={`/coffee/heroimage${n}.${n === 1 ? "webp" : "jpg"}`}
+              alt="Coffee"
+              className="absolute top-0 left-0 right-0 flex items-center justify-center aspect-16/7 object-cover w-screen pointer-events-none m-auto bottom-0"
+            />
+          </div>
+        ))}
+      </Carousel> */}
 
       <div className="py-20">
         {/* <h3 className="text-center ">Our Products</h3> */}
