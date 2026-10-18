@@ -46,7 +46,7 @@ export default function Coffee() {
     { slug: "coffee-shark-tote", imgIndex: 0, span: "col-span-2" },
   ];
 
-  const [timelineView, setTimelineView] = useState<string>("Single Left")
+  const [timelineView, setTimelineView] = useState<string>("Single Left");
 
   return (
     <>
@@ -115,7 +115,7 @@ export default function Coffee() {
         ))}
       </Carousel> */}
 
-      <div className="py-20">
+      <div className="py-10">
         {/* <h3 className="text-center ">Our Products</h3> */}
         <TextDivider>
           <h3 className="">Our Products</h3>
@@ -146,7 +146,7 @@ export default function Coffee() {
             </Grid>
           }
           mobile={
-            <div className="w-[70vw] mx-auto my-10">
+            <div className="w-[90vw] mx-auto my-10">
               <Swiper
                 // spaceBetween={50}
                 slidesPerView={1}
@@ -157,78 +157,58 @@ export default function Coffee() {
                 onSlideChange={() => console.log("slide change")}
                 onSwiper={(swiper) => console.log(swiper)}
               >
-                <SwiperSlide data-swiper-parallax="-300">
-                  <img
-                    src="/coffee/prod3.jpg"
-                    alt=""
-                    className="pointer-events-none"
-                  />
-                </SwiperSlide>
-                <SwiperSlide data-swiper-parallax="-300">
-                  <img
-                    src="/coffee/prod4.jpg"
-                    alt=""
-                    className="pointer-events-none"
-                  />
-                </SwiperSlide>
-                <SwiperSlide data-swiper-parallax="-300">
-                  <img
-                    src="/coffee/prod5.jpg"
-                    alt=""
-                    className="pointer-events-none"
-                  />
-                </SwiperSlide>
-                <SwiperSlide data-swiper-parallax="-300">
-                  <img src="/coffee/prod1.webp" alt="" className="col-span-3" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img src="/coffee/prod2.jpg" alt="" className="col-span-3" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="/coffee/prod6.jpg"
-                    alt=""
-                    className="pointer-events-none"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="/coffee/prod7.jpg"
-                    alt=""
-                    className="pointer-events-none"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="/coffee/prod9.jpg"
-                    alt=""
-                    className="pointer-events-none"
-                  />
-                </SwiperSlide>
+                {galleryItems.map((item, index) => {
+                  const product = coffeeProducts[item.slug];
+
+                  return (
+                    <SwiperSlide key={index} data-swiper-parallax="" className="flex justify-center items-center h-full bg-white">
+                    <Link
+                      key={index}
+                      to={`/services/coffee/${item.slug}`} // Or href={`/products/${item.slug}`} for Next.js
+                      className={`${item.span} block group overflow-hidden h-70`}
+                    >
+                      <img
+                        src={product.images[item.imgIndex]}
+                        alt={product.title || ""}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </Link>
+                    </SwiperSlide>
+                  );
+                })}
+
               </Swiper>
             </div>
           }
         ></ResponsiveView>
       </div>
-      <div className="py-20 bg-background1">
+      <div className="py-10 bg-background1">
         <TextDivider>
           <h3>BEST SELLERS</h3>
         </TextDivider>
       </div>
       <div className="bg-background2 py-10">
-          <ChoiceButton
-          className="w-fit mx-15 ml-auto mb-10"
+        <ChoiceButton
+          className="w-fit mx-15 ml-auto"
           selected={timelineView}
           onSelect={setTimelineView}
-            choices={["Alternate", "Single Left", "Single Right"]}
-          ></ChoiceButton>
+          choices={["Alternate", "Single Left", "Single Right"]}
+        ></ChoiceButton>
         <Eyebrow className="text-center">Why us?</Eyebrow>
-        <div>
-        </div>
+        <div></div>
         <h2 className="font-bold text-center m-0 p-0 mb-15 ">
           Our extraction process
         </h2>
-        <Timeline elements={coffeeProcessTimeline} alternating={timelineView === "Alternate" ? true : (timelineView === "Single Left" ? "left" : "right")}></Timeline>
+        <Timeline
+          elements={coffeeProcessTimeline}
+          alternating={
+            timelineView === "Alternate"
+              ? true
+              : timelineView === "Single Left"
+                ? "left"
+                : "right"
+          }
+        ></Timeline>
       </div>
       <SvgBackground
         className="p-10"
