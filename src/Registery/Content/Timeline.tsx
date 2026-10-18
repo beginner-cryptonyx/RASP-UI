@@ -190,7 +190,7 @@ function DirectionedTimelineComponent({
             </p>
           )}
           {description && (
-            <p className="text-textPrimary/60 text-sm leading-relaxed mt-2">
+            <p className="text-textPrimary/60 text-sm leading-relaxed mt-2 max-w-[80ch]">
               {description}
             </p>
           )}
@@ -209,11 +209,11 @@ export function DirectionedTimeline({
   className
 }: TimelineProps & { direction?: "left" | "right" }) {
   return (
-    <div className={cn(`relative max-w-xl`, className)}>
+    <div className={cn(`relative  mx-10`, className)}>
       <div
         className={`absolute top-0 bottom-0 w-px border-l-2 border-dashed ${
           direction === "left" ? "right-6.5" : "left-6.5"
-        }`}
+        } ${direction === "left" && "ml-auto"}`}
       />
       {elements.map((item, i) => (
         <DirectionedTimelineComponent
