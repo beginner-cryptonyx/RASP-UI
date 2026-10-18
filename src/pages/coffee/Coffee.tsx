@@ -21,6 +21,7 @@ import ResponsiveView from "../../Registery/Layout/ResponsiveView";
 import TextDivider from "../../Registery/Base/TextDivider";
 import { Link } from "react-router";
 import Icon from "../../Registery/Meta/Icon";
+import ChoiceButton from "../../Registery/Base/ChoiceButton";
 
 export default function Coffee() {
   const { setColorScheme } = useTheme();
@@ -44,6 +45,8 @@ export default function Coffee() {
     { slug: "sharkbrew-travel-tumbler", imgIndex: 0, span: "col-span-2" },
     { slug: "coffee-shark-tote", imgIndex: 0, span: "col-span-2" },
   ];
+
+  const [timelineView, setTimelineView] = useState<string>("Single Left")
 
   return (
     <>
@@ -214,6 +217,13 @@ export default function Coffee() {
       </div>
       <div className="bg-background2 py-10">
         <Eyebrow className="text-center">Why us?</Eyebrow>
+        <div>
+          <ChoiceButton
+          selected={timelineView}
+          onSelect={setTimelineView}
+            choices={["Alternate", "Single Left", "Single Right"]}
+          ></ChoiceButton>
+        </div>
         <h2 className="font-bold text-center m-0 p-0 mb-15 ">
           Our extraction process
         </h2>
