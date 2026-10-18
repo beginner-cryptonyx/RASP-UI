@@ -216,18 +216,19 @@ export default function Coffee() {
         </TextDivider>
       </div>
       <div className="bg-background2 py-10">
-        <Eyebrow className="text-center">Why us?</Eyebrow>
-        <div>
           <ChoiceButton
+          className="w-fit mx-15 ml-auto mb-10"
           selected={timelineView}
           onSelect={setTimelineView}
             choices={["Alternate", "Single Left", "Single Right"]}
           ></ChoiceButton>
+        <Eyebrow className="text-center">Why us?</Eyebrow>
+        <div>
         </div>
         <h2 className="font-bold text-center m-0 p-0 mb-15 ">
           Our extraction process
         </h2>
-        <Timeline elements={coffeeProcessTimeline}></Timeline>
+        <Timeline elements={coffeeProcessTimeline} alternating={timelineView === "Alternate" ? true : (timelineView === "Single Left" ? "left" : "right")}></Timeline>
       </div>
       <SvgBackground
         className="p-10"
