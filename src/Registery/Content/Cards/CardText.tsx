@@ -1,3 +1,4 @@
+import { cn } from "../../../Lib/utils";
 import type { BaseCardProps } from "./Cards";
 
 export default function CardText({
@@ -8,7 +9,7 @@ export default function CardText({
   className,
 }: BaseCardProps) {
   return (
-    <div className={className}>
+    <div className={cn("pb-3 pt-1.5",className)}>
       {title ? <h4 className="leading-snug">{title}</h4> : <></>}
       {subtext ? (
         <h6 className="opacity-70 -mt-4 text-xs">{subtext}</h6>

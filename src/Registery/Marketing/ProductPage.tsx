@@ -22,7 +22,7 @@ interface RenderImageProps {
 
 interface RenderTitleProps {
   title: string;
-  price: number | string;
+  price?: number | string;
   pricePosition: "beside title" | "below title";
   description?: string;
   StarsProps?: StarsProps;
