@@ -12,7 +12,7 @@ export default function ChoiceButton({ choices, selected, onSelect, className }:
     }
   return (
     <div className={cn("relative", className)} role="tablist">
-      <div className="flex rounded-xl overflow-hidden">
+      <div className="flex rounded-xl overflow-hidden bg-background3">
         {choices.map((choice) => (
           <button
           onClick={() => onSelect(choice)}
@@ -20,7 +20,7 @@ export default function ChoiceButton({ choices, selected, onSelect, className }:
           key={choice}
             className={cn(
               "px-4 py-2 rounded-xl w-30 text-center cursor-pointer transition-all duration-300",
-                choice === selected ? "bg-accent  text-white " : "bg-transparent"
+                choice === selected ? "bg-accent  text-white " : "bg-tansparent text-color1 hover:bg-accent/10"
             )}
           >
             {choice}
