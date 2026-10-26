@@ -20,7 +20,7 @@ export default function Gym() {
 
   return (
     <div
-      className="py-4 bg-background1"
+      className="bg-background3 m-0 p-0 w-full mx-auto  **:transition-colors **:duration-500"
       data-theme={FeaturedPrograms[selectedMainProgram].theme}
       data-mode={mode}
     >
@@ -35,7 +35,6 @@ export default function Gym() {
               key={program}
               imageSrc={data.images[1]}
               imageType="contain"
-              className="w-70"
               title={data.name}
               subtext={`${data.daysPerWeek} days / week`}
               imageAspectRatio="landscape"
@@ -57,11 +56,12 @@ export default function Gym() {
               }}
               data-mode={mode}
               data-theme={data.theme}
+              className={`w-70 cursor-pointer hover:scale-105 hover:-translate-y-px duration-200 transition-all! ${selectedMainProgram === program ? "border-2 border-color1 scale-105 -translate-y-px" : ""}`}
             ></ImageCard>
           );
         })}
       </div>
-      <div className="flex justify-center gap-10 **:transition-colors **:duration-500">
+      <div className="flex justify-center gap-10">
         <Timeline
           {...FeaturedPrograms[selectedMainProgram].progression}
           className="w-[60vw] m-0 p-0"
