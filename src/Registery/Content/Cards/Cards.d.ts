@@ -1,4 +1,4 @@
-export interface BaseCardProps {
+export interface BaseCardProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   subtext?: string;
   description?: string;

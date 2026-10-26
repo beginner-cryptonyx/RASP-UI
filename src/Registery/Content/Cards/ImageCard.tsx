@@ -1,6 +1,6 @@
 import { cn } from "../../../Lib/utils";
 import type { ImageCardProps } from "./Cards";
-import  CardText  from "./CardText";
+import CardText from "./CardText";
 
 export default function ImageCard({
   imageType,
@@ -8,10 +8,16 @@ export default function ImageCard({
   imageAlt = "",
   imageAspectRatio = "square",
   className,
-  ...textProps
+  // text props
+  title,
+  subtext,
+  description,
+  extraContent,
+  // everything else (onClick, onKeyDown, id, aria-*, etc.)
+  ...divProps
 }: ImageCardProps) {
   return (
-    <div
+    <div {...divProps}
       className={cn(
         "rounded-xl shadow-xl overflow-hidden bg-background3 m-4 cursor-pointer hover:scale-105 transition-all duration-200 group hover:bg-background4",
         className,
@@ -25,7 +31,13 @@ export default function ImageCard({
             className={cn("absolute inset-0  h-full w-full  object-cover")}
           />
           <div className="absolute inset-0 h-full w-full object-cover bg-black/60"></div>
-          <CardText {...textProps} className="relative z-10 p-4 text-white" />
+          <CardText
+            title={title}
+            subtext={subtext}
+            description={description}
+            extraContent={extraContent}
+            className="relative z-10 p-4 text-white"
+          />
         </div>
       ) : (
         <div className={cn("flex flex-col")}>
@@ -41,7 +53,13 @@ export default function ImageCard({
                   : "aspect-3/4",
             )}
           />
-          <CardText {...textProps} className="px-4" />
+          <CardText
+            title={title}
+            subtext={subtext}
+            description={description}
+            extraContent={extraContent}
+            className="px-4"
+          />
         </div>
       )}
     </div>
