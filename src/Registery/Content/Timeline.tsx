@@ -17,7 +17,7 @@ export interface TimelineElement {
   fade?: boolean | FadeProps;
 }
 
-export interface TimelineProps {
+export interface TimelineProps extends React.HTMLAttributes<HTMLDivElement>{
   elements: TimelineElement[];
   defaultFade?: boolean | FadeProps;
   defaultDateFormat?: dateFormats;
@@ -117,10 +117,11 @@ export function AlternatingTimeline({
   defaultFade = true,
   defaultDateFormat = "do MMMM, yyy",
   defaultTextPosition = "above title",
-  className
+  className,
+  ...props
 }: TimelineProps) {
   return (
-    <div className={cn("relative max-w-4xl mx-auto", className)}>
+    <div className={cn("relative max-w-4xl mx-auto", className)} {...props}>
       <div
         className={`absolute left-1/2 -translate-x-1/2 -top-12 -bottom-8 w-px border-l-2 border-dashed`}
       />
