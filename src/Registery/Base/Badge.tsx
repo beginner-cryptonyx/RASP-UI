@@ -8,6 +8,7 @@ const BadgeVariants = cva(
   {
     variants: {
       color: {
+        translucent: "bg-gray-600/30 text-white border-gray-600",
         green: "bg-green-100 text-green-900 border-green-500",
         red: "bg-red-100 text-red-900 border-red-500",
         blue: "bg-blue-200/90 text-blue-900 border-blue-500",
@@ -27,7 +28,7 @@ const BadgeVariants = cva(
       },
     },
     defaultVariants: {
-      color: "red",
+      color: "translucent",
       shape: "rounded",
       border: false,
     },
