@@ -1,4 +1,4 @@
-// I kept it here just as a 
+// I kept it here just as a reference
 // type Colors = {
 //   background1: string;
 //   background2: string;

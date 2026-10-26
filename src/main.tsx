@@ -8,10 +8,12 @@ import Gym from "./pages/gym/Gym.tsx";
 import CoffeeProduct from "./pages/coffee/CoffeeProduct.tsx";
 import { NavLayout } from "./Registery/Navigation/NavLayout.tsx";
 import SwitchThemeButton from "./Registery/Base/SwitchThemeButton.tsx";
+import ThemeProvider from "./Theme/ThemeProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
+    <ThemeProvider>
       <Routes>
         <Route path="/" element={<App />}></Route>
 
@@ -48,6 +50,7 @@ createRoot(document.getElementById("root")!).render(
           <Route index path="/services/gym" element={<Gym />}></Route>
         </Route>
       </Routes>
+      </ThemeProvider>
     </BrowserRouter>
   </StrictMode>,
 );

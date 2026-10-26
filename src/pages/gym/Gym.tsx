@@ -20,7 +20,7 @@ export default function Gym() {
 
   return (
     <div
-      className="p-4 bg-background1"
+      className="py-4 bg-background1"
       data-theme={FeaturedPrograms[selectedMainProgram].theme}
       data-mode={mode}
     >
