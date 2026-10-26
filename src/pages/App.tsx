@@ -90,7 +90,7 @@ function App() {
                 {service.buttonItems.label}
               </LinkButton>}
               titlePosition="top"
-              className={` ${serviceName !== "coffee" ? "grayscale opacity-90 pointer-events-none":""}`}
+              className={` ${serviceName == "coffee" ||  serviceName == "gym" ? "":"grayscale opacity-90 pointer-events-none"}`}
             />
           ))}
         </Grid>

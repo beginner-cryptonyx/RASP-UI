@@ -4,7 +4,7 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import App from "./pages/App.tsx";
 import Coffee from "./pages/coffee/Coffee.tsx";
-import Gym from "./pages/Gym.tsx";
+import Gym from "./pages/gym/Gym.tsx";
 import CoffeeProduct from "./pages/coffee/CoffeeProduct.tsx";
 import { NavLayout } from "./Registery/Navigation/NavLayout.tsx";
 import SwitchThemeButton from "./Registery/Base/SwitchThemeButton.tsx";
@@ -36,7 +36,17 @@ createRoot(document.getElementById("root")!).render(
           ></Route>
         </Route>
 
-        <Route path="/services/gym" element={<Gym />}></Route>
+        <Route
+          element={
+            <NavLayout
+              services={[{ href: "/", label: "home" }]}
+              logo={<p>some logo</p>}
+              rightSlot={<SwitchThemeButton />}
+            />
+          }
+        >
+          <Route index path="/services/gym" element={<Gym />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { FeaturedPrograms } from "../data/GymData";
-import { gymProgressionTimeline } from "../DummyData";
-import Timeline from "../Registery/Content/Timeline";
-import useTheme from "../Theme/UseTheme";
-import TextDivider from "../Registery/Base/TextDivider";
-import Grid from "../Registery/Layout/Grid";
-import Statistic from "../Registery/Content/Statistic";
-import ImageCard from "../Registery/Content/Cards/ImageCard";
-import Badge from "../Registery/Base/Badge";
+import { FeaturedPrograms } from "../../data/GymData";
+import { gymProgressionTimeline } from "../../DummyData";
+import Timeline from "../../Registery/Content/Timeline";
+import useTheme from "../../Theme/UseTheme";
+import TextDivider from "../../Registery/Base/TextDivider";
+import Grid from "../../Registery/Layout/Grid";
+import Statistic from "../../Registery/Content/Statistic";
+import ImageCard from "../../Registery/Content/Cards/ImageCard";
+import Badge from "../../Registery/Base/Badge";
 
 export default function Gym() {
   const { setColorScheme, mode } = useTheme();
@@ -21,8 +21,8 @@ export default function Gym() {
   return (
     <div
       className="p-4 bg-background1"
-      data-mode={mode}
       data-theme={FeaturedPrograms[selectedMainProgram].theme}
+      data-mode={mode}
     >
       <TextDivider className="">
         <h3>Featured Plans</h3>
@@ -44,7 +44,6 @@ export default function Gym() {
                   {data.tags.slice(0, 3).map((tag) => (
                     <Badge
                       text={tag}
-                      color={"red"}
                       shape={"rounded"}
                       border
                       key={tag}
