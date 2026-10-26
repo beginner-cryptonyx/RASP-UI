@@ -63,7 +63,7 @@ const FeaturedPrograms: Record<string, FeaturedProgram> = {
     durationWeeks: 17, // Sep 1 to Dec 31 (~17 weeks)
     daysPerWeek: 6,
     trainerIds: ["00000"],
-    theme: "ocean",
+    theme: "Ocean",
     statistics: [
       {
         value: "540",
@@ -87,7 +87,7 @@ const FeaturedPrograms: Record<string, FeaturedProgram> = {
       },
     ],
     progression: {
-      alternating: "left",
+      alternating: "right",
       defaultTextPosition: "below title",
       elements: [
         {
@@ -143,7 +143,7 @@ const FeaturedPrograms: Record<string, FeaturedProgram> = {
     durationWeeks: 17, // Jan 1 to Apr 30 (~17 weeks)
     daysPerWeek: 4,
     trainerIds: ["00000"],
-    theme: "sunset",
+    theme: "Sunset",
     statistics: [
       {
         value: "620",
