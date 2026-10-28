@@ -19,60 +19,69 @@ export default function Gym() {
   }, [setColorScheme]);
 
   return (
-    <div
-      className="bg-background3 m-0 p-0 w-full mx-auto  **:transition-colors **:duration-500"
-      data-theme={FeaturedPrograms[selectedMainProgram].theme}
-      data-mode={mode}
-    >
-      <TextDivider className="">
-        <h3>Featured Plans</h3>
-      </TextDivider>
-      <div className="flex justify-center">
-        {Object.keys(FeaturedPrograms).map((program) => {
-          const data = FeaturedPrograms[program];
-          return (
-            <ImageCard
-              key={program}
-              imageSrc={data.images[1]}
-              imageType="contain"
-              title={data.name}
-              subtext={`${data.daysPerWeek} days / week`}
-              imageAspectRatio="landscape"
-              extraContent={
-                <div className="flex flex-wrap gap-x-2 gap-y-1">
-                  {data.tags.slice(0, 3).map((tag) => (
-                    <Badge
-                      text={tag}
-                      shape={"rounded"}
-                      border
-                      key={tag}
-                    ></Badge>
-                  ))}
-                </div>
-              }
-              onClick={() => {
-                setSelectedMainProgram(program);
-                console.log("click");
-              }}
-              data-mode={mode}
-              data-theme={data.theme}
-              className={`w-70 cursor-pointer hover:scale-105 hover:-translate-y-px duration-200 transition-all! ${selectedMainProgram === program ? "border-2 border-color1 scale-105 -translate-y-px" : ""}`}
-            ></ImageCard>
-          );
-        })}
+    <div className="">
+      <div
+        data-theme={FeaturedPrograms[selectedMainProgram].theme}
+        data-mode={mode}
+        className="bg-background1 m-0 py-10 w-full mx-auto  **:transition-colors **:duration-500"
+      >
+        <TextDivider className="">
+          <h3>Featured Plans</h3>
+        </TextDivider>
+        <div className="flex justify-center">
+          {Object.keys(FeaturedPrograms).map((program) => {
+            const data = FeaturedPrograms[program];
+            return (
+              <ImageCard
+                key={program}
+                imageSrc={data.images[1]}
+                imageType="contain"
+                title={data.name}
+                subtext={`${data.daysPerWeek} days / week`}
+                imageAspectRatio="landscape"
+                extraContent={
+                  <div className="flex flex-wrap gap-x-2 gap-y-1">
+                    {data.tags.slice(0, 3).map((tag) => (
+                      <Badge
+                        text={tag}
+                        shape={"rounded"}
+                        border
+                        key={tag}
+                      ></Badge>
+                    ))}
+                  </div>
+                }
+                onClick={() => {
+                  setSelectedMainProgram(program);
+                  console.log("click");
+                }}
+                data-mode={mode}
+                data-theme={data.theme}
+                className={`w-70 cursor-pointer hover:scale-105 hover:-translate-y-px duration-200 transition-all! ${selectedMainProgram === program ? "border-2 border-color1 scale-105 -translate-y-px" : ""}`}
+              ></ImageCard>
+            );
+          })}
+        </div>
+        <div className="flex justify-center gap-10 items-stretch">
+          <div className="pt-5">
+            <Timeline
+              {...FeaturedPrograms[selectedMainProgram].progression}
+              className="w-[60vw] m-0"
+            />
+          </div>
+          <Grid columns={1}>
+            {FeaturedPrograms[selectedMainProgram].statistics.map((stat) => (
+              <div className="flex flex-col justify-center items-center bg-background2 rounded-lg m-5 border border-color2/70">
+                <Statistic {...stat} className="*:mx-auto *:px-4"></Statistic>
+              </div>
+            ))}
+          </Grid>
+        </div>
       </div>
-      <div className="flex justify-center gap-10">
-        <Timeline
-          {...FeaturedPrograms[selectedMainProgram].progression}
-          className="w-[60vw] m-0 p-0"
-        />
-        <Grid columns={1}>
-          {FeaturedPrograms[selectedMainProgram].statistics.map((stat) => (
-            <div className="flex flex-col justify-center items-center bg-background2 rounded-lg m-5 border border-color2/70">
-              <Statistic {...stat} className="*:mx-auto *:px-4"></Statistic>
-            </div>
-          ))}
-        </Grid>
+      <div className="py-10">
+        <TextDivider className="">
+          <h3>Choose Your Program</h3>
+        </TextDivider>
       </div>
     </div>
   );
